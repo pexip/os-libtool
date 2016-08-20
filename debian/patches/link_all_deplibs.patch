@@ -3,14 +3,14 @@
 ## need themself.  This seems to break a few things and will be fixed
 ## in a better way in a future upstream version.
 
-Index: libtool-2.4/libltdl/config/ltmain.m4sh
+Index: b/build-aux/ltmain.in
 ===================================================================
---- libtool-2.4.orig/libltdl/config/ltmain.m4sh	2011-03-27 21:50:31.000000000 +0000
-+++ libtool-2.4/libltdl/config/ltmain.m4sh	2011-03-27 21:52:59.000000000 +0000
-@@ -5322,7 +5322,10 @@
+--- a/build-aux/ltmain.in
++++ b/build-aux/ltmain.in
+@@ -7568,7 +7568,10 @@
  	case $pass in
- 	dlopen) libs="$dlfiles" ;;
- 	dlpreopen) libs="$dlprefiles" ;;
+ 	dlopen) libs=$dlfiles ;;
+ 	dlpreopen) libs=$dlprefiles ;;
 -	link) libs="$deplibs %DEPLIBS% $dependency_libs" ;;
 +	link)
 +	  libs="$deplibs %DEPLIBS%"
@@ -18,12 +18,12 @@ Index: libtool-2.4/libltdl/config/ltmain.m4sh
 +	  ;;
  	esac
        fi
-       if test "$linkmode,$pass" = "lib,dlpreopen"; then
-Index: libtool-2.4/libltdl/m4/libtool.m4
+       if test lib,dlpreopen = "$linkmode,$pass"; then
+Index: b/m4/libtool.m4
 ===================================================================
---- libtool-2.4.orig/libltdl/m4/libtool.m4	2010-09-22 08:41:19.000000000 +0000
-+++ libtool-2.4/libltdl/m4/libtool.m4	2011-03-27 22:00:19.000000000 +0000
-@@ -4499,6 +4499,9 @@
+--- a/m4/libtool.m4
++++ b/m4/libtool.m4
+@@ -4936,6 +4936,9 @@
        ;;
      esac
      ;;
@@ -33,8 +33,8 @@ Index: libtool-2.4/libltdl/m4/libtool.m4
    *)
      _LT_TAGVAR(export_symbols_cmds, $1)='$NM $libobjs $convenience | $global_symbol_pipe | $SED '\''s/.* //'\'' | sort | uniq > $export_symbols'
      ;;
-@@ -4562,6 +4565,9 @@
-   openbsd*)
+@@ -4998,6 +5001,9 @@
+   openbsd* | bitrig*)
      with_gnu_ld=no
      ;;
 +  linux* | k*bsd*-gnu | gnu*)
@@ -43,11 +43,11 @@ Index: libtool-2.4/libltdl/m4/libtool.m4
    esac
  
    _LT_TAGVAR(ld_shlibs, $1)=yes
-@@ -4961,6 +4967,7 @@
- 	if test "$aix_use_runtimelinking" = yes; then
- 	  shared_flag="$shared_flag "'${wl}-G'
+@@ -5773,6 +5779,7 @@
+ 	if test yes = "$lt_cv_irix_exported_symbol"; then
+           _LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $pic_flag $libobjs $deplibs $compiler_flags $wl-soname $wl$soname `test -n "$verstring" && func_echo_all "$wl-set_version $wl$verstring"` $wl-update_registry $wl$output_objdir/so_locations $wl-exports_file $wl$export_symbols -o $lib'
  	fi
 +	_LT_TAGVAR(link_all_deplibs, $1)=no
        else
- 	# not using gcc
- 	if test "$host_cpu" = ia64; then
+ 	_LT_TAGVAR(archive_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags -soname $soname `test -n "$verstring" && func_echo_all "-set_version $verstring"` -update_registry $output_objdir/so_locations -o $lib'
+ 	_LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags -soname $soname `test -n "$verstring" && func_echo_all "-set_version $verstring"` -update_registry $output_objdir/so_locations -exports_file $export_symbols -o $lib'

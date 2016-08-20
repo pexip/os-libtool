@@ -7,14 +7,6 @@
 
 DEBIAN_REVISION=$(strip $(shell dpkg-parsechangelog | awk -F: '/^Version:/ {print $$NF}'))
 
-# if doing a binary-arch build, the Makefiles still want to update the
-# info files; force them not to
-ifneq (,$(wildcard /usr/bin/makeinfo))
-  MAKEINFO = makeinfo
-else
-  export MAKEINFO=true
-endif
-
 # libltdl needs to conform to policy
 export DEB_CFLAGS_MAINT_PREPEND = -Wall
 ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
@@ -46,44 +38,41 @@ endif
 clean: 
 	dh_testdir
 	dh_testroot
-	rm -f build-stamp build-indep-stamp config-stamp
+	rm -f build-stamp config-stamp
 	dh_clean
 
 	[ ! -f Makefile ] || $(MAKE) -k distclean
-	-rm config.log
-	-rm -f *demo*.tar.gz
-	find . -name 'stamp-*' | xargs rm -f
-	find . -name 'configure' | xargs rm -f
-	rm -f *.in */*.in
-	rm -f *.m4 */*.m4
-	find tests -name '*.in' -o -name '*.m4' | xargs rm -f
-	find libltdl/config -type f -a ! -name '*.m4sh' -a ! -name 'mkstamp' | xargs rm -f
-	rm -f libltdl/Makefile.am
-	rm -f libltdl/m4/ltversion.m4
-	rm -f COPYING INSTALL commit tests-failed
-	rm -f doc/libtool.info-1 doc/libtool.info-2
-	rm -f tests/testsuite
-	rm -f doc/version.texi doc/notes.txt doc/stamp-vti doc/libtool.info
-# Undo the version change if there is any.
-	sed -i -e 's/@VERSION@.*/@VERSION@/' libtoolize.m4sh
-	sed -i -e 's/^\(#.*@VERSION@\).*/\1/' libltdl/config/ltmain.m4sh
-	sed -i -e 's/^VERSION.*/VERSION=@VERSION@/' libltdl/config/ltmain.m4sh
+	rm -f INSTALL build-aux/compile build-aux/config.guess build-aux/config.sub
+	rm -f build-aux/texinfo.tex build-aux/missing build-aux/install-sh
+	rm -f build-aux/mdate-sh build-aux/depcomp README-release doc/libtool.info-2
+	rm -f .version .version~
+	rm -f doc/libtool.1 doc/libtool.info doc/libtool.info-1 doc/libtool.info-2 doc/libtoolize.1
+	rm -f build-aux/ltmain.sh
+	rm -f Makefile.in configure libltdl/Makefile.in libltdl/configure
+	rm -rf autom4te.cache
+	rm -f build-aux/gnupload config-h.in m4/gnulib-cache.m4 m4/gnulib-comp.m4
+	rm -f build-aux/update-copyright m4/gnulib-tool.m4 build-aux/useless-if-before-free
+	rm -f build-aux/announce-gen build-aux/gendocs.sh build-aux/vc-list-files
+	rm -f build-aux/do-release-commit-and-tag build-aux/gnu-web-doc-update 
+	rm -f m4/gnulib-common.m4 m4/00gnulib.m4 maint.mk doc/fdl.texi
+	rm -f doc/gendocs_template GNUmakefile
+	# Undo the version change if there is any.
+	sed -i -e "s/\$$scriptversion.*/\$$scriptversion/" libtoolize.in
+	sed -i -e "s/\$$scriptversion.*/\$$scriptversion/" build-aux/ltmain.in
+	sed -i -e 's/^VERSION.*/VERSION=@VERSION@/' build-aux/ltmain.in
 
 config: config-stamp
 Makefile: config-stamp
 config-stamp:
 	dh_testdir
 
-#	These go into the libtool-doc `examples' directory.
-#	Create them while we still have a clean source tree
-	for demo in cdemo demo depdemo f77demo fcdemo mdemo mdemo2 pdemo tagdemo; do \
-	    GZIP=--best tar zcf ./$$demo.tar.gz tests/$$demo; \
-	done
+	sed -i -e "s/\$$scriptversion.*/\$$scriptversion Debian-$(DEBIAN_REVISION)/" libtoolize.in
+	sed -i -e "s/\$$scriptversion.*/\$$scriptversion Debian-$(DEBIAN_REVISION)/" build-aux/ltmain.in
+	sed -i -e 's/^VERSION.*/VERSION="@VERSION@ Debian-$(DEBIAN_REVISION)"/' build-aux/ltmain.in
 
-	sed -i -e 's/^#.*progname.*@VERSION@$$/& Debian-$(DEBIAN_REVISION)/' libtoolize.m4sh
-	sed -i -e 's/^#.*progname.*@VERSION@$$/& Debian-$(DEBIAN_REVISION)/' libltdl/config/ltmain.m4sh
-	sed -i -e 's/^VERSION.*/VERSION="@VERSION@ Debian-$(DEBIAN_REVISION)"/' libltdl/config/ltmain.m4sh
-	./bootstrap
+	touch README-release
+
+	./bootstrap --force --no-git --skip-po --gnulib-srcdir=/usr/share/gnulib/ --copy
 	CONFIG_SHELL=/bin/bash /bin/bash ./configure \
 		--prefix=/usr \
 		--libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH) \
@@ -93,13 +82,10 @@ config-stamp:
 
 
 build: build-arch build-indep
-
 build-arch: build-stamp
+build-indep: build-stamp
 build-stamp: config-stamp
 	dh_testdir
-
-#	Fix some permissions
-	chmod a+x tests/mdemo2-*.test
 
 	$(MAKE)
 
@@ -145,15 +131,10 @@ ifeq ($(make_check), yes)
 	@test ! -f tests-failed
 endif
 
+	cd doc && makeinfo libtool.texi
+	cd doc && makeinfo --html --no-split libtool.texi
+
 	touch build-stamp
-
-build-indep: build-indep-stamp
-build-indep-stamp:
-#	This generated HTML page goes into libtool-doc.
-	cd doc && $(MAKEINFO) libtool.texi
-	cd doc && $(MAKEINFO) --html --no-split libtool.texi
-
-	touch build-indep-stamp
 
 install: build
 	dh_testdir
@@ -164,8 +145,7 @@ install: build
 	$(MAKE) prefix=$(CURDIR)/debian/tmp/usr install
 	rm -f debian/tmp/usr/share/info/dir
 
-	dh_install $(if $(filter true,$(MAKEINFO)),-Nlibtool-doc) \
-		--fail-missing --sourcedir=debian/tmp
+	dh_install --fail-missing --sourcedir=debian/tmp
 
 # Build architecture-independent files here.
 binary-indep: build-indep install
@@ -173,10 +153,10 @@ binary-indep: build-indep install
 	dh_testroot -i
 
 	# Create symlinks to the one in autotools-dev
-	rm -f debian/libtool/usr/share/libtool/config/config.guess
-	ln -s ../../misc/config.guess debian/libtool/usr/share/libtool/config
-	rm -f debian/libtool/usr/share/libtool/config/config.sub
-	ln -s ../../misc/config.sub debian/libtool/usr/share/libtool/config
+	rm -f debian/libtool/usr/share/libtool/build-aux/config.guess
+	ln -s ../../misc/config.guess debian/libtool/usr/share/libtool/build-aux
+	rm -f debian/libtool/usr/share/libtool/build-aux/config.sub
+	ln -s ../../misc/config.sub debian/libtool/usr/share/libtool/build-aux
 
 	dh_installdocs -i
 	dh_installinfo -plibtool-doc

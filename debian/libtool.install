@@ -1,6 +1,6 @@
 usr/bin/libtoolize
-usr/share/libtool/config/*
-usr/share/aclocal/argz.m4
+usr/share/libtool/build-aux/*
+usr/share/aclocal/ltargz.m4
 usr/share/aclocal/ltversion.m4
 usr/share/aclocal/lt~obsolete.m4
 usr/share/aclocal/libtool.m4

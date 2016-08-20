@@ -5,17 +5,16 @@
 ## - The test program is linked against the shared lib and using
 ##   symbols from the static lib.
 
-Index: libtool-2.2.6a/tests/demo-deplibs.test
+Index: libtool-2.2.6a/tests/demo.at
 ===================================================================
---- libtool-2.2.6a.orig/tests/demo-deplibs.test	2009-04-10 00:53:38.000000000 +0200
-+++ libtool-2.2.6a/tests/demo-deplibs.test	2009-04-10 00:53:48.000000000 +0200
-@@ -23,6 +23,9 @@
- # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- ####
+--- libtool-2.2.6a.orig/tests/demo.at	2009-04-10 00:53:38.000000000 +0200
++++ libtool-2.2.6a/tests/demo.at	2009-04-10 00:53:48.000000000 +0200
+@@ -436,6 +436,8 @@
  
-+# This test is broken for several reasons, skip it.
-+exit 77
+ AT_SETUP([deplibs_check_method])
+ 
++AT_CHECK([(exit 77)])
 +
- . tests/defs || exit 1
+ _LT_DEMO_SETUP
  
- func_require "demo-conf" "tests/demo/libhello.la"
+ AT_DATA([demo.mk],
