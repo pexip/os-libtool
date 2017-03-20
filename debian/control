@@ -8,7 +8,7 @@ XSBC-Pexip-Original-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ub
 XSBC-Original-Maintainer: Kurt Roeckx <kurt@roeckx.be>
 Standards-Version: 3.8.3
 Homepage: http://www.gnu.org/software/libtool/
-XS-Pexip-Upstream: http://archive.ubuntu.com/ubuntu/ precise
+XS-Pexip-Upstream: http://ftp.debian.org/debian/ jessie
 
 Package: libtool
 Architecture: any
