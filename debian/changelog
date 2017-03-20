@@ -1,3 +1,105 @@
+libtool (2.4.2-1.11pexip1) pexip; urgency=low
+
+  * Migrate to Jessie
+
+ -- John-Mark Bell <jmb@pexip.com>  Mon, 20 Mar 2017 23:04:47 +0000
+
+libtool (2.4.2-1.11) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Drop libtool's dependency on libtool-bin.
+  * Add libtool-bin dependency on libtool.
+  * Make libtool Multi-Arch: foreign. Closes: #682045.
+  * Bump standards version to 3.9.6.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 14 Oct 2014 19:21:11 +0200
+
+libtool (2.4.2-1.10) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Run the tests in the build target, not the install target.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 19 Aug 2014 16:31:18 +0200
+
+libtool (2.4.2-1.9) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix the architecture only build.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 19 Aug 2014 14:41:15 +0200
+
+libtool (2.4.2-1.8) unstable; urgency=medium
+
+  * Non-maintainer upload with maintainer's permission.
+  * Split-out the libtool binary into a libtool-bin package, let libtool
+    still depend on the libtool-bin package.
+  * Set the architecture for libtool to `all'.
+  * The next steps are:
+    - Fix package builds with libtool's dependency on libtool-bin removed,
+      either by changing the package build not to require libtool or by
+      adding a build dependency on libtool-bin.
+    - Drop libtool's dependency on libtool-bin.
+  * Build using dpkg-buildflags.
+  * Fix some lintian warnings. Closes: #711521.
+  * Only ship the complete upstream changelogs in the -doc package.
+  * Move texinfo to Build-Depends-Indep (Daniel Schepler). Closes: #737941.
+  * Build-depend on most recent autoconf and automake versions to minimize
+    the risk of mismatching files in the libltdl-dev M-A: same package.
+    Closes: #733935.
+
+ -- Matthias Klose <doko@debian.org>  Sun, 17 Aug 2014 19:01:14 +0200
+
+libtool (2.4.2-1.7) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix typo in in the ppc64el guessing in config.guess.
+
+ -- Matthias Klose <doko@debian.org>  Mon, 10 Feb 2014 12:36:45 +0100
+
+libtool (2.4.2-1.6) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Rebuild using the recent automake 1.14.1 version. Closes: #733935.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 02 Jan 2014 19:23:20 +0100
+
+libtool (2.4.2-1.5) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Update the powerpc little endian support, outdated in the Debian
+    patch in #726404.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 02 Jan 2014 18:29:44 +0100
+
+libtool (2.4.2-1.4) unstable; urgency=low
+
+  * Non-maintainer upload with maintainer's permission.
+  * Add powerpc little endian updates. Closes: #726404.
+  * Build-conflict with and suggest gcj-jdk instead of gcj.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 01 Jan 2014 22:03:26 +0100
+
+libtool (2.4.2-1.3) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Build-depend on help2man (closes: #712413).
+
+ -- Colin Watson <cjwatson@debian.org>  Mon, 01 Jul 2013 18:33:15 +0100
+
+libtool (2.4.2-1.2) unstable; urgency=low
+
+  * Non-maintainer upload with maintainer's permission.
+  * Backport support for x32 from upstream git.  Closes: #692222.
+
+ -- Daniel Schepler <schepler@debian.org>  Fri, 23 Nov 2012 15:26:44 -0800
+
+libtool (2.4.2-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Apply upstream fix for hurd-i386 linker flags (Closes: #648514).
+
+ -- Samuel Thibault <sthibault@debian.org>  Tue, 12 Jun 2012 00:05:43 +0200
+
 libtool (2.4.2-1ubuntu1pexip1) pexip; urgency=low
 
   * Prepare Pexip packaging
@@ -34,34 +136,6 @@ libtool (2.4.2-1) unstable; urgency=low
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sat, 29 Oct 2011 20:08:48 +0200
 
-libtool (2.4-4ubuntu4) precise; urgency=low
-
-  * Er, *actually* mark libtool multi-arch: foreign.
-
- -- Steve Langasek <steve.langasek@ubuntu.com>  Sat, 05 Nov 2011 00:50:21 -0400
-
-libtool (2.4-4ubuntu3) precise; urgency=low
-
-  * Mark libtool Multi-Arch: foreign; needed because it's a
-    build-dependency.
-
- -- Steve Langasek <steve.langasek@ubuntu.com>  Sat, 05 Nov 2011 04:45:32 +0000
-
-libtool (2.4-4ubuntu2) precise; urgency=low
-
-  * Build libltdl for multiarch.
-
- -- Steve Langasek <steve.langasek@ubuntu.com>  Wed, 26 Oct 2011 22:02:08 +0000
-
-libtool (2.4-4ubuntu1) precise; urgency=low
-
-  * Merge with Debian; remaining changes:
-    - Mark Java convenience test as an expected failure, due to
-      http://gcc.gnu.org/bugzilla/show_bug.cgi?id=42143.
-    - Fix the 'clean' target for the case where tests are not run.
-
- -- Matthias Klose <doko@ubuntu.com>  Tue, 11 Oct 2011 15:45:04 +0200
-
 libtool (2.4-4) unstable; urgency=low
 
   * dpkg-dev decided to also reverse apply the arm change, so remove
@@ -75,16 +149,6 @@ libtool (2.4-3) unstable; urgency=low
   * Also disable broken tests with non-PIC code on arm. (Closes: #632614)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Fri, 29 Jul 2011 15:45:31 +0200
-
-libtool (2.4-2ubuntu1) oneiric; urgency=low
-
-  * Merge with Debian; remaining changes:
-    - Added debian/patches/skip_nonpic_on_arm.patch.
-    - Mark Java convenience test as an expected failure, due to
-      http://gcc.gnu.org/bugzilla/show_bug.cgi?id=42143.
-    - Fix the 'clean' target for the case where tests are not run.
-
- -- Matthias Klose <doko@ubuntu.com>  Sun, 01 May 2011 11:49:14 +0200
 
 libtool (2.4-2) unstable; urgency=low
 
@@ -117,34 +181,6 @@ libtool (2.2.10-1) experimental; urgency=low
       gold_symbol_versioning.patch applied upstream.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Thu, 17 Jun 2010 20:09:14 +0200
-
-libtool (2.2.6b-2ubuntu3) natty; urgency=low
-
-  * Fix the 'unpatch' target to clean up .pc afterwards
-
-  [ Peter Pearse ]
-  * Fix the 'clean' target for the case where tests are not run.
-    LP #720815.
-
- -- Steve Langasek <steve.langasek@ubuntu.com>  Sun, 06 Mar 2011 17:07:25 -0800
-
-libtool (2.2.6b-2ubuntu2) natty; urgency=low
-
-  * Link tagdemo test with --copy-dt-needed-entries.
-  * Mark Java convenience test as an expected failure, due to
-    http://gcc.gnu.org/bugzilla/show_bug.cgi?id=42143.
-
- -- Colin Watson <cjwatson@ubuntu.com>  Wed, 16 Feb 2011 10:25:50 +0000
-
-libtool (2.2.6b-2ubuntu1) lucid; urgency=high
-
-  * Added debian/patches/skip_nonpic_on_arm.patch: (LP: #503176)
-    - This disables the non-PIC tests on ARM. Attempting to build a non-PIC
-      library on ARMv7 causes the toolchain to bomb. This is a temporary 
-      workaround for Launchpad Bug #503448, this patch can be dropped once
-      GCC properly supports non-PIC shared libraries on ARMv7.
-
- -- Michael Casadevall <mcasadevall@ubuntu.com>  Tue, 05 Jan 2010 11:28:20 -0500
 
 libtool (2.2.6b-2) unstable; urgency=low
 

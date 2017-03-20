@@ -6,4 +6,7 @@ nopic.patch
 deplibs_test_disable.patch
 disable-link-order2.patch
 deplibs-ident.patch
-java_convenience_xfail.patch
+hurd.patch
+x32.patch
+ppc64el.patch
+man-add-whatis-info.diff
