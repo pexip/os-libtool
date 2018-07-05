@@ -15,7 +15,7 @@ Maintainer: Pexip AS <packaging@pexip.com>
 XSBC-Pexip-Original-Maintainer: Kurt Roeckx <kurt@roeckx.be>
 Standards-Version: 3.9.6
 Homepage: http://www.gnu.org/software/libtool/
-XS-Pexip-Upstream: http://ftp.debian.org/debian/ jessie
+XS-Pexip-Upstream: http://ftp.debian.org/debian/ stretch
 
 Package: libtool
 Architecture: all
