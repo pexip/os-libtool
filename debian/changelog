@@ -1,3 +1,49 @@
+libtool (2.4.6-2) unstable; urgency=medium
+
+  * Don't show the debain version in --version, just in --help
+    (Closes: #832874)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 20 Aug 2016 14:34:31 +0200
+
+libtool (2.4.6-1) unstable; urgency=medium
+
+  * Add sparc64 to the nopic.patch (Closes: #760328)
+  * Don't have a "Libtool was configured on host" line anymore
+    (Closes: #819767)
+  * Make the build-arch and build-indep target do the same thing.
+    The libtool package is now arch all, so it makes little sense
+    to just build the documentation in the build-indep target.  The
+    binary-indep depends on install which depends on build anyway.
+  * Add upstream signing key
+  * Change clean target to remove all generated files.
+  * Add --skip-po to bootstrap call
+  * Remove git-version-gen and gitlog-to-changelog from bootstrap.conf
+  * Update way of adding the Debian version to the files.
+  * Build-Depend on gnulib and tell bootstrap where to found it.
+  * Use --copy for bootstrap.  It defaults to creating symlinks.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Mon, 25 Jul 2016 19:42:23 +0200
+
+libtool (2.4.6-0.1) unstable; urgency=medium
+
+  * Non maintainer upload.
+
+  [ Rico Tzschichholz ]
+  * New upstream release
+    Remove patches applied upstream:
+    - hurd.patch
+    - x32.patch
+    - ppc64el.patch
+  * Cherry-picked patches from upstream git:
+    - 0001-libtool-fix-GCC-linking-with-specs.patch
+    - 0003-libtoolize-fix-infinite-recursion-in-m4.patch
+    - 0015-syntax-check-fix-sed-syntax-errors.patch
+    - 0020-libtool-fix-GCC-clang-linking-with-fsanitize.patch
+  * Build-depend on texinfo needed by bootstrap.
+  * *.install/rules: Updated for upstream changes.
+
+ -- Matthias Klose <doko@debian.org>  Sun, 07 Feb 2016 17:02:04 +0100
+
 libtool (2.4.2-1.11+b1pexip1) pexip; urgency=low
 
   * Migrate to Jessie
@@ -52,7 +98,7 @@ libtool (2.4.2-1.8) unstable; urgency=medium
 libtool (2.4.2-1.7) unstable; urgency=medium
 
   * Non-maintainer upload.
-  * Fix typo in in the ppc64el guessing in config.guess.
+  * Fix typo in the ppc64el guessing in config.guess.
 
  -- Matthias Klose <doko@debian.org>  Mon, 10 Feb 2014 12:36:45 +0100
 
