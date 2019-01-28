@@ -13,6 +13,8 @@ ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
 	INSTALL_PROGRAM += -s
 endif
 
+AM_VERSION=$(shell aclocal --version | head -1 | awk '{print $$4}' | cut -d. -f1-2) 
+
 # Build libltdl the right way (tm)
 DEB_HOST_ARCH      ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
 DEB_HOST_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
@@ -157,6 +159,17 @@ binary-indep: build-indep install
 	ln -s ../../misc/config.guess debian/libtool/usr/share/libtool/build-aux
 	rm -f debian/libtool/usr/share/libtool/build-aux/config.sub
 	ln -s ../../misc/config.sub debian/libtool/usr/share/libtool/build-aux
+	# Sanitize /usr-merge path builds
+	for f in \
+		debian/libtool-bin/usr/share/man/man1/libtool.1 \
+		debian/libtool-bin/usr/bin/libtool ; do cat $$f | \
+			sed -e 's%/usr/bin/grep%/bin/grep%g' | \
+			sed -e 's%/usr/bin/sed%/bin/sed%g' | \
+			sed -e 's%/usr/bin/dd%/bin/dd%g' | \
+			sed -e 's%${CURDIR}%/build/libtool-2.4.6%g'  \
+			> debian/tmpff ; \
+		mv debian/tmpff $$f ; \
+		done
 
 	dh_installdocs -i
 	dh_installinfo -plibtool-doc
@@ -176,6 +189,18 @@ binary-arch: build-arch install
 	dh_testdir -a
 	dh_testroot -a
 
+	# Sanitize /usr-merge path builds
+	for f in \
+		debian/libtool/usr/bin/libtoolize ; do \
+		cat $$f | \
+			sed -e 's%/usr/bin/grep%/bin/grep%g' | \
+			sed -e 's%/usr/bin/sed%/bin/sed%g' | \
+			sed -e 's%/usr/bin/dd%/bin/dd%g' | \
+			sed -e 's%${CURDIR}%/build/libtool-2.4.6%g'  \
+			> debian/tmpff ; \
+		mv debian/tmpff $$f ; \
+		done
+
 	dh_installdocs -plibtool-bin
 	dh_installdocs -plibltdl7
 	mkdir -p debian/libltdl-dev/usr/share/doc
@@ -190,6 +215,8 @@ binary-arch: build-arch install
 	dh_makeshlibs -a -V
 	dh_installdeb -a
 	dh_shlibdeps -a
+	rm -f debian/libltdl-dev.substvars
+	echo 'automake=automake-${AM_VERSION}' > debian/libltdl-dev.substvars
 	dh_gencontrol -a
 	dh_md5sums -a
 	dh_builddeb -a

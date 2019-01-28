@@ -1,3 +1,83 @@
+libtool (2.4.6-9) unstable; urgency=medium
+
+  * From upstream: add support for --use-ld= flag. Closes: #920529
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Mon, 28 Jan 2019 09:07:40 +0000
+
+libtool (2.4.6-8) unstable; urgency=medium
+
+  * Fix Typos in sed expressions in d/rules. Closes: #919341
+  * Close bug fixed in previous release. Closes: #918588
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Tue, 15 Jan 2019 13:42:46 +0000
+
+libtool (2.4.6-7) unstable; urgency=medium
+
+  * Standards-Version: 4.3.0
+  * Close old bugs:
+    - patch included upstream. Closes: #668707
+  * Homepage: use https protocol
+  * Add Vcs-* pointing to salsa.d.o
+  * Sanitize /usr-merge paths
+  * Undo 0010-libtool-mitigate-the-sed_quote_subst-slowdown.patch to
+    test #918588
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Sat, 12 Jan 2019 14:10:59 +0000
+
+libtool (2.4.6-6) unstable; urgency=medium
+
+  * Undo broken patch inclusion. Closes: #910076
+  * Disable refactor patch 0012-funclib-refactor-quoting-methods-a-bit.patch
+    that breaks pkgs  on AIX (no bash optimization). Closes: #900276
+  * Add build-dep on libltdl-dev for test 102
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Wed, 10 Oct 2018 10:49:43 +0100
+
+libtool (2.4.6-5) unstable; urgency=medium
+
+  * Patch from Vincent Lefevre for AC_TRY_EVAL. Closes: #910076
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Wed, 03 Oct 2018 17:01:12 +0100
+
+libtool (2.4.6-4) unstable; urgency=medium
+
+  * Become Maintainer. Closes: #905994
+  * Add automake dependency on automake version that aclocal.m4 is built
+    with. Closes: #905841, #906394, #906395, #906423, #906501, #906507.
+  * Set libtool-doc as Multi-Arch: foreign
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Tue, 11 Sep 2018 11:21:56 +0100
+
+libtool (2.4.6-3.1) unstable; urgency=medium
+
+  * Non-maintainer upload
+  * Fix handling of grep for link lines where path contains "-L".
+     - patch grep-spaces.patch. Closes: #896861
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Fri, 07 Sep 2018 09:11:08 +0100
+
+libtool (2.4.6-3) unstable; urgency=medium
+
+  * QA upload.
+  * Fix FTBFS test failure with automake 1.16; patch from Fedora tested by
+    Juhani Numminen and Shirish.  Closes: #906380.
+  * Set maintainer to the QA team.
+  * Use debhelper compat 9.
+  * R³.
+
+ -- Adam Borowski <kilobyte@angband.pl>  Thu, 06 Sep 2018 22:28:05 +0200
+
+libtool (2.4.6-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Mitigate exessive sed forking (Closes: #848864):
+    - Add 0010-libtool-mitigate-the-sed_quote_subst-slowdown.patch
+    - Add 0011-libtool-optimizing-options-parser-hooks.patch
+    - Add 0012-funclib-refactor-quoting-methods-a-bit.patch
+    - Refresh 0020-libtool-fix-GCC-clang-linking-with-fsanitize.patch
+
+ -- Andreas Boll <aboll@debian.org>  Tue, 17 Apr 2018 19:50:37 +0200
+
 libtool (2.4.6-2) unstable; urgency=medium
 
   * Don't show the debain version in --version, just in --help
