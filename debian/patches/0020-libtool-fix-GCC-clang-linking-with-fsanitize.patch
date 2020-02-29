@@ -15,10 +15,10 @@ Copyright-paperwork-exempt: Yes
  build-aux/ltmain.in | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/build-aux/ltmain.in b/build-aux/ltmain.in
-index 1cbe875..2a5aaad 100644
---- a/build-aux/ltmain.in
-+++ b/build-aux/ltmain.in
+Index: libtool-2.4.6/build-aux/ltmain.in
+===================================================================
+--- libtool-2.4.6.orig/build-aux/ltmain.in
++++ libtool-2.4.6/build-aux/ltmain.in
 @@ -5382,10 +5382,11 @@ func_mode_link ()
        # -O*, -g*, -flto*, -fwhopr*, -fuse-linker-plugin GCC link-time optimization
        # -specs=*             GCC specs files
@@ -32,6 +32,3 @@ index 1cbe875..2a5aaad 100644
          func_quote_for_eval "$arg"
  	arg=$func_quote_for_eval_result
          func_append compile_command " $arg"
--- 
-2.7.0.rc3
-

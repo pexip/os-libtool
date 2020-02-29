@@ -3,11 +3,11 @@
 ## need themself.  This seems to break a few things and will be fixed
 ## in a better way in a future upstream version.
 
-Index: b/build-aux/ltmain.in
+Index: libtool-2.4.6/build-aux/ltmain.in
 ===================================================================
---- a/build-aux/ltmain.in
-+++ b/build-aux/ltmain.in
-@@ -7568,7 +7568,10 @@
+--- libtool-2.4.6.orig/build-aux/ltmain.in
++++ libtool-2.4.6/build-aux/ltmain.in
+@@ -5679,7 +5679,10 @@ func_mode_link ()
  	case $pass in
  	dlopen) libs=$dlfiles ;;
  	dlpreopen) libs=$dlprefiles ;;
@@ -19,11 +19,11 @@ Index: b/build-aux/ltmain.in
  	esac
        fi
        if test lib,dlpreopen = "$linkmode,$pass"; then
-Index: b/m4/libtool.m4
+Index: libtool-2.4.6/m4/libtool.m4
 ===================================================================
---- a/m4/libtool.m4
-+++ b/m4/libtool.m4
-@@ -4936,6 +4936,9 @@
+--- libtool-2.4.6.orig/m4/libtool.m4
++++ libtool-2.4.6/m4/libtool.m4
+@@ -4936,6 +4936,9 @@ m4_if([$1], [CXX], [
        ;;
      esac
      ;;
@@ -33,7 +33,7 @@ Index: b/m4/libtool.m4
    *)
      _LT_TAGVAR(export_symbols_cmds, $1)='$NM $libobjs $convenience | $global_symbol_pipe | $SED '\''s/.* //'\'' | sort | uniq > $export_symbols'
      ;;
-@@ -4998,6 +5001,9 @@
+@@ -4998,6 +5001,9 @@ dnl Note also adjust exclude_expsyms for
    openbsd* | bitrig*)
      with_gnu_ld=no
      ;;
@@ -43,7 +43,7 @@ Index: b/m4/libtool.m4
    esac
  
    _LT_TAGVAR(ld_shlibs, $1)=yes
-@@ -5773,6 +5779,7 @@
+@@ -5773,6 +5779,7 @@ _LT_EOF
  	if test yes = "$lt_cv_irix_exported_symbol"; then
            _LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $pic_flag $libobjs $deplibs $compiler_flags $wl-soname $wl$soname `test -n "$verstring" && func_echo_all "$wl-set_version $wl$verstring"` $wl-update_registry $wl$output_objdir/so_locations $wl-exports_file $wl$export_symbols -o $lib'
  	fi

@@ -1,5 +1,8 @@
 0001-libtool-fix-GCC-linking-with-specs.patch
 0003-libtoolize-fix-infinite-recursion-in-m4.patch
+# 0010-libtool-mitigate-the-sed_quote_subst-slowdown.patch
+0011-libtool-optimizing-options-parser-hooks.patch
+# 0012-funclib-refactor-quoting-methods-a-bit.patch
 0015-syntax-check-fix-sed-syntax-errors.patch
 0020-libtool-fix-GCC-clang-linking-with-fsanitize.patch
 link_all_deplibs.patch
@@ -14,3 +17,6 @@ man-add-whatis-info.diff
 no_hostname.patch
 bootstrap_options.conf
 version_string.patch
+grep-spaces.patch
+libtool-eval-nm.patch
+0025-libtool-pass-use-ld.patch
