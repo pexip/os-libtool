@@ -19,4 +19,15 @@ bootstrap_options.conf
 version_string.patch
 grep-spaces.patch
 libtool-eval-nm.patch
+libtool-2.4.6-am-1.16-test.patch
 0025-libtool-pass-use-ld.patch
+0030-flang-support.patch
+0035-ac-prereq.patch
+0040-unsafe-eval.patch
+0050-documentation.patch
+0055-pass-flags-unchanged.patch
+0060-ar.patch
+0065-autoconf-version.patch
+0070-libtool-bigsur.patch
+0075-remove-dates-from-docs.patch
+0080-struct-names.patch

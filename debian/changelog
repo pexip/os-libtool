@@ -1,3 +1,73 @@
+libtool (2.4.6-15) unstable; urgency=medium
+
+  * Drop shipping /usr/lib/*/libltdl.la
+  * Update autoconf requirement. Closes: #979123
+  * Standards-Version: 4.5.1, no changes required
+  * Move to debhelper compat level 13
+  * Move to DEP-14 branches; add d/gbp.conf to point to these
+  * Point vcs-git to debian/latest branch
+  * Remove dates/times from documentation. Closes: #951031
+  * Include libtool patch for MacOS BigSur support. Closes: #975257
+  * Update watch file to version 4; add sig checking
+  * Drop useless autotools-dev build-dependency
+  * Fix perms for ltmain.sh
+  * Patch for incorrect struct names. Closes: #304400
+  * Ensure  libtool-2.4.6-am-1.16-test.patch is used
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Sat, 09 Jan 2021 20:49:30 +0000
+
+libtool (2.4.6-14) unstable; urgency=medium
+
+  * Add Breaks/Replaces on libtool-doc. Closes: #950916
+  * Ack bug fixed in -12 release: Closes: #929184
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Mon, 02 Mar 2020 09:35:42 +0000
+
+libtool (2.4.6-13) unstable; urgency=medium
+
+  * Drop d/libtool.docs; ship the docs in libtool-docs.
+    Closes: #950916
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Sun, 16 Feb 2020 12:06:34 +0000
+
+libtool (2.4.6-12) unstable; urgency=medium
+
+  [ Helmut Grohe ]
+  * Avoid build-dependency cycle with libtool. Closes: #924184
+  [ Vagrant Cascadian ]
+  * all ./configure with explicit GREP=/bin/grep and SED=/bin/sed, 
+    to prevent variation when built on a merged /usr system.
+    Closes: #949270
+  * Remove file-prefix-map/debug-prefix-map arguments from the libtool.1 manpage,
+    which results in an unreproducible package when the build path varies.
+    Closes: #949271
+  [ Alastair McKinstry ]
+  * Standards-Version: 4.5.0
+  * Use debhelper-compat (= 12)
+  * Increment AC_PREREQ to 2.63. Closes: #948511
+  * Remove unsafe debug_cmd. Closes: #866631
+  * Close ENOFIX a 15-yr old wishlist. Closes: #258261
+  * Close old bugs believed fixed. Closes: #243618, #644744
+  * Minor documentation fix. Closes: #253904
+  * Set AR_FLAGS=cr by default. Closes: #864018
+  [ Vincent Lefevre ]
+  * Pass fcilkplus and sanitizer flags unchanged. Closes: #751161
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Fri, 07 Feb 2020 16:15:16 +0000
+
+libtool (2.4.6-11) unstable; urgency=medium
+
+  * Close unreproducible bug (timing related? ). Closes: #922689
+  * Standards-Version: 4.4.0
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Wed, 28 Aug 2019 14:42:23 +0100
+
+libtool (2.4.6-10) unstable; urgency=medium
+
+  * 0030-flang-support.patch: Support for Flang Fortran compiler 
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Mon, 18 Feb 2019 15:53:43 +0000
+
 libtool (2.4.6-9) unstable; urgency=medium
 
   * From upstream: add support for --use-ld= flag. Closes: #920529
