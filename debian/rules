@@ -5,6 +5,10 @@
 # Uncomment this to turn on verbose mode. 
 #export DH_VERBOSE=1
 
+# In case they are dropped
+SERIAL=4179
+VERSION=2.4.6
+
 DEBIAN_REVISION=$(strip $(shell dpkg-parsechangelog | awk -F: '/^Version:/ {print $$NF}'))
 
 # libltdl needs to conform to policy
@@ -68,6 +72,11 @@ Makefile: config-stamp
 config-stamp:
 	dh_testdir
 
+	# dot files may have been lost in git
+	echo ${SERIAL} > .serial || true
+	echo ${VERSION} > .version || true
+	echo ${VERSION} > .tarball-version || true
+
 	sed -i -e "s/\$$scriptversion.*/\$$scriptversion Debian-$(DEBIAN_REVISION)/" libtoolize.in
 	sed -i -e "s/\$$scriptversion.*/\$$scriptversion Debian-$(DEBIAN_REVISION)/" build-aux/ltmain.in
 	sed -i -e 's/^VERSION.*/VERSION="@VERSION@ Debian-$(DEBIAN_REVISION)"/' build-aux/ltmain.in
@@ -79,7 +88,9 @@ config-stamp:
 		--prefix=/usr \
 		--libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH) \
 		$(confflags) \
-		$(shell dpkg-buildflags --export=cmdline)
+		$(shell dpkg-buildflags --export=cmdline) \
+		GREP=/bin/grep \
+		SED=/bin/sed
 	touch config-stamp
 
 
@@ -146,8 +157,14 @@ install: build
 
 	$(MAKE) prefix=$(CURDIR)/debian/tmp/usr install
 	rm -f debian/tmp/usr/share/info/dir
+	# The file-prefix-map/debug-prefix-map contain the build path,
+	# which results in unreproducible builds. Strip these arguments
+	# out of the manpage.
+	sed -i -e "s, ....-fdebug.-prefix.-map=.*=\. , ,g" \
+		-e "s, ....-ffile.-prefix.-map=.*=\. , ,g" \
+		debian/tmp/usr/share/man/man1/libtool.1
 
-	dh_install --fail-missing --sourcedir=debian/tmp
+	dh_install
 
 # Build architecture-independent files here.
 binary-indep: build-indep install
@@ -179,6 +196,7 @@ binary-indep: build-indep install
 	dh_lintian -i
 	dh_compress -i
 	dh_fixperms -i
+	chmod +x debian/libtool/usr/share/libtool/build-aux/ltmain.sh
 	dh_installdeb -i
 	dh_gencontrol -i
 	dh_md5sums -i
