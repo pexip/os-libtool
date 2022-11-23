@@ -4,11 +4,9 @@ Last-Updated: 2021-01-04
 Forwarded: no
 Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=304400
 
-Index: libtool-2.4.6/doc/libtool.texi
-===================================================================
---- libtool-2.4.6.orig/doc/libtool.texi
-+++ libtool-2.4.6/doc/libtool.texi
-@@ -3524,9 +3524,9 @@ using the @option{-dlopen} or @option{-d
+--- a/doc/libtool.texi
++++ b/doc/libtool.texi
+@@ -3559,9 +3559,9 @@
  program (@pxref{Link mode}).
  
  @deftp {Data Type} {lt_dlsymlist} typedef struct @
@@ -21,7 +19,7 @@ Index: libtool-2.4.6/doc/libtool.texi
  generic pointer to the appropriate object, such as @code{&fprintf}.
  @end deftp
  
-@@ -3534,10 +3534,10 @@ generic pointer to the appropriate objec
+@@ -3569,10 +3569,10 @@
  An array of @code{lt_dlsymlist} structures, representing all the preloaded
  symbols linked into the program proper.  For each module
  @option{-dlpreopen}ed by the Libtool linked program
@@ -34,7 +32,7 @@ Index: libtool-2.4.6/doc/libtool.texi
  @code{0}.
  
  To facilitate inclusion of symbol lists into libraries,
-@@ -4295,16 +4295,16 @@ Some of the internal information about e
+@@ -4330,16 +4330,16 @@
  maintained by libltdl is available to the user, in the form of this
  structure:
  
@@ -58,7 +56,7 @@ Index: libtool-2.4.6/doc/libtool.texi
  often the same module is currently loaded. The remaining fields can
  be compared to any hints that were passed to @code{lt_dlopenadvise}
  to determine whether the underlying loader was able to follow them.
-@@ -4519,7 +4519,7 @@ level types.
+@@ -4554,7 +4554,7 @@
  @code{lt_user_data} is used for specifying loader instance data.
  @end deftp
  

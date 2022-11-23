@@ -5,11 +5,9 @@ Author: Alastair McKinstry <mckinstry@debian.org>
 Last-Updated: 2018-09-08
 Forwarded: no
 
-Index: libtool-2.4.6/m4/libtool.m4
-===================================================================
---- libtool-2.4.6.orig/m4/libtool.m4
-+++ libtool-2.4.6/m4/libtool.m4
-@@ -6438,7 +6438,7 @@ if test yes != "$_lt_caught_CXX_error";
+--- a/m4/libtool.m4
++++ b/m4/libtool.m4
+@@ -6460,7 +6460,7 @@
        # Commands to make compiler produce verbose output that lists
        # what "hidden" libraries, object files and flags are used when
        # linking a shared library.
@@ -18,7 +16,7 @@ Index: libtool-2.4.6/m4/libtool.m4
  
      else
        GXX=no
-@@ -6813,7 +6813,7 @@ if test yes != "$_lt_caught_CXX_error";
+@@ -6836,7 +6836,7 @@
              # explicitly linking system object files so we need to strip them
              # from the output so that they don't get included in the library
              # dependencies.
@@ -27,7 +25,7 @@ Index: libtool-2.4.6/m4/libtool.m4
              ;;
            *)
              if test yes = "$GXX"; then
-@@ -6878,7 +6878,7 @@ if test yes != "$_lt_caught_CXX_error";
+@@ -6901,7 +6901,7 @@
  	    # explicitly linking system object files so we need to strip them
  	    # from the output so that they don't get included in the library
  	    # dependencies.
@@ -36,7 +34,7 @@ Index: libtool-2.4.6/m4/libtool.m4
  	    ;;
            *)
  	    if test yes = "$GXX"; then
-@@ -7217,7 +7217,7 @@ if test yes != "$_lt_caught_CXX_error";
+@@ -7240,7 +7240,7 @@
  	      # Commands to make compiler produce verbose output that lists
  	      # what "hidden" libraries, object files and flags are used when
  	      # linking a shared library.
@@ -45,7 +43,7 @@ Index: libtool-2.4.6/m4/libtool.m4
  
  	    else
  	      # FIXME: insert proper C++ library support
-@@ -7301,7 +7301,7 @@ if test yes != "$_lt_caught_CXX_error";
+@@ -7324,7 +7324,7 @@
  	        # Commands to make compiler produce verbose output that lists
  	        # what "hidden" libraries, object files and flags are used when
  	        # linking a shared library.
@@ -54,7 +52,7 @@ Index: libtool-2.4.6/m4/libtool.m4
  	      else
  	        # g++ 2.7 appears to require '-G' NOT '-shared' on this
  	        # platform.
-@@ -7312,7 +7312,7 @@ if test yes != "$_lt_caught_CXX_error";
+@@ -7335,7 +7335,7 @@
  	        # Commands to make compiler produce verbose output that lists
  	        # what "hidden" libraries, object files and flags are used when
  	        # linking a shared library.

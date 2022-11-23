@@ -1,0 +1,25 @@
+Description: Add run path when linking with tcc
+Author: Vincent Lefevre
+Bug-Origin: https://lists.gnu.org/archive/html/libtool-patches/2015-05/msg00000.html
+Debian-Bug: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=814091
+Last-Updated: 2022-03-25
+Forwarded: no
+
+--- a/m4/libtool.m4
++++ b/m4/libtool.m4
+@@ -5277,6 +5277,7 @@
+ 
+ 	case $cc_basename in
+ 	tcc*)
++	  _LT_TAGVAR(hardcode_libdir_flag_spec, $1)='$wl-rpath $wl$libdir'
+ 	  _LT_TAGVAR(export_dynamic_flag_spec, $1)='-rdynamic'
+ 	  ;;
+ 	xlf* | bgf* | bgxlf* | mpixlf*)
+@@ -5836,6 +5837,7 @@
+ 	# Fabrice Bellard et al's Tiny C Compiler
+ 	_LT_TAGVAR(ld_shlibs, $1)=yes
+ 	_LT_TAGVAR(archive_cmds, $1)='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags'
++	_LT_TAGVAR(hardcode_libdir_flag_spec, $1)='$wl-rpath $wl$libdir'
+ 	;;
+       esac
+       ;;

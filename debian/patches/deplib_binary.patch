@@ -1,8 +1,6 @@
-Index: libtool-2.4.6/build-aux/ltmain.in
-===================================================================
---- libtool-2.4.6.orig/build-aux/ltmain.in
-+++ libtool-2.4.6/build-aux/ltmain.in
-@@ -6001,19 +6001,19 @@ func_mode_link ()
+--- a/build-aux/ltmain.in
++++ b/build-aux/ltmain.in
+@@ -6028,19 +6028,19 @@
  	    # It is a libtool convenience library, so add in its objects.
  	    func_append convenience " $ladir/$objdir/$old_library"
  	    func_append old_convenience " $ladir/$objdir/$old_library"

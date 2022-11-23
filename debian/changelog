@@ -1,3 +1,57 @@
+libtool (2.4.7-5) unstable; urgency=medium
+
+  * Standards-Version: 4.6.1
+  * Ack fixed FTBFS bug : Closes: #1020067
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Wed, 23 Nov 2022 11:34:12 +0000
+
+libtool (2.4.7-4) unstable; urgency=medium
+
+  * Update VERSION and SERIAL in d/rules
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Wed, 04 May 2022 09:09:59 +0100
+
+libtool (2.4.7-3) unstable; urgency=medium
+
+  * Re-add provides: libltdl3-dev 
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Tue, 05 Apr 2022 16:07:10 +0100
+
+libtool (2.4.7-2) unstable; urgency=medium
+
+  [ Alastair McKinstry ]
+  * Add runpath with CC=tcc LD=tcc, with the -rpath option.
+    Closes: #814091
+
+  [ Nicolas Boulenguez ]
+  * Drop dependencies older than oldoldstable
+  * Machine-readable d/copyright
+  * Use dpkg-dev snippets for architecture build flags
+  * Lintian fixes
+  * Shorten-definition-of-AM_VERSION
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Fri, 25 Mar 2022 12:53:16 +0000
+
+libtool (2.4.7-1) unstable; urgency=medium
+
+  * New upstream release
+  * Patches merged upstream:
+   - 0001-libtool-fix-GCC-linking-with-specs.patch
+   - 0003-libtoolize-fix-infinite-recursion-in-m4.patch
+   - 0010-libtool-mitigate-the-sed_quote_subst-slowdown.patch
+   - 0012-funclib-refactor-quoting-methods-a-bit.patch
+   - 0015-syntax-check-fix-sed-syntax-errors.patch
+   - 0020-libtool-fix-GCC-clang-linking-with-fsanitize.patch
+   - libtool-2.4.6-am-1.16-test.patch
+   - 0025-libtool-pass-use-ld.patch
+   - 0035-ac-prereq.patch
+   - 0060-ar.patch
+   - 0065-autoconf-version.patch
+   - 0070-libtool-bigsur.patch
+  * Standards-version: 4.6.0
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Mon, 21 Mar 2022 11:47:25 +0000
+
 libtool (2.4.6-15) unstable; urgency=medium
 
   * Drop shipping /usr/lib/*/libltdl.la
@@ -35,7 +89,7 @@ libtool (2.4.6-12) unstable; urgency=medium
   [ Helmut Grohe ]
   * Avoid build-dependency cycle with libtool. Closes: #924184
   [ Vagrant Cascadian ]
-  * all ./configure with explicit GREP=/bin/grep and SED=/bin/sed, 
+  * all ./configure with explicit GREP=/bin/grep and SED=/bin/sed,
     to prevent variation when built on a merged /usr system.
     Closes: #949270
   * Remove file-prefix-map/debug-prefix-map arguments from the libtool.1 manpage,
@@ -64,7 +118,7 @@ libtool (2.4.6-11) unstable; urgency=medium
 
 libtool (2.4.6-10) unstable; urgency=medium
 
-  * 0030-flang-support.patch: Support for Flang Fortran compiler 
+  * 0030-flang-support.patch: Support for Flang Fortran compiler
 
  -- Alastair McKinstry <mckinstry@debian.org>  Mon, 18 Feb 2019 15:53:43 +0000
 
@@ -500,7 +554,7 @@ libtool (1.5.22-3) unstable; urgency=low
 libtool (1.5.22-2) unstable; urgency=low
 
   * Remove a "--" line from the generate tag for BINCC.  It
-    resulted in "--: command not found" error.  Thanks to 
+    resulted in "--: command not found" error.  Thanks to
     John V. Belmonte for reporting it and Ralf Wildenhues
     for the fix.  (Closes: #345607)
 
@@ -509,7 +563,7 @@ libtool (1.5.22-2) unstable; urgency=low
 libtool (1.5.22-1) unstable; urgency=low
 
   * New upstream release
-    - libtoolize --ltdl now fails if libltdl3-dev is not installed. 
+    - libtoolize --ltdl now fails if libltdl3-dev is not installed.
       (Closes: #344756)
   * Also set link_all_deplibs to no on kfreebsd*-gnu.  Patch from
     Aurelien Jarno <aurel32@debian.org>  (Closes: #341978)
@@ -543,7 +597,7 @@ libtool (1.5.20-1) unstable; urgency=low
   * Move ltdl.m4 from libtool to libltdl-dev package, where it belongs.
     Add a conflicts/replaces from libltdl-dev to the libtool package.
   * Remove usr/share/libtool/libltdl from the libtool package
-  * Make the libtool.m4 in /usr/share/libtool a symlink to the one in 
+  * Make the libtool.m4 in /usr/share/libtool a symlink to the one in
     /usr/share/aclocal.
   * libltdl3-dev.preinst: No longer remove the old directory on upgrade.
     libltdl3-dev.preinst does nothing now so remove the file.
@@ -772,4 +826,3 @@ libtool (1.5-1) unstable; urgency=low
     Closes: #190216, #195278, #192918.
 
  -- Scott James Remnant <scott@netsplit.com>  Sat,  2 Aug 2003 02:08:10 +0100
-

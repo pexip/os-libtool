@@ -1,11 +1,801 @@
+2022-03-17  Alex Ameen  <alex.ameen.tx@gmail.com>
+
+	version 2.4.7
+
+	* NEWS: Record release date.
+
+2022-03-07  Alex Ameen  <alex.ameen.tx@gmail.com>
+
+	NEWS: roll-back manually filled NEWS versioning
+
+	* NEWS: 'make release-commit' wants to automatically enter this information,
+	so the original template must be restored.
+
+2022-03-06  Alex Ameen  <alex.ameen.tx@gmail.com>
+
+	NEWS: fill entries for past commits
+
+	* NEWS: summarize past commits since previous release for NEWS file
+
+2022-02-09  Alex Ameen  <alex.ameen.tx@gmail.com>
+
+	libltdl: bump libltdl.la version-info.
+
+	* libltdl/ltdl.mk: increment revision number to reflect minor changes
+	and bug-fixes.
+
+2022-02-08  Alex Ameen  <alex.ameen.tx@gmail.com>
+
+	libtool: correct linter syntax complaints in M4
+
+	* m4/libtool.m4: remove unnecessary braces on variable derefence.
+	* m4/ltargz.m4: change quote style for inline comment.
+
+2022-02-08  Alex Ameen  <alex.ameen.tx@gmail.com>
+
+	gnulib: update submodule to new repository.
+
+	* configure.ac: Update autoconf requirement for bootstrapping to 2.64.
+	* README.md: Update note concerning autoconf version requirement.
+	* bootstrap: Propogate change to GPL license from GPL 3 to GPL 2.
+
+2022-02-08  Alex Ameen  <alex.ameen.tx@gmail.com>
+
+	maint: update copyrights across project.
+
+2022-02-05  Stacey Marshall  <stacey.marshall@oracle.com>  (tiny change)
+
+	libtool: Do not pass '-pthread' to Solaris linker.
+
+	* build-aux/ltmain.in: Do not add -pthread to inherited linker flags on
+	Solaris systems.
+
+2021-12-24  Alex Ameen  <alex.ameen.tx@gmail.com>
+
+	docs: manually recording dependencies in Automake
+
+	* doc/libtool.texi (Using Automake): provide example of how to manually record
+	'BUILT_SOURCES' dependencies for libtool archives.
+
+2021-12-05  Alex Ameen  <alex.ameen.tx@gmail.com>
+
+	tests: remove deprecated old-ltdl-iface.at test.
+
+	* tests/old-ltdl-iface.at: remove test as instructed by inline comments, which
+	indicate that this test should have been deleted in 2013.
+	This test fails because it relies on legacy usage of 'include Makefile.inc'
+	by libltdl which is no longer supported.
+
+2021-11-30  Alex Ameen  <alex.ameen.tx@gmail.com>
+
+	* libtool: Bump M4 serial versions and add missing AC_PROG_SED to ltdl.m4
+
+	* m4/libtool.m4: bump serial version ( covers entire release ).
+	* m4/ltargz.m4: bump serial version ( covers entire release ).
+	Add AC_PROG_SED requirement to LT_FUNC_ARGZ.
+	* m4/ltdl.m4: bump serial version ( covers entire release ).
+
+2021-11-30  Václav Haisman  <vhaisman@gmail.com>  (tiny change)
+	    Alex Ameen  <alex.ameen.tx@gmail.com>
+
+	libtool: replace raw invocations of sed with $SED
+
+	* build-aux/ltmain.in: replace raw invocations of sed with $SED
+	* m4/libtool.m4: replace raw invocations of sed with $SED
+	* m4/ltargz.m4: replace raw invocations of sed with $SED
+	* m4/ltdl.m4: replace raw invocations of sed with $SED
+
+2021-11-30  Lucas Holt  <luke@foolishgames.com>  (tiny change)
+
+	libtool: add support for MidnightBSD
+
+	* build-aux/ltmain.in: clone link-mode handling for MidnightBSD from FreeBSD
+	* m4/libtool.m4: clone various TAGVARs for MidnightBSD from FreeBSD
+	* m4/ltdl.m4: clone dlopen handling for MidnightBSD from FreeBSD
+
+2021-11-22  Ryan Schmidt  <libtool@ryandesign.com>  (tiny change)
+
+	libtool: powerpc 10.5 detection without a deployment target
+
+	* m4/libtool.m4: properly set "allow undefined" flag for darwin powerpc 10.5
+	even if deployment target is unset
+
+2021-11-22  Jeremy Huddleston Sequoia  <jeremyhu@macports.org>  (tiny change)
+
+	libtool: support macOS 11
+
+	Fixes bug#44605
+
+	* m4/libtool.m4: '_LT_REQUIRED_DARWIN_CHECKS' sets proper "allow undefined" flag
+	for particular macOS versions and powerpc.
+
+2021-11-22  Vincent Lefevre  <vincent@vinc17.net>  (tiny change)
+
+	libtool: correct m4 quoting in sed expression
+
+	* m4/libtool.m4: properly escape character set in sed expression
+
+2021-11-20  Alex Ameen  <alex.ameen.tx@gmail.com>
+
+	libtool: replace some references to /usr/bin/file and /bin/sh
+
+	* build-aux/ltmain.sh: use '/usr/bin/env sh' in shebang
+	* libtoolize.in: use '/usr/bin/env sh' in shebang
+	* m4/libtool.m4: 'FILECMD' to replace use of '/usr/bin/file'
+
+2021-11-19  aakropotkin  <alex.ameen.tx@gmail.com>
+
+	libtool: Add -Wa,* link-mode flag for assembler pass-thru
+
+	* build-aux/ltmain.in: add -Wa,* as link-mode flag.
+	Add help messages for -Wa,* and -Xassember in link mode.
+	Add help message for -Xcompiler in compile mode.
+	* doc/libtool.texi: document -Xassembler and -Wa,* for link-mode.
+
+2021-11-19  Alex Potapenko  <opotapeno@gmail.com>  (tiny change)
+
+	libtool: Pass -Xassembler flag and arguments to compiler
+
+	* build-aux/ltmain.in: Add parsing and pass-thru for -Xassembler
+
+2021-11-16  Pavel Raiskup  <praiskup@redhat.com>
+
+	maint: update Bootstrap git module
+
+	Fixes bug#47000.
+
+	* bootstrap: Regenerated.
+	* gl-mod/bootstrap: Updated to the latest HEAD.
+
+2021-11-15  aakropotkin  <alex.ameen.tx@gmail.com>
+
+	maint: update copyrights across project.
+
+	* AUTHORS: Correct manually modified copyright to be consistent with
+	other files.
+
+2021-11-15  aakropotkin  <alex.ameen.tx@gmail.com>
+
+	maint: update AUTHORS, copyright date.
+
+	* AUTHORS: Add Alex Ameen as maintainer. Move past authors to 'previous' list.
+
+2019-03-22  Pavel Raiskup  <praiskup@redhat.com>
+
+	bootstrap: use $gnulib_clone_since
+
+	* bootstrap.conf: Add $gnulib_clone_since.
+	* gl-mod/bootstrap: Update to the latest git hash.
+	* bootstrap: Regenerate.
+
+2019-03-13  Pavel Raiskup  <praiskup@redhat.com>
+
+	maint: update bootstrap, gnulib, copyright dates
+
+	* gnulib: Update to the latest git version.
+	* gl-mod/bootstrap: Likewise.
+	* bootstrap: Regenerate.
+
+2018-07-24  Pavel Raiskup  <praiskup@redhat.com>
+
+	maint: update bootstrap, gnulib, copyright dates
+
+	* gnulib: Update to the latest git version.
+	* gl-mod/bootstrap: Likewise.
+	* bootstrap: Regenerate.
+	* gl/top/README-release.diff: Update the patch for the latest
+	changes in gnulib's README-release.
+
+2018-07-12  Alexander Shevchenko  <sav_ix@ukr.net>  (tiny change)
+
+	libtool: add icl.exe support
+
+	A logical continuation of Automake commit
+	c40e27e1c2a60f58e72e65d73d808f782d55494a to provide
+	Windows ICC support similar as already done for MSVC.
+
+	Resolves bug 26484.
+
+	* m4/libtool.m4: Treat icl.exe equivalently to cl.exe.
+
+2017-05-05  Pavel Raiskup  <praiskup@redhat.com>
+
+	docs: typo in 'win32-dll' description
+
+	Resolves bug 26516.  Thanks to Reuben Thomas.
+
+	* doc/libtool.texi (Configuring libtool): s/macro/option/ in
+	'win32-dll' option description.
+
+2017-04-25  Pavel Raiskup  <praiskup@redhat.com>
+
+	libtool: quote 'cd' command in shipped relink_command
+
+	Per report from Eric Blake:
+	https://lists.gnu.org/archive/html/bug-libtool/2015-10/msg00009.html
+
+	* build-aux/ltmain.in (func_mode_link): Quote 'cd `pwd`' properly
+	before generating the $relink_command.  Do that for the potential
+	scenarios where the pwd could contain spaces or special shell
+	characters.
+
+2017-04-25  Pavel Raiskup  <praiskup@redhat.com>
+
+	doc: fix typos in --mode=install invocations
+
+	Per report from devel@lists.fedoraproject.org, thread id
+	CLHZMVL3CZ43KX7CD3PF3FDV255EA57O
+
+	* doc/libtool.texi (Install mode): With the
+	'libtool --mode=install' wrapper the 'install' command needs to be
+	specified.
+
+2017-04-21  Bert Wesarg  <bert.wesarg@googlemail.com>  (tiny change)
+
+	libtool: exit verbosely for fatal configure problems
+
+	Instead of calling not-existing function and processing subsequent
+	shell code.
+
+	* build-aux/ltmain.in (func_fatal_configuration): Fix typo in
+	func_fatal_error call.
+
+2017-04-21  Pavel Raiskup  <praiskup@redhat.com>
+
+	maint: update copyright years
+
+	Also sync gnulib & bootstrap git submodules.
+
+	* gnulib, gl-mod/bootstrap: Move to latest git versions.
+	* bootstrap: Regenerate.
+	* all files: Bump years by 'make update-copyright'.
+
+2017-01-16  Pavel Raiskup  <praiskup@redhat.com>
+
+	libltdl: handle ENOMEM in lt_dlloader_remove()
+
+	Reported by Alexander Hass.
+
+	* libltdl/lt_dlloader.c (lt_dlloader_remove): Detect NULL return
+	value from lt_dlinterface_register.
+
+2016-03-09  Pavel Raiskup  <praiskup@redhat.com>
+
+	bootstrap: use the upstream repo as git module
+
+	.. instead of copying it all the time;  gnulib-tool and bootstrap
+	are now ready to do this correctly.
+
+	Bootstrap upstream is now dual-licensed as MIT/GPLv2+;  so the
+	sources are redistributed automatically under GPLv3+ license in
+	in libtool project.
+
+	* .gitmodules (bootstrap): New submodule.
+	* bootstrap.conf (local_gl_dir): Renamed to local_gl_path.
+	(local_gl_path): Renamed from local_gl_dir.  Two sub-directories
+	are now mentioned as two --local-dir's are used.
+	(gnulib_git_submodules): New option to automatically clone the
+	bootstrap git submodule.
+	* build-aux/ltmain.in (libtool_options_prep)
+	(libtool_parse_options): Changing function exit status is not
+	needed with new options-parser.
+	* libtoolize.in: Don't func_quote when it is not necessary, don't
+	set the function return value.
+	* gl-mod/bootstrap: New git submodule.
+	* gl/build-aux/bootstrap.in, gl/build-aux/extract-trace,
+	gl/build-aux/funclib.sh, gl/build-aux/inline-source,
+	gl/build-aux/options-parser, gl/doc/bootstrap.texi,
+	gl/modules/all-shells-tests, gl/modules/bootstrap,
+	gl/modules/extract-trace, gl/modules/funclib.sh,
+	gl/modules/funclib.sh-tests, gl/modules/inline-source
+	gl/modules/options-parser, gl/modules/options-parser-tests,
+	gl/tests/test-all-shells.sh, gl/tests/test-funclib-quote.sh
+	gl/tests/test-option-parser-helper,
+	gl/tests/test-option-parser.sh: Files removed, those are
+	automatically pulled from upstream now.
+	* bootstrap: Sync with upstream.
+
+2016-02-25  KO Myung-Hun  <komh78@gmail.com>
+
+	libtool: set file_list_spec to '@' on OS/2
+
+	Creating and linking reloadable objects sometimes fail.
+
+	* m4/libtool.m4 (_LT_LINKER_SHLIBS, _LT_LANG_CXX_CONFIG) <os2-*>:
+	Set file_list_spec to '@'.
+
+2016-02-19  Pavel Raiskup  <praiskup@redhat.com>
+
+	tests: fix $objdir hardcoding check with CFLAGS=-g3
+
+	At least with gcc, specifying -g3 in CFLAGS ends up with macros
+	expanded including LT_OBJDIR macro.  This fooled the testsuite.
+
+	* tests/demo.at (Demo hardcode): Filter out the expanded LT_OBJDIR
+	macro.
+
+2016-02-19  Mike Frysinger  <vapier@gentoo.org>  (tiny change)
+
+	libtool: pass through -fuse-ld flags
+
+	Starting with gcc-4.8, there's a -fuse-ld flag that can be used to
+	select between bfd & gold.  Make sure we pass it through to the
+	linking stage.
+
+	* build-aux/ltmain.in (func_mode_link): Pass -fuse-ld=* flags
+	through.
+
+2016-02-19  Pavel Raiskup  <praiskup@redhat.com>
+
+	m4/libtool.m4: FreeBSD elftoolchain strip support
+
+	References:
+	http://savannah.gnu.org/patch/?8675
+	Message-Id: <20150523-002056.sv85487.59958@savannah.gnu.org>
+
+	* m4/libtool.m4 (_LT_CMD_STRIPLIB): Remove the redundant tests for
+	empty $old_striplib and $striplib.  Move the test for empty $STRIP
+	variable up. Allow elftoolchain strip (with the same arguments we
+	used to have with GNU strip) on FreeBSD.
+
+2016-02-19  Mike Frysinger  <vapier@gentoo.org>  (tiny change)
+
+	libtoolize: exec automake and autoconf only with --help
+
+	Same fix as applied to libtool in commit 408cfb9c5fa8a666917
+	to delay use of automake/autoconf to when the --help option is
+	actually specified.
+
+	* libtoolize.in (func_help): Override func_help() from
+	gl/build-aux/options-parser to only run automake --version and
+	autoconf --version when libtool --help is executed on the command
+	line.
+
+2016-02-17  Pavel Raiskup  <praiskup@redhat.com>
+
+	edit-readme-alpha: generate the "stable" README properly
+
+	Fixes bug#20196.  Reported by Peter Johansson and KO Myung-Hun
+
+	* build-aux/edit-readme-alpha: Invert the order of checks
+	and exit sooner if the file was already edited.  Also fix the
+	typo 's/sed -n/sed/' (to print the rest of the file).
+	* Makefile.am ($(readme)): Double-quote the `cmd` to let test -n
+	work correctly.
+
+2016-02-17  Pavel Raiskup  <praiskup@redhat.com>
+
+	maint: fix for 'make sc_immutable_NEWS' hints
+
+	* NEWS: Remove the leading white-spaces before Copyright line
+	because it breaks the perl regexp in sc_immutable_NEWS rule.
+	* cfg.mk (old_NEWS_hash): Adjust to correct previous hash as the
+	old NEWS entries were not actually touched.
+
+2016-02-15  Pavel Raiskup  <praiskup@redhat.com>
+
+	maint: update copyright years
+
+	Also update gnulib submodule as it contains updated copyright
+	years too.
+
+	* gnulib: Latest greatest git hash.
+	* all files: Run 'make update-copyright'.
+
+2016-02-12  Pavel Raiskup  <praiskup@redhat.com>
+
+	libltdl: handle ENOMEM sooner
+
+	Fixes bug#19890.  Reported by Tobias Stoeckmann.
+
+	* libltdl/loaders/dld_link.c (vm_open): Do not even try dld_link()
+	in case of ENOMEM.
+
+2016-02-03  Pavel Raiskup  <praiskup@redhat.com>
+
+	gl: minor typo fixes
+
+	* gl/build-aux/options-parser (func_run_hooks):
+	s/funcions.n./functions./, s/$@/${1+"$@"}/.
+	* gl/modules/funclib.sh: Sync license metadata with real module
+	code.
+	* bootstrap: Sync with funclib.sh
+
+2016-02-03  Pavel Raiskup  <praiskup@redhat.com>
+
+	gl-tests: dash && option-parser test fix
+
+	Rico pointed out that the testsuite failed on his system (dash
+	represented /bin/sh).  Turns out that 'shift' in dash exits shell
+	with exit status 2 when there are no items in the array.
+
+	The other issue was that 'test-option-parser.sh' did not
+	re-executed the test in proper shell, but in /bin/sh.
+
+	* gl/tests/test-option-parser-helper (test_parse_eat_test): Don't
+	shift for empty $@.
+	* gl/tests/test-option-parser.sh: Use $__GL_ALL_SHELLS_SHELL as
+	shell which runs the helper.
+
+2015-11-30  Jeremy Huddleston Sequoia  <jeremyhu@macports.org>  (tiny change)
+
+	libtool: fix GCC/clang linking with -fsanitize=*
+
+	References:
+	https://lists.gnu.org/archive/html/libtool/2014-04/msg00026.html
+
+	* build-aux/ltmain.in (func_mode_link): Pass -fsanitize=* to the
+	linker to allow trivial use of the clang address sanitizer.
+
+2015-11-30  Pavel Raiskup  <praiskup@redhat.com>
+
+	gl-tests: make the failure more readable
+
+	* gl/tests/test-funclib-quote.sh (_compare_or_error): Put $1 into
+	error output, not having it like that was my mistake.
+
+2015-11-25  David Edelsohn  <dje.gcc@gmail.com>
+
+	m4/libtool.m4: export AIX TLS symbols
+
+	TLS symbols in AIX display a new, different symbol type in nm output.
+	Libtool explicitly creates a list of exported symbols for AIX shared
+	libraries using nm and does not recognize the new TLS symbols, so
+	those symbols are not exported in AIX shared libraries.
+
+	This is a regression for TLS support on AIX where TLS symbols or GCC
+	"emultls" symbols were listed as global data and exported.
+
+	This patch updates libtool.m4 export_symbols_cmds for AIX in two
+	locations so that global symbols labeled with "L" for TLS are included
+	in the export list.
+
+	* m4/libtool.m4 (export_symbols_cmds) [AIX]: Add global TLS "L" symbols.
+	Message-Id: <CAGWvnym+hhoQJfkr=cncPZMnnMQ=RVUH2Bpw6+tP2hgEmESAsA@mail.gmail.com>
+
+2015-11-04  Pavel Raiskup  <praiskup@redhat.com>
+
+	gl/tests: new tests for options-parser
+
+	* gl/build-aux/options-parser (func_parse_options): Put the info
+	message 'enabling shell trace mode' on stderr.
+	* gl/modules/options-parser-tests: New test module.
+	* gl/tests/test-option-parser.sh: New test-case.
+	* gl/tests/test-option-parser-helper: New test-case helper.
+	* bootstrap: Sync with option-parser.
+
+2015-11-04  Pavel Raiskup  <praiskup@redhat.com>
+
+	gl/funclib.sh: func_quotefast_eval & tilde fix
+
+	Testsuite detected that printf built-in in Bash up to 4.2 was not
+	able to properly escape tilde.
+
+	* gl/build-aux/funclib.sh (func_quote_for_eval): If printf
+	supports -v option, test also whether we properly escape tilde.
+	With Bash <= 4.2, call func_quote_portable with ~* strings.
+	* bootstrap: Sync with funclib.sh.
+
+2015-11-04  Pavel Raiskup  <praiskup@redhat.com>
+
+	syntax-check: fix sed syntax errors
+
+	Multi-line single-quoted shell arguments defined within makefile
+	rules end up having the trailing backslash.  This caused problem
+	in some sc_* rules as GNU sed does not interpret trailing
+	backslash the same way as SHELL (== appending next line).
+	Switching to double quotes means that SHELL will remove the
+	trailing backslash for subsequent sed call.  This silences a lot
+	of GNU sed warnings seen before like:
+
+	  sed: -e expression #1, char 96: unterminated address regex
+
+	* cfg.mk (sc_libtool_m4_cc_basename): Use $(SED) instead of sed,
+	use double quotes for sed's multi-line argument.
+	(sc_prohibit_set_dummy_without_shift): Likewise.
+	(sc_prohibit_test_const_follows_var): Likewise.
+
+2015-11-03  Pavel Raiskup  <praiskup@redhat.com>
+
+	gl/tests: new tests for func_quote* family
+
+	* gl/modules/funclib.sh-tests: New test module.
+	* gl/modules/all-shells-tests: New test (helper) module.
+	* gl/tests/test-funclib-quote.sh: New test case.
+	* gl/tests/test-all-shells.sh: New gl test helper.
+	* cfg.mk (sc_useless_braces_in_variable_derefs): Whitelist
+	new test-funclib-quote.sh as the pattern is used there
+	intentionally.
+	(sc_space_tab): Likewise.
+	(sc_useless_braces_in_variable_derefs): Remove /cvsu pattern as
+	the file is not used with git.
+	(sc_prohibit_command_in_subst): New checker.
+
+2015-11-03  Pavel Raiskup  <praiskup@redhat.com>
+
+	check: enable gnulib's testsuite
+
+	* Makefile.am (SUBDIRS): Add gnulib-tests.
+	(EXTRA_DIST): Distribute also update-copyright script.  This does
+	not happen automatically because we manually remove ./lib
+	directory created by gnulib-tool.  Not having the file distributed
+	causes 'make check' failure, however.
+	(dotversion): Fix to point to $(top_srcdir).
+	* bootstrap.conf (gnulib_tool_options): Add gnulib-tool args
+	needed to successfully install gnulib's tests.
+	* configure.ac (CONFIG_STATUS_DEPENDENCIES): Look for .version in
+	$(top_srcdir).
+	* gnulib: Sync with upstream.
+	* build-aux/.gitignore: Ignore ar-lib coming from automake.
+
+2015-10-12  Pavel Raiskup  <praiskup@redhat.com>
+
+	funclib: refactor quoting methods a bit
+
+	From now we have two basic functions to perform string quoting for
+	shell evaluation -- 'func_quote_arg' to quote one argument and
+	'func_quote' which takes list of arguments to be quoted.
+
+	New function name-scheme should be more descriptive (previously we
+	called func_quote_for_eval with one argument and also multiple
+	arguments, while we had confusing
+	$func_quote_for_eval_unquoted_result which is redundant for
+	multiple-arguments call).
+
+	New abstraction allowed us (in an easy way) to implement
+	bash-specific optimization for quoting  (using
+	'printf -v VARNAME %q "$value"', suggested by Eric Blake), this
+	construct may be used on those places where we don't care much
+	about the result aesthetics (its thus not useful for '*.la'
+	generation or for error printing).
+
+	* gl/build-aux/funclib.sh (func_append_quoted): Use
+	func_quote_arg internally (kept in 'pretty' mode for now).
+	(func_quote): Made to be "main" high-level quoting method taking
+	list of arguments to be quoted into single command.  It replaces
+	func_quote_for_{expand,eval}.
+	(func_quote_portable): Implements quoting in shell, falling back
+	to portable sed call (rare cases).
+	(func_quotefast_eval): New internal function using fast
+	bash-specific construct, falling back to func_quote_portable for
+	non-Bash scripts.
+	(func_quote_arg): New function to quote one argument.
+	(func_quote_for_eval): Removed.  All callers changed to call
+	func_quote.
+	(func_quote_for_expand): Likewise.
+	* bootstrap: Sync with funclib.sh and options-parser.
+
+2015-10-12  Pavel Raiskup  <praiskup@redhat.com>
+
+	libtool: optimizing options-parser hooks
+
+	Its not necessary to (re)func_quote_for_eval in each function in
+	the hook hierarchy.  Usually it is enough if the leaf function
+	does func_quote_for_eval and its caller just re-uses the
+	<CALLEE>_return variable.
+
+	This is follow up for the previous commit.
+
+	* gl/build-aux/options-parser (func_run_hooks): Propagate
+	$EXIT_SUCCESS return code down to caller if *any* hook succeeded.
+	Never re-quote the result -- either the arguments are left
+	untouched, or the options have already been properly quoted by
+	succeeding hooks.
+	(func_parse_options): Quote '$@' and return $EXIT_SUCCESS only if
+	we changed something.
+	(func_validate_options): Likewise.
+	(func_options_prep): Likewise.
+	(func_options_finish): New hook-caller for 'func_options' hooks.
+	(func_options): Propagate return value down to top-level caller,
+	but pay attention we have always set $func_options_result.
+	* build-aux/ltmain.in (libtool_options_prep): Quote '$@' and
+	return $EXIT_SUCCESS only if we changed something.
+	(libtool_parse_options): Likewise.
+	* bootstrap: Sync gl/build-aux/with option-parser.
+
+2015-10-12  Pavel Raiskup  <praiskup@redhat.com>
+
+	libtool: mitigate the $sed_quote_subst slowdown
+
+	When it is reasonably possible, use shell implementation for
+	quoting.
+
+	References:
+	http://lists.gnu.org/archive/html/libtool/2015-03/msg00005.html
+	http://lists.gnu.org/archive/html/libtool/2015-02/msg00000.html
+	https://debbugs.gnu.org/cgi/bugreport.cgi?bug=20006
+
+	* gl/build-aux/funclib.sh (func_quote): New function that can be
+	used as substitution for '$SED $sed_quote_subst' call.
+	* build-aux/ltmain.in (func_emit_wrapper): Use func_quote instead
+	of '$SED $sed_quote_subst'.
+	(func_mode_link): Likewise.
+	* NEWS: Document.
+	* bootstrap: Sync with funclib.sh.
+
+2015-09-29  Pavel Raiskup  <praiskup@redhat.com>
+
+	gnulib: sync with upstream
+
+	With gnulib commit f8fe25fab60e3, AM_PROG_AR is called
+	automatically from GL_EARLY macro, which brings its definition
+	into aclocal.m4.  Sufficiently new enough AM_PROG_AR uses guarding
+	AC_BEFORE([AM_PROG_AR], [LT_INIT]) call.
+
+	Existence of 'LT_INIT' string inside aclocal.m4 however broke
+	bootstrap's self-defensive libtool_check_for_bogus_macros
+	function.
+
+	* build-aux/no-bogus-m4-defines: New aux helper using m4 for
+	aclocal.m4 pre-processing.  As this is only bootstrap/dist time
+	assertion, we don't have to be too much careful (and the AC_BEFORE
+	pushdef is OK for now).
+	* boostrap.conf (libtool_check_for_bogus_macros): Use
+	no-bogus-m4-defines helper to detect bogus macros.
+	* Makefile.am: Likewise.
+	* gnulib: Sync with upstream.
+	* build-aux/git-log-fix: Fix typo.
+	* gl/build-aux/extract-trace: Fix the script timestamp.
+	* bootstrap: Sync with extract-trace.
+
+2015-09-26  Pavel Raiskup  <praiskup@redhat.com>
+
+	maint: relax 'sc_prohibit_test_dollar' check
+
+	* cfg.mk (sc_prohibit_test_dollar): White-list the
+	'test ${VAR+y}' construct because that is autoconf-suggested
+	portable way to check for unset variable.
+
+2015-09-26  Pavel Raiskup  <praiskup@redhat.com>
+
+	ARFLAGS: use 'cr' instead of 'cru' by default
+
+	In some GNU/Linux distributions people started to compile 'ar'
+	binary with --enable-deterministic-archives (binutils project).
+	That, however, in combination with our previous long time working
+	default AR_FLAGS=cru causes warnings on such installations:
+	ar: `u' modifier ignored since `D' is the default (see `U')
+
+	The 'u' option (at least with GNU binutils) did small optimization
+	during repeated builds because it instructed 'ar' to not
+	open/close unchanged *.o files and to rather read their contents
+	from old archive file.  However, its removal should not cause a
+	big performance hit for usual workflows.
+
+	Distributions started using --enable-deterministic-archives
+	knowing that it would disable the 'u', just to rather have a bit
+	more deterministic builds.
+
+	Also, to justify this change a bit more, keeping 'u' in ARFLAGS
+	could only result in many per-project changes to override
+	Libtool's ARFLAGS default, just to silent such warnings.
+
+	Fixes bug#19967.  Reported by Eric Blake.
+
+	* m4/libtool.m4 (_LT_PROG_AR): Default AR_FLAGS to 'cr'.
+	(_LT_REQUIRED_DARWIN_CHECKS): Use $AR_FLAGS instead 'cru' string.
+	* doc/libtool.texi: Do 's/ar cru/ar cr/' in whole documentation.
+	* NEWS: Document.
+
+2015-09-26  Pavel Raiskup  <praiskup@redhat.com>
+
+	libool.m4: add ARFLAGS variable
+
+	Libtool has used $AR_FLAGS since 2000-05-29 commit
+	8300de4c54e6f04f0d, Automake ARFLAGS since 2003-04-06 commit
+	a71b3490639831ca.  Even though ARFLAGS is younger, it sounds like
+	better name according GNU Coding Standards.
+
+	Related to bug#20082.
+
+	* m4/libtool.m4 (_LT_PROG_AR): Copy ARFLAGS value into AR_FLAGS
+	variable if AR_FLAGS is not set.  Add new _LT_DECL'ed variable
+	'lt_ar_flags' to keep the configure-time value of AR_FLAGS.  The
+	new 'lt_ar_flags' is to be used as the default value for AR_FLAGS
+	at libtool-runtime.
+	* NEWS: Document.
+
+2015-09-25  Pavel Raiskup  <praiskup@redhat.com>
+
+	maint: put newline after 'Subject' in ChangeLog
+
+	* Makefile.am ($(changelog)): Use --format='%s%n%n%b%n'.
+
+2015-09-25  Pavel Raiskup  <praiskup@redhat.com>
+
+	gnulib: sync with upstream
+
+	Blacklisting of duplicated ChangeLog entries is now much easier
+	with new gitlog-to-changelog's option --ignore-matching -- so
+	patching the script is not necessary.
+
+	* Makefile.am ($(changelog)): Start ignoring entries having the
+	'Omit-from-ChangeLog.' "topic" line.  Use TZ=UTC to generate the
+	same ChangeLog regardless of the actual time-zone.
+	* build-aux/git-log-fix: Put the "blacklist" mark at the beginning
+	of each commit as that is requirement for --ignore-matching.
+	* gl/build-aux/gitlog-to-changelog.diff: Removed.
+	* gnulib: Sync with upstream.
+
+2015-09-24  Pavel Raiskup  <praiskup@redhat.com>
+
+	libtoolize: fix infinite recursion in m4
+
+	Some projects use this construct in configure.ac:
+
+	  m4_define([version], m4_include([version]))
+	  pkg_version=version
+
+	When the m4_include builtin is undefined (as was done in
+	libtoolize and extract-trace scripts), the call to this 'version'
+	macro enters an infinite recursion (until ENOMEM).  So rather
+	re-define all potentially dangerous macros by empty strings,
+	suggested by Eric Blake.
+
+	While we are on it, merge the macro-"blacklist" with similar list
+	implemented in gettext, except for 'm4_esyscmd'.  It's kept
+	defined because we already trace AC_INIT macro for package
+	version, while it is often specified by
+	m4_esyscmd(git-version-gen).  Similarly to m4_include, m4_esyscmd
+	might be opt-in-blacklisted in future.
+
+	References:
+	http://lists.gnu.org/archive/html/libtool/2015-09/msg00000.html
+	https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=764580
+
+	* gl/build-aux/extract-trace (_G_mini): Redefine trace-breaking
+	macros to empty strings rather than undefining those.  Use 'dnl'
+	for comments.
+	* bootstrap: Likewise, sync with extract-trace.
+	* NEWS: Document.
+	* NO-THANKS: Mention Hiroyuki Sato.
+
+2015-09-24  Pavel Raiskup  <praiskup@redhat.com>
+
+	bootstrap: fix race in temporary Makefile
+
+	Target 'bootstrap-deps' sometimes rebuilt $(bootstrap_files)
+	a bit earlier than the cleanup target 'bootstrap-deps-prep' was
+	invoked.  As a result, some of $(bootstrap_files) were missing.
+
+	* Makefile.am (bootstrap-deps): Rebuild $(bootstrap_files) after
+	bootstrap-deps-prep dependency.
+
+2015-09-18  Pavel Raiskup  <praiskup@redhat.com>
+
+	libtool: fix GCC linking with -specs=*
+
+	References:
+	https://bugzilla.redhat.com/show_bug.cgi?id=985592
+
+	* build-aux/ltmain.in (func_mode_link): Pass -specs=*
+	to the linker, Fedora uses this option for hardening.
+
+2015-02-15  Gary V. Vaughan  <gary@gnu.org>
+
+	maint: demote myself from maintainer to former maintainer.
+
+	* AUTHORS: Move myself from the list of maintainers, into the
+	list of prior authors.
+
+2015-02-15  Gary V. Vaughan  <gary@gnu.org>
+
+	maint: post-release administrivia
+
+	* NEWS: Add header line for next release.
+	* .prev-version: Record previous version.
+	* cfg.mk (old_NEWS_hash): Auto-update.
+
 2015-02-15  Gary V. Vaughan  <gary@gnu.org>
 
 	version 2.4.6
+
 	* NEWS: Record release date.
 
 2015-02-06  Gary V. Vaughan  <gary@gnu.org>
 
 	libtool: don't execute automake and autoconf on every invocation.
+
 	Regression from 2.4.2 was causing noticable slow-down in builds
 	that call libtool many times.
 	* build-aux/ltmain.in (func_help): Override func_help() from
@@ -18,10 +808,14 @@
 2015-01-20  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: undo copyright years regression.
+
 	* gl/build-aux/options-parser: Undo copyright years regression.
 	* bootstrap: Regenerate.
 
+2015-01-20  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: sync with upstream.
+
 	* gl/build-aux/bootstrap.in, gl/build-aux/extract-trace,
 	gl/build-aux/funclib.sh, gl/build-aux/options-parser: Sync with
 	upstream.
@@ -30,6 +824,7 @@
 2015-01-20  Pavel Raiskup  <praiskup@redhat.com>
 
 	libtool: respect config.site LT_SYS_LIBRARY_PATH
+
 	Libtool generator code needs to remember the configure time
 	LT_SYS_LIBRARY_PATH content to allow config.status properly
 	instantiate default LT_SYS_LIBRARY_PATH libtool run-time value;
@@ -42,7 +837,10 @@
 	not necessary. New $configure_time_lt_sys_library_path variable.
 	* NEWS: Update.
 
+2015-01-20  Pavel Raiskup  <praiskup@redhat.com>
+
 	libtool.m4: typofix, subst last '$' with quadrigraph
+
 	* m4/libtool.m4 (_LT_LIBTOOL_TAG_VARS): Encase the
 	configure/libtool shared function into parseable borders; for
 	testing purposes.
@@ -51,7 +849,10 @@
 	* Makefile.am (TESTSUITE_AT): Mention new testcase.
 	* NEWS: Update.
 
+2015-01-20  Pavel Raiskup  <praiskup@redhat.com>
+
 	tests: fix an ltdl dryrun race condition.
+
 	* tests/testsuite.at (LT_AT_ACLOCAL): Inject a 1 second sleep
 	after aclocal to ensure subsequently generated autotools files
 	will be newer.
@@ -60,16 +861,21 @@
 2015-01-19  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: post-release administrivia
+
 	* NEWS: Add header line for next release.
 	* .prev-version: Record previous version.
 	* cfg.mk (old_NEWS_hash): Auto-update.
 
+2015-01-19  Gary V. Vaughan  <gary@gnu.org>
+
 	version 2.4.5
+
 	* NEWS: Record release date.
 
 2015-01-18  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: update copyright statements to include 2015.
+
 	* AUTHORS, HACKING, Makefile.am, NEWS, README.md, TODO,
 	bootstrap, bootstrap.conf, build-aux/edit-readme-alpha,
 	build-aux/git-hooks/commit-msg, build-aux/ltmain.in, cfg.mk,
@@ -125,12 +931,14 @@
 2015-01-16  Gary V. Vaughan  <gary@gnu.org>
 
 	gnulib: sync with upstream.
+
 	* gnulib: Sync with upstream.
 	* doc/.gitignore: Regenerate.
 
 2015-01-16  Pavel Raiskup  <praiskup@redhat.com>
 
 	libtoolize: fix ltdl installation order.
+
 	Fixes regression caused by commit 99a808be.
 	Makefile.in has aclocal.m4 as prerequisite, so Makefile.in
 	should be installed later to avoid unnecessary rebuild by
@@ -142,6 +950,7 @@
 2014-12-12  Gary V. Vaughan  <gary@gnu.org>
 
 	libtool: check Sun Pro CXX ABI postdeps at libtool time.
+
 	* m4/libtool.m4 (_LT_PREPARE_CC_BASENAME): Factor cc_basename
 	calculation into a shell function...
 	(_LT_CONFIG_SAVE_COMMAND): ...and expand it into generated
@@ -156,7 +965,10 @@
 	just before postdeps are added.
 	* NEWS: Update.
 
+2014-12-12  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: more carefully avoid automatic -Cstd -Crun on Sun Pro CXX.
+
 	* m4/libtool.m4 (_LT_FUNC_SUNCC_CSTD_ABI): New function factored out
 	of repeated code.  Take note of other known -Cstd incompatible
 	compiler flags.
@@ -166,7 +978,10 @@
 	* NO-THANKS: Add Marc Glisse.
 	Reported by Marc Glisse
 
+2014-12-12  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: take care not to double-apply LT_SYS_LIBRARY_PATH.
+
 	* m4/libtool.m4 (_LT_CONFIG_SAVE_COMMANDS): Copy configure-time
 	LT_SYS_LIBRARY_PATH settings as default, but allow run-time
 	override.
@@ -178,6 +993,7 @@
 2014-12-11  Pavel Raiskup  <praiskup@redhat.com>
 
 	libtool: support LT_SYS_LIBRARY_PATH for adjusting bad guesses.
+
 	Revert 8728e07 and 440fee6.
 	Some GNU/Linux distributions install libraries into /lib64 (or
 	/usr/lib64) on 64-bit machines, while /lib (/usr/lib
@@ -211,12 +1027,16 @@
 2014-12-11  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: fix syntax-check failures.
+
 	* m4/m4.m4 (AC_PROG_GNU_M4): Reverse some test arguments for
 	sc_prohibit_test_const_follows_var.
 	Remove some spurious braces for
 	sc_useless_braces_in_variable_drefs.
 
+2014-12-11  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: sync with upstream.
+
 	* gl/build-aux/extract-trace (func_find_tool): Quote a bare
 	variable expansion in a test argument.
 	* bootstrap: Regenerate.
@@ -224,6 +1044,7 @@
 2014-12-05  Gary V. Vaughan  <gary@gnu.org>
 
 	libtool: s390x is also a 64bit glibc/ELF platform.
+
 	* m4/libtool.m4 (_LT_SYS_DYNAMIC_LIB): Add s390x to glibc/ELF
 	compatible CPUs that have /lib64 and /usr/lib64 in
 	sys_lib_dlsearch_path_spec.
@@ -232,12 +1053,16 @@
 2014-12-04  Gary V. Vaughan  <gary@gnu.org>
 
 	libtool: for 64bit GNU arches, add /lib64 and /usr/lib64 to sys_lib_dlsearch_path.
+
 	* m4/libtool.m4 (_LT_SYS_DYNAMIC_LINKER) <linux*, k*bsd*-gnu>
 	<kopensolaris*-gnu, gnu*>: If $host_cpu contains "64", add /lib64
 	and /usr/lib64 to sys_lib_dlsearch_path_spec.
 	Reported by Orion Poplawski, Christian Rössel, Olly Betts et. al.
 
+2014-12-04  Gary V. Vaughan  <gary@gnu.org>
+
 	libltdl: fix gcc compiler warning for unused attributes.
+
 	* libltdl/ltdl.c, libltdl/loaders/dld_link.c,
 	libltdl/loaders/dlopen.c, libltdl/loaders/dyld.c,
 	libltdl/loaders/load_add_on.c, libltdl/loaders/loadlibrary.c,
@@ -250,6 +1075,7 @@
 2014-12-04  Eric Bavier  <bavier@cray.com>
 
 	tests: do not assume compiler prefers shared libraries.
+
 	Testing whether -static-libtool-libs causes a non-libtool library to be
 	linked dynamically is effectively a test of the compiler's preference in
 	this case.  The Cray compiler prefers static libraries if not told
@@ -260,6 +1086,7 @@
 2014-12-04  Norihiro Tanaka  <noritnk@kcn.ne.jp>
 
 	libtool: fix sys_lib_dlsearch_path_spec for ia64 HP-UX.
+
 	The run-time loader does not search /usr/local or subdirectories
 	by default on ia64 HP-UX.
 	* m4/libtool.m4 (_LT_SYS_DYNAMIC_LINKER): Fix
@@ -269,6 +1096,7 @@
 2014-12-04  Gary V. Vaughan  <gary@gnu.org>
 
 	libltdl: edit AM_CPPFLAGS correctly for libltdl/Makefile.am.
+
 	* libltdl/ltdl.mk (AM_CPPFLAGS): Make sure the sed expression to
 	remove the first libltdl/ on each line is not confused by misuse
 	of linebreaks.
@@ -280,6 +1108,7 @@
 2014-12-04  Tijl Coosemans  <tijl@FreeBSD.org>
 
 	libtool: commit forgotten soname_spec for freebsd-elf in bb7cef9.
+
 	* m4/libtool.m4 (_LT_SYS_DYNAMIC_LINKER) <freebsd-elf>: Set
 	soname_spec correctly, per original patch.
 	* NEWS: Update.
@@ -287,12 +1116,16 @@
 2014-12-03  Gary V. Vaughan  <gary@gnu.org>
 
 	bootstrap: sync with upstream for runtime M4 checking functions.
+
 	* gl/build-aux/extract-trace: Sync with upstream for runtime M4
 	checking functions.
 	* bootstrap: Regenerate.
 	* NEWS: Update.
 
+2014-12-03  Gary V. Vaughan  <gary@gnu.org>
+
 	configury: bail out early if GNU M4 is not on the path.
+
 	Now that libtoolize requires an installed GNU M4 to parse
 	configure.ac and aclocal.m4 sources for libltdl macros, let the
 	user know at configure time when it is missing.
@@ -306,19 +1139,27 @@
 2014-11-29  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: post-release administrivia
+
 	* NEWS: Add header line for next release.
 	* .prev-version: Record previous version.
 	* cfg.mk (old_NEWS_hash): Auto-update.
 
+2014-11-29  Gary V. Vaughan  <gary@gnu.org>
+
 	version 2.4.4
+
 	* NEWS: Record release date.
 
+2014-11-29  Gary V. Vaughan  <gary@gnu.org>
+
 	gnulib: sync with upstream.
+
 	* gnulib: sync with upstream.
 
 2014-11-29  Michael Haubenwallner  <michael.haubenwallner@ssi-schaefer.com>
 
 	libtool: optional filename-based shlib versioning on aix.
+
 	Support filename-based shared library versioning on AIX with the
 	lib.so library filename extension, which is used with runtime
 	linking only. Runtime linking is enabled by the -brtl linker
@@ -366,6 +1207,7 @@
 2014-11-28  Tijl Coosemans  <tijl@FreeBSD.org>
 
 	libtoolize: no need for umask 0 now that copying does not use tar.
+
 	The umask calls seem to be left over as a workaround for several
 	releases ago when libtoolize copied libltdl sources with the help
 	of tar.  Now that we use cp or ln -s exclusively, this just
@@ -376,18 +1218,23 @@
 2014-11-28  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: syntax-checks don't like ${ even in comments!
+
 	* m4/ltdl.m4: Fix a comment to appease syntax-check rules.
 
 2014-11-28  Tijl Coosemans  <tijl@FreeBSD.org>
 
 	libtool: use a modern library version scheme for freebsd-elf.
+
 	* m4/libtool.m4 (_LT_SYS_DYNAMIC_LINKER): Adopt downstream patch
 	used by FreeBSD for versioned library filenames.
 	* build-aux/ltmain.in (func_mode_link): Replace conflicting
 	freebsd-elf version_type case branches with a single calculation
 	setting major and versuffix to match downstream FreeBSD.
 
+2014-11-28  Tijl Coosemans  <tijl@FreeBSD.org>
+
 	libtool: split sco version into its own type.
+
 	* m4/libtool.m4 (_LT_SYS_DYNAMIC_LINKER): Set version type to
 	"sco" for sco based hosts.
 	* build-aux/ltmain.in (func_mode_link): Accept new "sco"
@@ -396,6 +1243,7 @@
 2014-11-28  Gary V. Vaughan  <gary@gnu.org>
 
 	configury: detect dlsym underscore prefix without dlopen self.
+
 	* m4/ltdl.m4 (LT_FUNC_DLSYM_USCORE): Compile, load and get the
 	address of a symbol from a separate loadable module, rather than
 	assuming dlopen self works.
@@ -405,6 +1253,7 @@
 2014-11-26  Gary V. Vaughan  <gary@gnu.org>
 
 	ltdl: fix a long standing duplicate `-ldl' bug in the link line.
+
 	* m4/ltdl.m4 (LT_LIB_DLLOAD): Save contents of LIBS before
 	calling AC_SEARCH_LIBS, which prepends to LIBS by default, and
 	restore afterwards.  We set LIBADD_DLOPEN and LIBADD_SHL_LOAD
@@ -415,6 +1264,7 @@
 2014-11-21  Michael Haubenwallner  <michael.haubenwallner@ssi-schaefer.com>
 
 	tests: do not test undef symbols across shlibs on AIX.
+
 	On AIX, undefined symbols across shared libraries can work only
 	when the main program explicitly exports those symbols. As this
 	is bad practice anyway and -no-undefined should be preferred, we
@@ -422,7 +1272,10 @@
 	* tests/template.at: Skip test with undef syms across libraries
 	on AIX.
 
+2014-11-21  Michael Haubenwallner  <michael.haubenwallner@ssi-schaefer.com>
+
 	tests: question mark is extended regex for non-GNU grep.
+
 	Accepting \? for at-most-once in basic regex is a GNU grep
 	extension, not accepted by AIX grep for example.
 	* tests/libtool.at: Use \{0,1\} instead of ? with GREP.
@@ -430,10 +1283,14 @@
 2014-11-18  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: Fox a resent smelling mystique.
+
 	* build-aux/git-log-fix: ChangeLog edit.
 	Reported by Eric Blake
 
+2014-11-18  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: make sure gnulib file droppings are removed.
+
 	* bootstrap.conf (libtool_cleanup_empty_dirs): Recent bootstrap
 	updates set source_base to null, so we need to use ${x:-y} to
 	override the null.  Autoconf Shellology says that ancient BSD
@@ -441,61 +1298,86 @@
 	and so we can reasonably expect a developer to have a working
 	/bin/sh to run the bootstrap script.
 
+2014-11-18  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: add missing debug preambles.
+
 	* bootstrap.conf (libtool_prep, func_require_ltdl_dir)
 	(libtool_require_package_url): Add missing $debug_cmd calls.
 
 2014-11-18  Vincent Lefevre  <vincent@vinc17.net>
 
 	NEWS: Fix an ancient spelling mistake.
+
 	* NEWS: s/propogate/propagate/.
 	* cfg.mk (old_NEWS_hash): Update.
 
 2014-11-17  Vincent Lefevre  <vincent@vinc17.net>
 
 	libtool: fix comment typo.
+
 	* m4/libtool.m4: Fix -fvisbility=hidden typo in a comment.
 
 2014-11-04  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: fix a syntax-check failure.
+
 	* tests/cmdline_wrap.at (fail_list): quote test arguments to
 	satisfy failing syntax-checks.
 
+2014-11-04  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: fix universal library building on darwin.
+
 	* build-aux/ltmain.in (func_extract_archives): $basename is now
 	spelled $sed_basename.
 	* NO-THANKS: Update.
 	Reported by Misty De Meo
 
+2014-11-04  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: update fat binary test case for modern darwin.
+
 	* tests/darwin.at: Use "-arch x86_64", which works on modern
 	Apple hardware, rather than "-arch ppc", which generally does not.
 
+2014-11-04  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: fix false positive in failed test check for cmdline_wrap.at.
+
 	* tests/cmdline_wrap.at (fail_list): non-matching globs return as
 	a plain unexpanded string, so we also need to test for file
 	existence before expanding into fail_list.
 
+2014-11-04  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: sync with upsteram.
+
 	* gl/build-aux/bootstrap.in: Sync with upstream.
 	* bootstrap: Regenerate.
 
 2014-11-04  KO Myung-Hun  <komh@chollian.net>
 
 	libtool: support versioning on OS/2.
+
 	* build-aux/ltmain.in (func_mode_link) <*-os2*>: Set major and
 	versuffix.
 	* m4/libtool.m4 (_LT_SYS_DYNAMIC_LINKER) <*-os2*>: Set
 	version_type to windows. Add a version information to soname_spec.
 	* NEWS: Update.
 
+2014-11-04  KO Myung-Hun  <komh@chollian.net>
+
 	libtool: support -export-symbols and -export-symbols-regex on OS/2.
+
 	* libltdl/m4/libtool.m4 (_LT_LINKER_SHLIBS, _LT_LANG_CXX_CONFIG)
 	<*-os2*>: Set archive_expsym_cmds.
 	* NEWS: Update.
 
+2014-11-04  KO Myung-Hun  <komh@chollian.net>
+
 	libtool: add -os2dllname option.
+
 	On OS/2, if there are many DLLs whose prefix is the same and
 	very long, the resulting DLLs are overwritten. Provide a new
 	option to force a DLL name.
@@ -505,42 +1387,67 @@
 	* doc/libtool.texi: Document it.
 	* NEWS: Update.
 
+2014-11-04  KO Myung-Hun  <komh@chollian.net>
+
 	libtool: fix DLL creation/installation/uninstallation on OS/2.
+
 	OS/2 can only load a DLL with a base name of 8 characters or
 	less. Also, on OS/2 don't install or uninstall using a link.
 	* build-aux/ltmain.in: Do not strip an import lib.
 	* m4/libtool.m4: Set variables to fix DLL creation, installation
 	and uninstallation.
 
+2014-11-04  KO Myung-Hun  <komh@chollian.net>
+
 	libtool: support -Zxxx options used on OS/2.
+
 	* build-aux/ltmain.in (func_mode_link): Add -Z* case, treating
 	them specially on os2 only.
 
+2014-11-04  KO Myung-Hun  <komh@chollian.net>
+
 	libtool: set lt_cv_deplibs_check_method to pass_all on OS/2.
+
 	* m4/libtool.m4 (_LT_CHECK_MAGIC_METHOD): Same as the title.
 
+2014-11-04  KO Myung-Hun  <komh@chollian.net>
+
 	libtool: there is no need to relink DLLs on OS/2.
+
 	* build-aux/ltmain.in (func_mode_link) <*-os2*>: need_relink=no.
 
+2014-11-04  KO Myung-Hun  <komh@chollian.net>
+
 	ltdl: OS/2 uses other APIs to load a DLL than LoadLibrary() on Windows.
+
 	* m4/ltdl.m4: Remove os2* from a list for loadlibrary.la.
 
+2014-11-04  KO Myung-Hun  <komh@chollian.net>
+
 	libtool: support to link against static libraries on OS/2.
+
 	* m4/libtool.m4 (_LT_COMPILER_PIC): Set lt_prog_compiler_static to
 	$wl-static.
 
+2014-11-04  KO Myung-Hun  <komh@chollian.net>
+
 	libtool: don't eliminate duplications in $postdeps and $predeps on OS/2
+
 	* build-aux/ltmain.h (libtool_validate_options): Add *os2* to the list.
 
 2014-11-03  Gary V. Vaughan  <gary@gnu.org>
 
 	configury: create installation dir before writing to it.
+
 	* Makefile.am (install-scripts-local): Don't forget to make the
 	installation target directory before writing to it.
 	* NO-THANKS: Update.
 	Reported by Allan McRae
 
+2014-11-03  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: .PHONY rules to protect gmake from pathological file names.
+
 	* Makefile.am (.PHONY): Add install-scripts-local,
 	check-interactive, check-noninteractive-old,
 	check-noninteractive-new and check-noninteractive.
@@ -548,16 +1455,21 @@
 2014-11-02  Arkadiusz Miśkiewicz  <arekm@maven.pl>
 
 	tests: fix typo in cmdline_wrap skip check.
+
 	* tests/cmdline_wrap.at (fail_list): fix a typo in loop script
 	text.
 
 2014-11-02  Gary V. Vaughan  <gary@gnu.org>
 
 	libtoolize: don't forget to remove old non-gnulib argz files.
+
 	* libtoolize.in (all_pkgltdl_files): Add back argz.c and argz_.h,
 	as installed by previous libtool releases.
 
+2014-11-02  Gary V. Vaughan  <gary@gnu.org>
+
 	libltdl: move libltdl argz module into LT namespace.
+
 	To avoid clashes with gnulib argz module in ltdl client projects,
 	move ours into its own namespace.
 	* libltdl/argz_.h, libltdl/argz.c, m4/argz.m4: Move from here...
@@ -571,19 +1483,24 @@
 	* NEWS: Update.
 	Reported by Pavel Raiskup
 
+2014-11-02  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: whitespace cleanup.
+
 	* Makefile.am ($(thanks)): Fix several whitespace syntax-check
 	failures.
 
 2014-11-02  Pavel Raiskup  <praiskup@redhat.com>
 
 	libtoolize: do not remove gnulib files with --force.
+
 	* libtoolize.in (func_require_seen_libtool): Do not remove
 	snippet/* files which are from Gnulib.
 
 2014-10-30  Gary V. Vaughan  <gary@gnu.org>
 
 	tests: set bindir and libdir at configure time.
+
 	In particular, openSuSE on x86_64 uses CONFIG_SITE to set libdir
 	to "${exec_prefix}/lib64", which confuses testcases that check
 	the contents of "${prefix}/lib".  In general, tests that expect
@@ -604,10 +1521,14 @@
 2014-10-29  Reuben Thomas  <rrt@sc3d.org>
 
 	libtool: -rdynamic support for tcc.
+
 	* m4/libtool.m4 (_LT_LINKER_SHLIBS) <linux*>: Set
 	export_dynamic_flag_spec appropriately when using tcc.
 
+2014-10-29  Reuben Thomas  <rrt@sc3d.org>
+
 	libtool: preliminary support for tcc on linux*.
+
 	* m4/libtool.m4 (_LT_LINKER_SHLIBS) <linux*>: Set archive_cmds and
 	ld_shlibs appropriately when using tcc.
 	* NEWS: Update.
@@ -615,6 +1536,7 @@
 2014-10-29  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: fix README-alpha version match.
+
 	With simplified release version numbering (thank you, git!), be
 	careful to recognize four part alpha versions, or short git
 	revision suffixed alpha versions correctly.
@@ -622,14 +1544,20 @@
 	(re_alpha_version): Recognize alpha version numbers.
 	($(readme)): Adjust accordingly.
 
+2014-10-29  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: autogenerate THANKS.
+
 	More automation == less time wasted on menial tasks.
 	* build-aux/thanks-gen: script inspired by coreutils.
 	* Makefile.am (THANKS): Based on rule from coreutils/Makefile.am.
 	* NO-THANKS: New file.  Configure thanks-gen output.
 	* THANKS: Remove.
 
+2014-10-29  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: fix prefix and suffix installs for libtoolize.
+
 	* Makefile.am (install-data-local): Depend on new
 	install-scripts-local, and move libtoolize install from here...
 	(install-scripts-local): ...to here.
@@ -642,23 +1570,36 @@
 2014-10-27  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: move Peter O'Gorman and Ralf Wildenhues to past maintainers.
+
 	* AUTHORS: Move Peter O'Gorman and Ralf Wildenhues from current
 	to past maintainers list.
 
+2014-10-27  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: post-release administrivia
+
 	* NEWS: Add header line for next release.
 	* .prev-version: Record previous version.
 	* cfg.mk (old_NEWS_hash): Auto-update.
 
+2014-10-27  Gary V. Vaughan  <gary@gnu.org>
+
 	version 2.4.3
+
 	* NEWS: Record release date.
 
+2014-10-27  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: sync with upstream.
+
 	* gl/build-aux/bootstrap.in, gl/build-aux/funclib.sh: Sync with
 	upstream.
 	* bootstrap: Regenerate.
 
+2014-10-27  Gary V. Vaughan  <gary@gnu.org>
+
 	testsuite: fixes required for `make distcheck CC=g++`.
+
 	* tests/demo.at (Pdemo conf): Overide _LT_DEMO_SETUP foo.h to
 	declare foo2.
 	* tests/mdemo.at (_LT_SETUP): Don't wrap `sub` dectlaration in
@@ -666,10 +1607,16 @@
 	* tests/old-ltdl-iface.at (old.c): Add a return type to main
 	declaration as required by C++.
 
+2014-10-27  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: fix a typo in THANKS.
+
 	* THANKS: s/macports\.com/macports.org/
 
+2014-10-27  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: use strlcpy instead of strncpy.
+
 	* libltdl/loaders/dyld.c (vm_sym): Use strlcpy to pacify syntax
 	checks.
 	* libltdl/ltdl.c (try_dlopen): Likewise.
@@ -677,11 +1624,15 @@
 2014-10-25  Gary V. Vaughan  <gary@gnu.org>
 
 	libtool: fix GCC linking with -fstack-protector.
+
 	* build-aux/ltmain.in (func_mode_link): Pass -fstack-protector*
 	to the linker as it is required at link time to resolve libssp symbols.
 	From Yaakov Selkowitz
 
+2014-10-25  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: support Mac OS 10.10 and newer.
+
 	The current template mistakenly treats a MACOSX_DEPLOYMENT_TARGET
 	value of "10.10" as "10.1" followed by junk. Thinking that the
 	build is targeting 10.1 Puma instead of 10.10 Yosemite, it tells
@@ -693,15 +1644,22 @@
 	* THANKS: Add Lawrence Velázquez.
 	From Lawrence Velázquez
 
+2014-10-25  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: commit latest to avoid regeneration at build time.
+
 	* bootstrap: Regenerate.
 
+2014-10-25  Gary V. Vaughan  <gary@gnu.org>
+
 	gnulib: sync with upstream.
+
 	* gnulib: Sync with upstream.
 
 2014-05-13  Peter Rosin  <peda@lysator.liu.se>
 
 	libtool: delay expansion of $ECHO until the wrapper script runs
+
 	Expanding $ECHO too early leads to unquoted \n when ECHO='printf %s\n'.
 
 	Fixes bug#17478. Reported by Egmont Koblinger.
@@ -712,6 +1670,7 @@
 2014-05-06  Peter Rosin  <peda@lysator.liu.se>
 
 	libtool: fix nm test for MSYS/MinGW
+
 	The check for the -B option of nm does not work as intended on MSYS/MinGW.
 	MSYS converts /dev/null to the DOW/Windows "equivanent" special file NUL,
 	but the MinGW nm treats this file as any empty file. This means that
@@ -727,6 +1686,7 @@
 2014-05-05  Peter Rosin  <peda@lysator.liu.se>
 
 	libtool: speed up ltwrapper_script detection in execute mode
+
 	Execute mode is slow and might even DOS the computer in extreme
 	cases when a parameter is a big binary file without newlines.
 	Work around this with different truncation if a suitable dd
@@ -753,6 +1713,7 @@
 2014-05-02  Peter Rosin  <peda@lysator.liu.se>
 
 	libtool: prevent lto from stripping the magic cookie from the cwrapper
+
 	Whole program optimization may remove unused symbols unless told they
 	are really needed. Fixes sr #108559 reported by LRN.
 
@@ -762,11 +1723,13 @@
 2014-02-12  Peter Rosin  <peda@lysator.liu.se>
 
 	tests: sprinkle -no-undefined when linking libraries
+
 	* tests/duplicate_conv.at, tests/f77demo.at, tests/fcdemo.at: Here.
 
 2014-02-12  Peter Rosin  <peda@lysator.liu.se>
 
 	libtool: actually strip -Wl when relinking with $LD
+
 	Fixes the regression from commit v2.4.2.444 which is causing a
 	testsuite failure in duplicate_conv.at (seen on Cygwin).
 
@@ -778,12 +1741,14 @@
 2014-02-10  Peter Rosin  <peda@lysator.liu.se>
 
 	bootstrap: fix description of func_sort_ver to match recent sort change
+
 	gl/build-aux/funclib.sh: Update comment to match reality.
 	bootstrap: Regenerate.
 
 2014-02-05  Gary V. Vaughan  <gary@gnu.org>
 
 	doc: remove redundant "in order to" phrase where possible.
+
 	* doc/libtool.texi: Remove many occurrences of the redundant
 	phrase "in order to", where ever "to" is as clear or clearer.
 	* THANKS: Add attribution.
@@ -792,6 +1757,7 @@
 2014-02-03  Bruce Korb  <bkorb@gnu.org>  (tiny change)
 
 	bootstrap: check for git tree with .git/. in case of soft links.
+
 	* gl/build-aux/bootstrap.in (func_require_git): Use
 	`test -d .git/.` to defeat soft-links versus non-GNU test.
 	* bootstrap: Regenerate.
@@ -800,6 +1766,7 @@
 2014-01-27  Gary V. Vaughan  <gary@gnu.org>  (tiny change)
 
 	bootstrap: use `-d .git` to check whether we are in a git tree.
+
 	* gl/build-aux/bootstrap.in (func_require_git): .git is not a
 	regular file, use -d to check its existence.
 	* bootstrap: Regenerate.
@@ -809,6 +1776,7 @@
 2014-01-17  Rainer Orth  <ro@CeBiTec.Uni-Bielefeld.DE>
 
 	libtool: opt_duplicate_compiler_generated_deps is harmful on Solaris
+
 	Fix for http://debbugs.gnu.org/cgi/bugreport.cgi?bug=16452.
 	* build-aux/ltmain.in (libtool_validate_options): disable the
 	opt_duplicate_compiler_generated_deps optimization for Solaris2 so
@@ -819,6 +1787,7 @@
 2014-01-15  Gary V. Vaughan  <gary@gnu.org>
 
 	bootstrap: check for git checkout correctly.
+
 	* gl/bulid-aux/bootstrap.in (func_require_git): Use .git instead
 	of .gitignore to recognise a git checkout.
 	* bootstrap: Regenerate.
@@ -826,6 +1795,7 @@
 2014-01-11  Todd C. Miller  <Todd.Miller@courtesan.com>  (tiny change)
 
 	libtoolize: don't remove install-sh.
+
 	If you are not using automake, libtoolize would remove install-sh.
 	It needs the same treatment as config.guess and config.sub.
 	* libtoolize.in (func_require_seen_libtool): Remove install-sh
@@ -837,12 +1807,16 @@
 2014-01-07  Gary V. Vaughan  <gary@gnu.org>
 
 	options-parser: --version works with 'DO NOT EDIT' preamble again.
+
 	* gl/build-aux/options-parser (func_version): Don't quit on first
 	leading '##' line, otherwise DO NOT edit warnings prevent version
 	information from being extracted correctly.
 	* bootstrap: Regenerate.
 
+2014-01-07  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: specify particular version in buildreq with =x.y.
+
 	* gl/build-aux/bootstrap.in (func_check_versions): If the version
 	number begins with '=' then it must match the installed version of
 	the named tool exactly.
@@ -852,6 +1826,7 @@
 2014-01-05  Gary V. Vaughan  <gary@gnu.org>
 
 	bootstrap: remove conftest.sed file droppings.
+
 	* gl/build-aux/funclib.sh: Remove conftest.sed when no longer
 	needed.
 	* bootstrap: Regenerate.
@@ -859,6 +1834,7 @@
 2014-01-04  Gary V. Vaughan  <gary@gnu.org>
 
 	bootstrap: replace spurious hyphen in some section comments.
+
 	* gl/build-aux/bootstrap.in: replace spurious hypen in same
 	section header comments with a space.
 	* gl/build-aux/extract-trace, gl/build-aux/options-parser:
@@ -868,39 +1844,58 @@
 2014-01-03  Gary V. Vaughan  <gary@gnu.org>
 
 	inline-source: DO NOT EDIT warning only for top-level file.
+
 	* gl/build-aux/inline-source (func_include): When recursing, pass
 	through the value of `magic` so that only the very first #! magic
 	number has a DO NOT EDIT warning injected.
 	* bootstrap: Regenerate.
 
+2014-01-03  Gary V. Vaughan  <gary@gnu.org>
+
 	inline-source: gawk doesn't have boolean constants.
+
 	I've been writing a lot of Lua lately, but still a silly mistake:(
 	* gl/build-aux/inline-source (func_include): Use `magic` variable
 	to count #! lines found, and only output the DO NOT EDIT warning
 	after the first one.
 
+2014-01-03  Gary V. Vaughan  <gary@gnu.org>
+
 	edit-readme-alpha: adjust for recent README edits.
+
 	* build-aux/edit-readme-alpha: Adjust regexps for recent README
 	improvements.
 	* README.md: Fix a SPACE-TAB sanity check failure.
 
+2014-01-03  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: fix test-dollar sanity check failure.
+
 	* gl/build-aux/bootstrap.in (func_ensure_README): quote argument.
 	* bootstrap: Regenerate.
 
+2014-01-03  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: rearrange header comments for correct version/help extraction.
+
 	* m4/libtool.m4 (_LT_COPYING): Rearrange the comments output to
 	the generated libtool script so that --version and --help behave
 	the same as pre-funclib.sh revisions.
 	(_LT_CONFIG_SAVE_COMMANDS): Likewise.
 
+2014-01-03  Gary V. Vaughan  <gary@gnu.org>
+
 	README: Tweak into markdown format and fix some bitrot.
+
 	* README: Moved from here...
 	* README.md: ...to here.  Make some changes to be valid markdown
 	format, and fix some inaccuracies in text that is out of date.
 	* .gitignore: Add README.
 
+2014-01-03  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: support automake README requirement.
+
 	* gl/build-aux/bootstrap.in (func_ensure_README): New function.
 	Link missing README to existing alternative naming.
 	(require_automake_options): New functions. Fetch AM_INIT_AUTOMAKE
@@ -909,7 +1904,10 @@
 	foreign mode, link a README file if possible.
 	* bootstrap: Regenerate.
 
+2014-01-03  Gary V. Vaughan  <gary@gnu.org>
+
 	configury: use bootstrap ChangeLog management feature.
+
 	* gl/build-aux/bootstrap.in (func_autoreconf): Accept an optional
 	directory argument to pass to $AUTORECONF.
 	Update doc-comment.
@@ -924,14 +1922,20 @@
 	bootstrap's func_reconfigure again.
 	* bootstrap: Regenerate.
 
+2014-01-03  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: force remove file droppings from previous run.
+
 	Now that we generate bootstrap.new with no write permission,
 	we have to force remove it before writing now content to the file.
 	* bootstrap.in (require_bootstrap_uptodate): Remove old
 	bootstrap.new output.
 	* bootstrap: Regenerate.
 
+2014-01-03  Gary V. Vaughan  <gary@gnu.org>
+
 	inline-source: add a DO NOT EDIT notice to generated files.
+
 	* gl/build-aux/inline-source (func_include): Add a DO NOT EDIT
 	notice below the #! magic number of generated files.
 	* gl/build-aux/bootstrap.in (func_require_bootstrap_uptodate):
@@ -940,12 +1944,18 @@
 	Change the update instructions to recommend `mv -f` to cope with
 	no write permission on old bootstrap script.
 
+2014-01-03  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: move included files below DO NOT EDIT comment.
+
 	* gl/build-aux/bootstrap.in: Reorder sections to load external
 	libraries as late as possible, leaving DO NOT EDIT comment
 	visible near the top of the generated bootstrap script.
 
+2014-01-03  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: use before-save-hook in Emacs footers.
+
 	Updating to Emacs 24 now gives me warnings about write-file-hooks
 	being obsolete.
 	* gl/build-aux/bootstrap.in, gl/build-aux/extract-trace,
@@ -953,7 +1963,10 @@
 	gl/build-aux/options-parser: Set before-save-hook in Emacs file
 	footers instead of obsolete write-file-hooks.
 
+2014-01-03  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: use printf '%s\n' unconditionally.
+
 	It's been a year since the as_echo probes were removed in Autoconf,
 	so we can follow suit and remove our equivalent bs_echo probing
 	now.  Retain $ECHO in case users need to override default printf
@@ -967,6 +1980,7 @@
 2014-01-02  Gary V. Vaughan  <gary@gnu.org>
 
 	bootstrap: push Peter's version sort fix back into funclib.sh.
+
 	Peter's a7462c5 fix was applied to the generated bootstrap script
 	instead of the funclib.sh source, and had have been overwritten
 	the next time bootstrap was regenerated.
@@ -977,23 +1991,33 @@
 2014-01-01  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: change history.
+
 	* NEWS: Remove alpha release header.
 	* cfg.mk (old_NEWS_hash): Update.
 
+2014-01-01  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: only strip -Wl when linking with $LD.
+
 	* build-aux/ltmain.in (func_mode_link): Don't strip -Wl from the
 	linker flags, except when linking with $LD, otherwise compiler
 	drivers that don't recognize and pass linker flags through will
 	choke on unrecognized options.
 
+2014-01-01  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: fix gitlog-to-changelog detection.
+
 	* gl/build-aux/bootstrap.in (func_ifcontains): Use a for loop
 	that relies on $IFS for element splitting instead of a one-shot
 	case glob that is not tolerant to \n in $gnulib_modules.
 	* THANKS: Add Reuben Thomas.
 	Reported by Reuben Thomas
 
+2014-01-01  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: update copyright notices to include 2014.
+
 	* .x-update-copyright: New file. Exclude files not owned by this
 	project from update-copyright rules.
 	* doc/libtool.texi: Replace m-dash with n-dash in texinfo
@@ -1053,10 +2077,16 @@
 	tests/template.at, tests/testsuite.at, tests/versioning.at,
 	tests/with-pic.at: Bump copyright year.
 
+2014-01-01  Gary V. Vaughan  <gary@gnu.org>
+
 	gnulib: update to latest upstream revision.
+
 	* gnulib: Update.
 
+2014-01-01  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: gcj cannot reliably compile directly to .o from .java
+
 	Some 4.3.x and 4.4.x releases of gcj insert a spurious 'dummy'
 	symbol into every object file when compiling directly from .java
 	to .o:
@@ -1067,6 +2097,7 @@
 2014-01-01  Gary V. Vaughan  <gary@gnu.org>
 
 	testsuite: with SunStudio12.x f77, don't fail on system symbols
+
 	Modern SunStudio f77 is just a wrapper for f90, which
 	explains why current master fails these test groups with:
 
@@ -1090,6 +2121,7 @@
 2014-01-01  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: use $SED and $GREP, not sed and grep in all scripts.
+
 	Choosing between hardcoding a tool's name, or using the shell
 	variable with a path to the user's prefered implementation or
 	configure's idea of the best available is a premature
@@ -1100,14 +2132,20 @@
 	instead of hardcoding sed and grep.
 	* bootstrap: Regenerate.
 
+2014-01-01  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: use TESTS_ENVIRONMENT for EGREP and FGREP.
+
 	Be consistent about passing commands to the testsuite, and use
 	TESTS_ENVIRONMENT consistent.
 	* Makefile.am (TESTS_ENVIRONMENT): Add EGREP and FGREP.
 	* tests/testsuite.at: Remove EGREP and FGREP extractions from
 	generated libtool script.
 
+2014-01-01  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: use $GREP throughout.
+
 	Trust the user, and use $GREP from TESTS_EVVIRONMENT uniformly.
 	* Makefile.am (TESTS_ENVIRONMENT): Add GREP setting.
 	* tests/am-subdir.at, tests/archive-in-archive.at, tests/bindir.at,
@@ -1125,7 +2163,10 @@
 	tests/testsuite.at, tests/versioning.at: Replace all hardcoded grep
 	invocations with $GREP.
 
+2014-01-01  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: use $SED throughout.
+
 	Trust the user, and use $SED from TESTS_ENVIRONMENT uniformly.
 	Hardcoding 'sed' for "simple" edits is a premature optimisation.
 	* tests/cdemo.at, tests/cmdline_wrap.at, tests/cwrapper.at,
@@ -1136,18 +2177,27 @@
 	tests/sysroot.at, tests/tagdemo.at, tests/testsuite.at: Replace all
 	hardcoded sed invocations with $SED.
 
+2014-01-01  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: run cmdline_wrap last, or not at all if anything else failed.
+
 	* Makefile.am (TESTSUITE_AT): Move stresstest.at and cmdline_wrap.at
 	to the end of the list.
 	* tests/cmdline_wrap.at: If previous tests have failed, then we
 	already know that rerunning them will fail too, so save time by
 	skipping in that case.
 
+2014-01-01  Gary V. Vaughan  <gary@gnu.org>
+
 	configury: remove spurious g modifier in sed expression.
+
 	* Makefile.am (rebuild): Remove useless g modifier from sed
 	expression.
 
+2014-01-01  Gary V. Vaughan  <gary@gnu.org>
+
 	configury: use $(SED) where input does not end in newline.
+
 	On Solaris machines the system sed does not process the last
 	line of input unless it ends with a newline, which means it
 	cannot be used to massage the output of git-version-gen, because
@@ -1156,26 +2206,34 @@
 	which has a better chance of working properly than the first sed
 	on PATH.
 
+2014-01-01  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: skip fcdemo checks when $FC cannot compile fortran90.
+
 	Avoid spurious fcdemo failures when Autoconf picks f77 or
 	similar for a fortran90 compiler.
 	* tests/testsuite.at (LT_AT_TAG): Using FC and FCFLAGS from make
 	TESTS_ENVIRONMENT, check that we really can compile fortran90
 	or else skip.
 
+2014-01-01  Gary V. Vaughan  <gary@gnu.org>
+
 	funclib.sh: improve comments.
+
 	* gl/build-aux/funclib.sh: Add a comment explaining the need for
 	extra SED and GREP searches.
 
 2013-12-09  Peter Rosin  <peda@lysator.liu.se>
 
 	maint: fix out-of-tree autoreconf w/o manual rebootstrap
+
 	build-aux/ltmain.in: Look for funclib.sh and options-parser in
 	the same location ltmain.in is found.
 
 2013-11-19  Peter Rosin  <peda@lysator.liu.se>
 
 	bootstrap: fix version sort
+
 	Reported by Ozkan Sezer who suffered from makeinfo 4.13 being detected
 	as lesser than the required makeinfo 4.8.
 
@@ -1185,6 +2243,7 @@
 2013-11-08  Peter Rosin  <peda@lysator.liu.se>
 
 	tests: Use a basic grep that matches the basic regexp style.
+
 	Fixes a testsuite failure on Cygwin.
 
 	* tests/tagdemo.at: Use grep instead of egrep.
@@ -1192,6 +2251,7 @@
 2013-10-29  Gary V. Vaughan  <gary@gnu.org>
 
 	bootstrap: fix a quoting error.
+
 	* gl/build-aux/bootstrap.in (func_require_buildreq_autoconf): Quote
 	the extracted version number correctly so that it is displayed in
 	verbose mode.
@@ -1199,6 +2259,7 @@
 2013-10-28  Gary V. Vaughan  <gary@gnu.org>
 
 	funclib.sh: simplify version comparison functions.
+
 	* gl/build-aux/funclib.sh (func_sort_ver): Much simplified.
 	(func_lt_ver): New function, return true if arguments are in
 	ascending order.
@@ -1211,13 +2272,17 @@
 2013-10-28  Gary V. Vaughan  <gary@gnu.org>
 
 	bootstrap: show found GREP and SED in verbose mode.
+
 	* gl/build-aux/bootstrap.in (EGREP, FGREP, GREP, SED): Remove.
 	These are already set by funclib.sh.
 	(func_prep): After --verbose has been processed, show the paths
 	to GREP and SED found by funclib.sh.
 	* bootstrap: Regenerate.
 
+2013-10-28  Gary V. Vaughan  <gary@gnu.org>
+
 	refactor: simplify program path searching in funclib.sh.
+
 	* gl/build-aux/funclib.sh (func_path_progs): New function. Factor
 	out common code from GREP and SED searches.
 	(func_check_prog_sed, func_check_prog_grep): New functions, for
@@ -1225,7 +2290,10 @@
 	(scriptversion): Update.
 	* bootstrap: Regenerate.
 
+2013-10-28  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: search for a non-truncating grep binary.
+
 	On at least Unixware 7.1.4, the first grep binary on PATH is
 	unable to process the extract-trace scripts.
 	* gl/build-aux/funclib.sh (GRUP): Search PATH for a grep binary
@@ -1235,7 +2303,10 @@
 	* bootstrap: Regenerate.
 	Reported by Tim Rice.
 
+2013-10-28  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: search for a non-truncating sed binary.
+
 	On at least Unixware 7.1.4, the first sed binary on PATH is
 	unable to process the extract-trace scripts.
 	* gl/build-aux/funclib.sh (PATH_SEPARATOR): Set to : or ;
@@ -1253,6 +2324,7 @@
 2013-10-27  Gary V. Vaughan  <gary@gnu.org>
 
 	tests: use autotest as_unset rather than rerolling $unset locally.
+
 	On at least Unixware 7.1.4, the shell variable 'unset' gets set
 	to 'no' during the testsuite run, breaking several test cases.
 	We should have been using Autotest $as_unset anyway.
@@ -1262,7 +2334,10 @@
 	* tests/demo.at (uninstalled libraries ave priority): Likewise.
 	Reported by Tim Rice.
 
+2013-10-27  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: post-release administrivia
+
 	* NEWS: Add header line for next release.
 	* .prev-version: Record previous version.
 	* cfg.mk (old_NEWS_hash): Auto-update.
@@ -1270,22 +2345,35 @@
 2013-10-26  Gary V. Vaughan  <gary@gnu.org>
 
 	version 2.4.2.418
+
 	* NEWS: Record release date.
 
+2013-10-26  Gary V. Vaughan  <gary@gnu.org>
+
 	gnulib: update to latest upstream revision.
+
 	* gnulib: Update.
 
+2013-10-26  Gary V. Vaughan  <gary@gnu.org>
+
 	gnulib: use func_sort_ver instead of GNU sort -V in do-release-commit-and-tag.
+
 	* gl/build-aux/do-release-commit-and-tag: Source funclib.sh and
 	then use portable func_sort_ver rather than force installation of
 	all GNU coreutils just for sort -V support.
 
+2013-10-26  Gary V. Vaughan  <gary@gnu.org>
+
 	refactor: move func_sort_ver from bootstrap.in to funclib.sh.
+
 	* gl/build-aux/bootstrap.in (func_sort_ver): Move from here...
 	* gl/build-aux/funclib.sh (func_sort_ver): ...to here.
 	* bootstrap: Regenerate.
 
+2013-10-26  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: use K&R main() syntax for old-ltdl-iface.at.
+
 	At least Mac OS 10.8.5 clang chokes on the previous
 	'const void *argv[]' parameter, but since we don't use it
 	anyway, keep to the theme of old api support and use K&R
@@ -1293,22 +2381,34 @@
 	* tests/old-ltdl-iface.at (old.c): Use 'main ()' instead of
 	unportable 'int main (int argc, const void *argv[])'.
 
+2013-10-25  Gary V. Vaughan  <gary@gnu.org>
+
 	libltdl: bump -version-info revision by 1.
+
 	The only changes to libltdl sources since v2.4.2 have been
 	cosmetic and stylistic.
 	* libltdl/ltdl.mk (LTDL_VERSION_INFO): For a release with no
 	interface changes C:R:A becomes C:R+1:A.
 
+2013-10-25  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: Update README-release for Makefile.inc -> ltdl.mk rename.
+
 	* gl/top/README-release.diff: s/Makefile.inc/ltdl.mk/g
 
+2013-10-25  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: bump serials on m4 sources changed since v2.4.2.
+
 	* m4/argz.m4: Bump serial to 6.
 	* m4/libtool.m4: Bump serial to 58.
 	* m4/ltdl.m4: Bump serial to 19.
 	* m4/ltoptions.m4: Bump serial to 8.
 
+2013-10-25  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: fix a syntax-check violation from commit 12641bd.
+
 	* build-aux/ltmain.in (func_mode_link): Reverse test operands to
 	forestall misinterpretation of contests of shell variable as
 	operand 1.
@@ -1316,6 +2416,7 @@
 2013-10-10  Vadim Zeitlin  <vz-libtool@zeitlins.org>  (tiny change)
 
 	libtool: Don't fall back to static libraries if building them was disabled
+
 	If -no-undefined was not specified but the platform didn't
 	support shared libraries with undefined symbols (e.g. Cygwin/
 	MinGW), static libraries were built instead of shared ones,
@@ -1331,15 +2432,17 @@
 	undefined on a platform not supporting undefined symbols in
 	shared libraries.
 
-2013-10-10  Brooks Moses  <bmoses@google.com>
+2013-10-09  Brooks Moses  <bmoses@google.com>
 
 	libtool: Remove unneeded quotes in assignment.
+
 	The quotes in this assignment cause "make syntax-check" to
 	fail.  Thus, this patch removes them.
 
 2013-10-09  Fabian Groffen  <grobian@gentoo.org>  (tiny change)
 
 	libtool: Fix x86_64-pc-solaris2.* GNU ld breakage
+
 	Since commit [1] libtool tries to set a 64-bits target for GNU
 	ld.  However, it does so wrongly for x86_64-pc-solaris2.*
 	targets, causing libtool to believe the linker is called
@@ -1367,6 +2470,7 @@
 2013-10-09  Olivier Blin  <olivier.blin@softathome.com>  (tiny change)
 
 	libtool: Fix detection of ld version with parentheses.
+
 	ld from crosstool-NG reports a version string with an extra
 	version number in a parenthetical note:
 	GNU ld (crosstool-NG 1.13.0) 2.21.1
@@ -1387,12 +2491,14 @@
 2013-10-09  Brooks Moses  <bmoses@google.com>
 
 	libtool: Fix comment indentation
+
 	This trivial patch fixes indentation on a comment to match
 	the style used elsewhere in m4/libtool.m4.
 
 2013-10-09  DJ Delorie  <dj@redhat.com>
 
 	libtool: Add TPF settings for LT_SYS_DLOPEN_SELF
+
 	* m4/libtool.m4: Since we know that all TPF builds are cross-
 	builds, do not attempt to run linker tests during config. Use
 	known constants instead, since we know how dlopen() is
@@ -1401,6 +2507,7 @@
 2013-10-09  Vincent Lefevre  <vincent@vinc17.net>  (tiny change)
 
 	libtool: Fix $wl setting for tcc on GNU systems
+
 	(This addresses http://bugs.debian.org/663945.  See there for
 	more-detailed discussion.)
 
@@ -1416,6 +2523,7 @@
 2013-10-09  Peter Johansson  <trojkan@gmail.com>
 
 	libtool: use AS_HELP_STRING in LT_WITH_SYSROOT help message.
+
 	This patch fixes so help output is formatted similar with
 	other macros using AS_HELP_STRING. Also it outputs '[=DIR]'
 	as I suspect intended rather than '=DIR'.
@@ -1423,6 +2531,7 @@
 2013-10-09  Joseph Prostko  <joe.prostko@gmail.com>  (tiny change)
 
 	libtool: Haiku change for shlibpath_overrides_runpath
+
 	Pretty much all changes to Haiku for Libtool have been
 	upstreamed, however we currently have an incorrect value for
 	shlibpath_overrides_runpath.  It should be "no" instead of
@@ -1443,6 +2552,7 @@
 	    Johannes Obermayr  <johannesobermayr@gmx.de>
 
 	libtool: Discard "-mllvm $arg" options when linking.
+
 	Clang accepts options of the form "-mllvm $arg", and passes the
 	argument as an option to LLVM.  These options caused problems
 	for Libtool when linking; in some cases, the -mllvm option is
@@ -1457,6 +2567,7 @@
 2013-10-09  Ondřej Bílka  <neleai@seznam.cz>
 
 	maint: Fix various comment and documentation typos.
+
 	Ondřej writes: "Hi, this is upstream version of patch that I
 	sent to gcc.  I generated this patch with tool that I am
 	writing: https://github.com/neleai/stylepp"
@@ -1467,6 +2578,7 @@
 2013-10-08  David 'Digit' Turner  <digit@google.com>
 
 	libtool: Add Android/Linux support.
+
 	This patch adds proper Android support to libtool. The main
 	issues are the following:
 
@@ -1481,6 +2593,7 @@
 2013-09-17  Peter Rosin  <peda@lysator.liu.se>
 
 	libtool: trust -print-search-dirs from recent GCC
+
 	Alan Modra hints in [1] that -print-search-dirs was fixed in
 	GCC 4.2(?), so that it nowadays automatically appends
 	-print-multi-os-directory for the applicable directories. I.e.
@@ -1510,6 +2623,7 @@
 2013-09-16  Gary V. Vaughan  <gary@gnu.org>
 
 	bootstrap: clean up spurious 'gnulib-cache.m4 missing' error.
+
 	* gl/build-aux/bootstrap.in (func_reconfigure): Don't show an
 	error when running without gnulib-cache.m4.
 	* bootstrap: Regenerate.
@@ -1517,6 +2631,7 @@
 2013-09-15  Gary V. Vaughan  <gary@gnu.org>
 
 	bootstrap: make ensure_changelog work for update mode projects.
+
 	* gl/build-aux/bootstrap.in (func_bootstrap): Move
 	func_changelog_ensure invocation from here...
 	(func_reconfigure): ...to here. If gnulib_modules is empty, then
@@ -1524,7 +2639,10 @@
 	func_changelog_ensure.
 	* bootstrap: Regenerate.
 
+2013-09-15  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: fetch defaults from gnulib-cache.m4 for non-imported projects.
+
 	Recent changes uncovered some bugs in handling of gnulib-tool
 	options for projects that check in gnulib-cache.m4 rather than
 	keep a separate list of modules and options in bootstrap.conf.
@@ -1542,6 +2660,7 @@
 2013-09-05  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: normalise formatting of recent commit log entry.
+
 	* build-aux/git-log-fix: Add a summary line to ChangeLog entry of
 	most recent commit.
 
@@ -1553,6 +2672,7 @@
 2013-08-29  Gary V. Vaughan  <gary@gnu.org>
 
 	bootstrap: gnulib_tool=true means no gnulib submodule.
+
 	* gl/build-aux/bootstrap.in (func_require_gnulib_tool): No
 	sneaking off and cloning gnulib when the user already specified
 	gnulib_tool=true in their bootstrap.conf!
@@ -1561,6 +2681,7 @@
 2013-08-23  Alan Modra  <amodra@bigpond.net.au>
 
 	bootstrap: make first char of IFS a space.
+
 	Putting tab first in IFS breaks func_echo_all usage of $*,
 	resulting in failure of func_infer_tag to match a command line
 	using a $CC with trailing spaces. The trailing spaces were
@@ -1573,19 +2694,26 @@
 2013-08-23  Gary V. Vaughan  <gary@gnu.org>
 
 	bootstrap: support --no-git and --no-po options.
+
 	* gl/build-aux/bootstrap.in (bootstrap_parse_options): Accept
 	--no-git as an alias for --skip-git for compatibility with gnulib
 	bootstrap, and --no-po for symmetry.
 	Reported by Mike Miller.
 
+2013-08-23  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: support gnulib gnulib_tool_option_extras settings.
+
 	* gl/build-aux/bootstrap.in (func_gnulib_tool): Even though we
 	don't need it, support gnulib_tool_option_extras for bootstrap.conf
 	ported from gnulib bootstrap.
 	* bootstrap: Regenerate.
 	Reported by Mike Miller.
 
+2013-08-23  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: support sha1 binary on OpenBSD.
+
 	* gl/build-aux/bootstrap.in (func_update_po_files): Remove the
 	use of --status in a way that will suppress all error messages,
 	but since this is only used to minimize updates, it shouldn't
@@ -1597,7 +2725,10 @@
 	* bootstrap: Regenerate.
 	Ported from a gnulib patch by Padraig Brady.
 
+2013-08-23  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: support tools that don't accept '--version' in buildreq.
+
 	* gl/build-aux/bootstrap.in (func_check_tool): Check whether there
 	is an executable as given or on the command PATH.
 	(func_check_version): Use func_check_tool to avoid invoking --version
@@ -1605,7 +2736,10 @@
 	* bootstrap: Regenerate.
 	Reported by Mike Miller.
 
+2013-08-23  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: diagnose bad $buildreq formatting.
+
 	Particularly when porting from gnulib bootstrap to libtool
 	bootstrap, it's easy to forget the extra URL column used for
 	error reporting.
@@ -1617,6 +2751,7 @@
 2013-08-23  Gary V. Vaughan  <gary@gnu.org>  (tiny change)
 
 	bootstrap: support OpenBSD sed.
+
 	* gl/build-aux/bootstrap.in (func_insert_if_absent): Work around
 	the problem of OpenBSD sed not supporting '-' as a notation for
 	standard input.
@@ -1628,12 +2763,14 @@
 	    Gary V. Vaughan  <gary@gnu.org>
 
 	libtool: set correct linker ABI flags on mips64 linux.
+
 	m4/libtool.m4 (_LT_ENABLE_LOCK): Select the n32 or n64 ABI when
 	linking to match the ABI produced with the user's compiler flags.
 
 2013-08-23  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: correct many abuses of the word "which".
+
 	* HACKING, NEWS, TODO, bootstrap, bootstrap.conf,
 	build-aux/ltmain.in, cfg.mk, configure.ac, doc/libtool.texi,
 	doc/notes.texi, gl/build-aux/bootstrap.in,
@@ -1649,6 +2786,7 @@
 2013-08-23  Brook Moses  <bmoses@google.com>
 
 	libtool: improve comments for _LT_ENABLE_LOCK implementation.
+
 	* m4/libtool.m4 (_LT_ENABLE_LOCK): enhance comments to explain
 	why the code looks odd with 32bit flags in the 64bit section and
 	vice versa.
@@ -1656,11 +2794,15 @@
 2013-08-22  Alan Modra  <amodra@bigpond.net.au>
 
 	libtool: fix refixed unmangled powerpc*le-linux support patch
+
 	* m4/libtool.m4: fix refixed badly unmangled hunks from earlier
 	powerpc*le changeset.
 	Reported by Peter Rosin.
 
+2013-08-22  Alan Modra  <amodra@bigpond.net.au>
+
 	libtool: refix unmangled powerpc*le-linux support patch
+
 	* m4/libtool.m4: refix badly unmangled hunks from earlier
 	powerpc*le changeset.
 	Reported by Peter Rosin.
@@ -1668,6 +2810,7 @@
 2013-08-22  Gary V. Vaughan  <gary@gnu.org>
 
 	libltdl: don't trip subdir-objects warning from Automake >= 1.14.
+
 	Latest Automake releases now warn when subdir-objects is not
 	specified in preparation for Automake 2.0.  The option has been
 	in Automake for more than a decade, so there's minimal risk of
@@ -1675,7 +2818,10 @@
 	release of Automake when bootstrapping libltdl client projects.
 	* libltdl/configure.ac (AM_INIT_AUTOMAKE): Add subdir-objects.
 
+2013-08-22  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: refactor powerpc*le-linux case branch expressions.
+
 	libtool (_LT_ENABLE_LOCK): make inner case branch expressions
 	consistent with outer case expression.
 	Reported by Peter Rosin.
@@ -1683,16 +2829,21 @@
 2013-08-22  Alan Modra  <amodra@bigpond.net.au>
 
 	libtool: fix mangled powerpc*le-linux support patch
+
 	* m4/libtool.m4: unmangled badly pasted hunks from previous
 	changeset.
 
+2013-08-22  Alan Modra  <amodra@bigpond.net.au>
+
 	libtool: initial powerpc*le-linux support
+
 	* m4/libtool.m4 (ld -m flags): Remove non-canonical ppc host match.
 	Support little-endian powerpc linux host.
 
 2013-06-17  Yaakov Selkowitz  <yselkowitz@users.sourceforge.net>
 
 	libtool: fix conversion warnings in cwrapper
+
 	build-aux/ltmain.in (func_emit_cwrapperexe_src:main): XMALLOC wants a
 	size_t. Also use int instead of intptr_t for the return value (which
 	is fine since the _spawnv call is synchronous).
@@ -1707,6 +2858,7 @@
 2013-04-28  Peter Rosin  <peda@lysator.liu.se>
 
 	libtool: break all the way out when a good nm is found
+
 	The current code tries to locate a compatible nm tool.  It starts with
 	a prefixed nm tool (great!) and includes a plain nm too (that's fine).
 	The problem is that the code searches for the prefixed nm before the
@@ -1720,16 +2872,19 @@
 2013-01-28  Peter Rosin  <peda@lysator.liu.se>
 
 	maint: update email address...
+
 	* THANKS: ...of Jan Engelhardt.
 
 2013-01-28  Jan Engelhardt  <jengelh@inai.de>
 
 	doc: fix an orthographic error
+
 	* doc/libtool.texi (Install mode): Ensure, not insure.
 
 2013-01-27  Gary V. Vaughan  <gary@gnu.org>
 
 	bootstrap: fix func_insert_if_absent bugs.
+
 	* gl/build-aux/bootstrap.in (func_insert_if_absent): Print verbose
 	message when there is a new entry to add.
 	Also, make sure to update the .gitignore file when changed.
@@ -1737,18 +2892,27 @@
 	* THANKS: Add Pádraig Brady.
 	Reported by Pádraig Brady.
 
+2013-01-27  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: factor out gnulib-tool option calculations.
+
 	* gl/build-aux/bootstrap.in (func_gnulib_tool): Factor base option
 	settings out...
 	(require_gnulib_tool_base_options): ...to here.
 	* bootstrap: Regenerate.
 
+2013-01-27  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix a quoted_test_operand violation.
+
 	* gl/build-aux/bootstrap.in (func_insert_if_absent): Make sure
 	test operands are quoted correctly.
 	* bootstrap: Regenerate.
 
+2013-01-27  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix new SPACE-TAB violations.
+
 	* build-aux/ltmain.in (func_dll_def_p): Replace SPACE-TAB by
 	TAB-SPACE.
 	* m4/libtool.m4 (_LT_DLL_DEF_P): Likewise.
@@ -1757,6 +2921,7 @@
 	    Gary V. Vaughan  <gary@gnu.org>
 
 	bootstrap: always auto-add .gitignore files at the top.
+
 	* gl/build-aux/bootstrap.in (func_gitignore_entries): New function.
 	Strip comments and blank lines.
 	(func_insert_sorted_if_absent): Renamed...
@@ -1768,6 +2933,7 @@
 2013-01-26  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: patch gitlog-to-changelog to reduce bogus warnings.
+
 	Rather than trying to find a new useful warning among the 55
 	expected warnings from vanilla gitlog-to-changelog, patch it to
 	elide the bogus warnings from duplicate log entries.
@@ -1782,6 +2948,7 @@
 2013-01-22  Peter Rosin  <peda@lysator.liu.se>
 
 	libtool: factor out the dll .def file test and improve it
+
 	Resolves bug#13414. Problem reported by Erik van Pienbroek
 	and Martin Doucha.
 
@@ -1800,6 +2967,7 @@
 2013-01-21  Peter Rosin  <peda@lysator.liu.se>
 
 	libtool: allow tabs in *_cmds variables
+
 	This is in preparation for the next patch, which needs to have literal
 	tab characters survive the evaluation of the *_cmds variables.
 
@@ -1810,6 +2978,7 @@
 2013-01-19  Peter Rosin  <peda@lysator.liu.se>
 
 	libtool: avoid tabs in all *_cmds variables.
+
 	This is in preparation for the next change, which will preserve
 	tabs when the *_cmds variables are evaluated. Removing tabs first
 	ensures that the libtool output stays the same when tabs are not
@@ -1821,11 +2990,15 @@
 2013-01-16  Peter Rosin  <peda@lysator.liu.se>
 
 	libtool: align archive_cmds with archive_expsym_cmds for MSVC
+
 	m4/libtool.m4 (_LT_LINKER_SHLIBS, _LT_LANG_CXX_CONFIG) [MSVC]
 	<archive_cmds>: Specify the import library name, aligning with
 	archive_expsym_cmds.
 
+2013-01-16  Peter Rosin  <peda@lysator.liu.se>
+
 	libtool: feed .def files verbatim to the MSVC linker
+
 	m4/libtool.m4 (_LT_LINKER_SHLIBS, _LT_LANG_CXX_CONFIG) [MSVC]
 	<archive_expsym_cmds>: When the symbol list isn't really a symbol list,
 	but instead a .def file, copy it to a file with .def extension so that
@@ -1835,11 +3008,15 @@
 2013-01-15  Peter Rosin  <peda@lysator.liu.se>
 
 	Revert "libtool: use false or : for $always_export_symbols, and simplify"
+
 	This reverts commit 5ed7430fcb48c862c9d76ef497b73485d580338e, which is
 	totally bogus as the variable is also set in libtool.m4. Sorry for the
 	noise.
 
+2013-01-15  Peter Rosin  <peda@lysator.liu.se>
+
 	libtool: use false or : for $always_export_symbols, and simplify
+
 	* build-aux/ltmain.in (func_mode_link): Save a string comparison
 	by setting $lways_export_symbols to false or : and using it directly
 	as the first argument to if. Make sure that it is always initialized
@@ -1848,6 +3025,7 @@
 2013-01-09  Peter Rosin  <peda@lysator.liu.se>
 
 	tests: fix nits in path handling
+
 	tests/bindir.at: func_save_and_prepend_path is already checking
 	$bindirneeded internally, so remove checks from call sites. Add
 	proper quoting while at it.
@@ -1857,6 +3035,7 @@
 2013-01-08  Peter Rosin  <peda@lysator.liu.se>
 
 	libtool: simplify quoting and code for symbols exporting sed programs
+
 	* m4/libtool.m4 (_LT_LINKER_SHLIBS, _LT_LANG_CXX_CONFIG) [MSVC]
 	<archive_expsym_cmds>: Make the sed programs easier to read (and
 	recover some backslashes for later in the process).
@@ -1864,6 +3043,7 @@
 2013-01-03  Peter Rosin  <peda@lysator.liu.se>
 
 	tests: don't feed -no-undefined to the linker during configure.
+
 	* tests/deplibs-mingw.at: Restore LDFLAGS for the configure run so that
 	the linker does not see -no-undefined. Makes the test pass instead of
 	skip on MinGW.
@@ -1871,24 +3051,40 @@
 2013-01-03  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: note warnings during ChangeLog generation are normal.
+
 	* Makefile.am ($(changelog)): Output a note that 55 empty commit
 	log warning messages during ChangeLog generation are expected.
 
+2013-01-03  Gary V. Vaughan  <gary@gnu.org>
+
 	git: ignore .serial file.
+
 	* .gitignore: ignore .serial file.
 
+2013-01-03  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: fix recent badly formatted ChangeLog entry.
+
 	* build-aux/git-log-fix: No empty lines in a single commit.
 
+2013-01-03  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix a useless_quotes_in_assignment violation.
+
 	* gl/build-aux/inline-source (func_require_AWK): Remove useless
 	quotes.
 
+2013-01-03  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix prohibit_strcmp syntax-check violation.
+
 	* build-aux/ltmain.in (func_generate_dlsyms): Add a definition for
 	STREQ, and then use it in place of !strcmp.
 
+2013-01-03  Gary V. Vaughan  <gary@gnu.org>
+
 	docs: update copyright dates in libtool.texi.
+
 	It seems `make update-copyright' missed the texinfo copyright
 	notice.
 	* doc/libtool.texi: Update copyright dates for 2013.
@@ -1896,6 +3092,7 @@
 2013-01-03  Brad Smith  <brad@comstyle.com>
 
 	libtool: add bitrig support.
+
 	* build-aux/ltmain.in (func_mode_link): Add bitrig support.
 	* m4/libtool.m4 (_LT_CMD_OLD_ARCHIVE, LT_CMD_MAX_LEN)
 	(_LT_SYS_DYNAMIC_LINKER, _LT_CHECK_MAGIC_METHOD)
@@ -1907,11 +3104,14 @@
 2013-01-01  Peter Rosin  <peda@lysator.liu.se>
 
 	maint: check if git works before relying on it
+
 	Makefile.am (m4/ltversion.m4): Take the opportunity to regenerate
 	$(srcdir)/.serial whenever git is actually working.
 	(git_version_gen): Provide a fallback version for the git-version-gen
 	script to use when .tarball-version does not exist and git is not
 	working.
+
+2013-01-01  Peter Rosin  <peda@lysator.liu.se>
 
 	maint: really do update to latest upstream gnulib
 	Commit 9a7071e668d044c1c47c855d2f0bc7cadb235071 "maint: update
@@ -1922,17 +3122,20 @@
 2013-01-01  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: remove unsupported Tested-by: tag.
+
 	* build-aux/git-log-fix: Tested-by: line should not appear in the
 	ChangeLog.
 
 2013-01-01  Peter Rosin  <peda@lysator.liu.se>
 
 	bootstrap: update README-release patch
+
 	gl/top/README-release.diff: Update to match latest gnulib changes.
 
 2013-01-01  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: update copyright notices to include 2013.
+
 	* gnulib/: Update to latest upstream.
 	* AUTHORS, ChangeLog.old, HACKING, Makefile.am, NEWS, README,
 	THANKS, TODO, bootstrap, bootstrap.conf,
@@ -1987,6 +3190,7 @@
 2012-12-19  Peter Rosin  <peda@lysator.liu.se>
 
 	libtool: Drop $LDFLAGS when invoking the toolchain
+
 	m4/libtool.m4 (_LT_LANG_CXX_CONFIG) [Solaris] <archive_cmds>: Drop
 	$LDFLAGS as it is a user variable that is usually used when invoking
 	libtool. As such, it should not be used by libtool when it invokes the
@@ -1997,6 +3201,7 @@
 2012-12-19  Richard Palo  <richard.palo@baou.fr>  (tiny change)
 
 	libtool: Add SONAME to the so when exporting explicit symbols on Solaris
+
 	m4/libtool.m (_LT_LANG_CXX_CONFIG) [Solaris] <archive_expsym_cmds>: Feed
 	-h $soname to the linker just as is done in archive_cmds.
 	THANKS: Update.
@@ -2004,6 +3209,7 @@
 2012-11-02  Peter Rosin  <peda@lysator.liu.se>
 
 	libtool: add @INIT@ to the preloader, for data imports on Windows
+
 	* m4/libtool.m4 (_LT_CMD_GLOBAL_SYMBOLS) [dumpbin]: Adjust
 	lt_cv_sys_global_symbol_to_cdecl so that it declares imported
 	data symbols as __declspec(dllimport). Adjust
@@ -2028,6 +3234,7 @@
 2012-11-02  Peter Rosin  <peda@lysator.liu.se>
 
 	libtool: unify the global symbol transformations
+
 	Since it is safe for $lt_cv_sys_global_symbol_to_cdecl to match
 	with a simple /^T .* .*$/ type expression, it is ok for the other
 	transformations as well.  At least if you require at least one
@@ -2040,12 +3247,14 @@
 2012-11-02  Peter Rosin  <peda@lysator.liu.se>
 
 	libtool: break up long lines
+
 	* m4/libtool.m4 (_LT_CMD_GLOBAL_SYMBOLS): Break up long lines when
 	assigning the sed scripts that transform the extracted symbol lines.
 
 2012-10-25  Gary V. Vaughan  <gary@gnu.org>
 
 	bootstrap: use a decent awk if /bin/awk is hopeless.
+
 	Bootstrap used to fail without an explicit AWK environment
 	setting on machines with both nawk and awk, but where awk is a
 	museum piece.
@@ -2054,31 +3263,49 @@
 	settling on awk, just like configure does.
 	(func_include): Use it.
 
+2012-10-25  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: be sure to register gnulib submodule.
+
 	* gl/build-aux/bootstrap.in (require_gnulib_submodule): Register
 	the gnulib submodule before updating it, even with a shallow
 	clone of gnulib.
 	* bootstrap: Regenerate.
 	Reported by Robert Boehne.
 
+2012-10-25  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: fix a typo in a find invocation.
+
 	* gl/build-aux/bootstrap.in (require_buildreq_patch): Fix a typo.
 	* bootstrap: Regenerate.
 
+2012-10-25  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: bash versions 3.00.x do not have += functionality.
+
 	* gl/build-aux/funclib.sh: Fix a typo in fork minimisation for
 	bash versions 3.00.x.
 	* bootstrap: Regenerate.
 
+2012-10-25  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: fix missing command error in make dist.
+
 	* Makefile.am ($(readme)): Don't forget the 'test'!
 
+2012-10-25  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: fixup experr for addition whitespace in error prefix.
+
 	Fix spurious test failures due to unmatched experr output.
 	* tests/libtoolize.at, tests/old-ltdl-iface.at: Add the addition
 	2 spaces now used to justify error prefixes.
 
+2012-10-25  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: use of ';' in sed scripts is not portable.
+
 	* gl/build-aux/bootstrap.in (require_buildreq_automake)
 	(require_dotgitmodules_parameters, require_package)
 	(func_update_po_files): Use '\n' or -e to separate sed commands,
@@ -2091,17 +3318,26 @@
 	* bootstrap: Regenerate.
 	Reported by Robert Boehne.
 
+2012-10-25  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: don't $tc_standout spaces, it's ugly!
+
 	* gl/build-aux/funclib.sh (func_error): Move the prefix indent
 	before $tc_standout to avoid bright red inverse spaces.
 	* bootstrap: Regenerate.
 
+2012-10-25  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: fix rectangle select induced trailing spaces.
+
 	* gl/build-aux/funclib.sh (require_term_colors): Delete trailing
 	whitespace.
 	* bootstrap: Regenerate.
 
+2012-10-25  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: display prerequisite program environment vars.
+
 	Be more helpful when a prerequisite program from $buildreq
 	cannot be located, by showing what variable to export if it
 	is already installed but not in PATH.
@@ -2110,7 +3346,10 @@
 	programs.
 	* bootstrap: Regenerate.
 
+2012-10-25  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: honor COLORTERM and USE_ANSI_COLORS.
+
 	Plenty of machines use a terminfo database that doesn't have
 	entries for color escape sequences, even though the terminal
 	itself most likely supports ANSI color escapes.
@@ -2119,7 +3358,10 @@
 	and use standard ANSI color escape sequences.
 	* bootstrap: Regenerate.
 
+2012-10-25  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: make error messages prettier.
+
 	* gl/build-aux/funclib.sh (func_error): Indent 'error' prefix by
 	two additional spaces to line up nicely with 'warning' and
 	'running'.
@@ -2128,13 +3370,17 @@
 2012-10-24  Gary V. Vaughan  <gary@gnu.org>
 
 	bootstrap: emphasize command executions with terminal bold.
+
 	* bootstrap.in (func_show_eval): Use $require_term_colors to
 	embolden the command about to be executed in output.
 	* bootstrap: Regenerate.
 	* bootstrap.conf (libtool_build_prerequisites): Use the standard
 	(colorful!) bootstrap func_show_eval here too.
 
+2012-10-24  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: show output from 'make bootstrap-deps'.
+
 	* bootstrap.conf (libtool_build_prerequisites): Add support for
 	AM_V_GEN and AM_V_at to the temporary pre-configure Makefile.
 	Instead of eliding non-error output from bootstrap-deps, show
@@ -2146,6 +3392,7 @@
 2012-10-22  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: fixup badly formatted ChangeLog entries.
+
 	* build-aux/git-log-fix: Mostly missing category tags and refilling
 	to 64 columns, but also deleting duplicate entries from merging the
 	gary/reredo-test-operand-order branch.
@@ -2154,15 +3401,19 @@
 	* THANKS: Put email address for Paul Seidler here...
 	* build-aux/git-log-fix: ...and remove from ChangeLog here.
 
+2012-10-22  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: regenerate to propagate Bob's func_split_equals fix.
+
 	* bootstrap: regenerate.
 
 2012-10-22  Mikhail Zabaluev  <mikhail.zabaluev@gmail.com>  (tiny change)
 
 	configury: make LT_INIT options pic-only and no-pic work.
+
 	* m4/ltoptions.m4 (_LT_WITH_PIC): Set pic_mode at m4 time.
 
-2012-10-22  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+2012-10-21  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
 
 	options-parser: fix regexp quoting error.
 	* gl/build-aux/options-parser (func_split_equals): Fixed expr
@@ -2172,6 +3423,7 @@
 2012-10-21  Gary V. Vaughan  <gary@gnu.org>
 
 	syntax-check: fix violations and implement sc_old_style_quoting.
+
 	Modern GNU ASCII quoting in output and comments is done
 	'like this'.
 	* cfg.mk (sc_old_style_quoting): Try to catch most instances
@@ -2196,19 +3448,31 @@
 	tests/stresstest.at, tests/testsuite.at, tests/versioning.at:
 	Convert to upright quotes.
 
+2012-10-21  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: remove spurious shell variable braces.
+
 	* tests/testsuite.at: Allow the shell braces syntax check to pass
 	again.
 
+2012-10-21  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: add missing bootstrap override module file.
+
 	* gl/modules/bootstrap: Forgot to add this file in a previous
 	commit.
 
+2012-10-21  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: allow bootstrap.texi to pass syntax-check.
+
 	* cfg.mk (sc_require_function_nl_brace): Skip texi files.
 	* gl/doc/bootstrap.texi: Fix assorted syntax-check violations.
 
+2012-10-21  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: move into local gl overrides directory.
+
 	In order to work as if it were already adopted by upstream
 	gnulib, put bootstrap and supporting scripts into the local
 	gnulib overrides directory.
@@ -2232,11 +3496,15 @@
 2012-10-20  Gary V. Vaughan  <gary@gnu.org>
 
 	tests: make sure AC_CONFIG_MACRO_DIR is still supported.
+
 	* tests/old-m4-iface.at (AC_CONFIG_MACRO_DIR support): New test.
 	Make sure we continue to support AC_CONFIG_MACRO_DIR using
 	projects.
 
+2012-10-20  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: select the first directory from AC_CONFIG_MACRO_DIRS.
+
 	* tests/libtoolize.at (multiple AC_CONFIG_MACRO_DIRS directories):
 	New test to ensure multiple directory arguments mork correctly.
 	* libtoolize.in (func_require_ac_macro_dir): Use expr to discard
@@ -2244,7 +3512,10 @@
 	AC_CONFIG_MACRO_DIRS argument.
 	* bootstrap (func_require_macro_dir): Likewise.
 
+2012-10-20  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: migrate to new AC_CONFIG_MACRO_DIRS api.
+
 	* libtoolize.in (func_install_pkgmacro_files): Uee
 	AC_CONFIG_MACRO_DIRS.
 	(func_check_macros): Advise using AC_CONFIG_MACRO_DIRS.
@@ -2273,6 +3544,7 @@
 2012-10-19  Peter Rosin  <peda@lysator.liu.se>
 
 	libtool: parse "dumpbin -headers" to get symbols exported from implibs
+
 	* m4/libtool.m4 (_LT_CMD_GLOBAL_SYMBOLS) [MSVC]: Extract symbols
 	imported from DLLs by import libraries in the Microsoft dumpbin
 	wrapper.
@@ -2280,7 +3552,10 @@
 	lister to feed the above new code.
 	* NEWS: Update.
 
+2012-10-19  Peter Rosin  <peda@lysator.liu.se>
+
 	libtool: make func_win32_libid work when the name lister is MS dumpbin
+
 	* m4/libtool.m4 (_LT_CHECK_MAGIC_METHOD) [MSVC]: Use
 	func_win32_libid as file_magic_cmd when the name lister
 	is MS dumpbin.
@@ -2296,6 +3571,7 @@
 2012-10-19  Gary V. Vaughan  <gary@gnu.org>
 
 	bootstrap: always extract only the first AC_CONFIG_MACRO_DIR arg.
+
 	Previous versions of bootstrap concatenated all the arguments to
 	multiple invocations of AC_CONFIG_MACRO_DIR when extracting the
 	macro_dir directory name.  This change enforces correct and
@@ -2308,21 +3584,33 @@
 	multiple invocations or additional arguments to the macros they
 	trace.
 
+2012-10-19  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: extract *first* ACLOCAL_AMFLAGS -I argument.
+
 	* bootstrap (func_require_macro_dir): .* is greedy, so _G_sed_scan
 	as it was will always return the last -I argument, which is wrong.
 	Move to a shell loop to ensure we always get the first -I argument
 	if any.  (code from libtoolize.in).
 
+2012-10-19  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: use short gnu.org urls consistently.
+
 	* bootstrap.conf (buildreq): Use gnu.org/s/ style urls to match
 	the ones added automatically by the main bootstrap script.
 
+2012-10-19  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: fix a misspelled variable name.
+
 	* libtoolize.in (func_require_am_macro_dir): The loop uses _G_arg
 	not _G_opt.  Now spelled correctly.
 
+2012-10-19  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: always extract only the first AC_CONFIG_MACRO_DIR arg.
+
 	Previous releases of libtoolize used the final invocation when
 	there were several, and after the rewrite over extract-trace,
 	all the invocation directories were concatenated.  This change
@@ -2341,20 +3629,27 @@
 	* News (Important incompatible changes): Note change in semantics.
 	Reported by Eric Blake.
 
+2012-10-19  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: always extract only the first ACLOCAL_AMFLAGS include arg.
+
 	* tests/libtoolize.at (libtoolize ACLOCAL_AMFLAGS extraction):
 	New test.
 	* libtoolize.in (func_check_macros): Display the correct advice
 	when ACLOCAL_AMFLAGS specifies a macrodir, but AC_CONFIG_MACRO_DIR
 	does not.
 
+2012-10-19  Gary V. Vaughan  <gary@gnu.org>
+
 	doc: add a missing period following @xref.
+
 	* doc/libtool.texi: Silence a warning by adding back a missing
 	period.
 
 2012-10-19  Peter Rosin  <peda@lysator.liu.se>
 
 	libtool: avoid non-underscore symbols in the "dumpbin -symbols" wrapper
+
 	If an object has a symbol lacking an expected leading underscore,
 	the symbol name is not printed, but the symbol type is, leading
 	to output such as:
@@ -2374,22 +3669,30 @@
 2012-10-18  Peter Rosin  <peda@lysator.liu.se>
 
 	libtool: unbreak Windows path quoting
+
 	The lt_sed_naive_backslashify variable lost its lt_ prefix
 	when m4sh was dropped. But not everywhere.
 	* build-aux/ltmain.in (func_convert_core_file_wine_to_w32)
 	(func_convert_core_msys_to_w32): Drop the lt_ prefix from
 	the lt_sed_naive_backslashify variable.
 
+2012-10-18  Peter Rosin  <peda@lysator.liu.se>
+
 	libtool: kill leftover m4 quoting
+
 	* build-aux/ltmain.in (func_mode_compile): Use literal ] and [.
 
 2012-10-18  Gary V. Vaughan  <gary@gnu.org>
 
 	syntax-check: exclude false positive nested quote test.
+
 	* build-aux/funclib.sh (func_echo_infix_1): These quotes are not
 	actually nested, so add an exclude marker for the syntax-check.
 
+2012-10-18  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: don't set auxscriptsdir at bootstrap time.
+
 	* build-aux/ltmain.in: Declare relative paths to aux scripts from
 	source commands, for early inlining during bootstrap.
 	* Makefile.am (bootstrap_edit): Move auxscriptsdir
@@ -2402,7 +3705,10 @@
 	been inlined.
 	Reported by Peter Rosin.
 
+2012-10-18  Gary V. Vaughan  <gary@gnu.org>
+
 	extract-trace: only source funclib.sh when $progname is extract-trace.
+
 	* build-aux/extract-trace: $usage is too generic, and can cause
 	sourced extract-trace to re-source options-parser.  We already
 	require that funclib.sh be sourced before sourcing options-parser,
@@ -2412,6 +3718,7 @@
 2012-10-18  Peter Rosin  <peda@lysator.liu.se>
 
 	libtool: fix spelling nit
+
 	* build-aux/ltmain.in (func_generate_dlsyms): Fix spelling nit.
 	* libltdl/libltdl/lt_system.h: Likewise.
 	* m4/libtool.m4 (_LT_CMD_GLOBAL_SYMBOLS): Likewise.
@@ -2419,6 +3726,7 @@
 2012-10-12  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: remove m4sh support.
+
 	Now that the code base has coalesced around a single option
 	parser, there's no need for the unused getopt.m4sh and support.
 	* build-aux/getopt.m4sh, build-aux/general.m4sh,
@@ -2432,7 +3740,10 @@
 	* HACKING (Editing `.m4sh' Files): Remove and renumber following
 	sections.
 
+2012-10-12  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: rewritten over funclib.sh instead of general.m4sh.
+
 	* Makefile.am (ltmain_m4sh, ltmain_sh_edit): Remove.
 	(ltmain_in): Path to ltmain.in.
 	(ltmain_sh): Generate ltmain.sh from ltmain.in using
@@ -2440,7 +3751,10 @@
 	* build-aux/ltmain.m4sh: Remove.
 	* build-aux/ltmain.in: Rewritten as a client of funclib.sh.
 
+2012-10-12  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: inline sourced helper scripts during install.
+
 	* build-aux/inline-source: New file.
 	* Makefile.am (inline_source): Path to inline-source script.
 	(EXTRA_DIST): Distribute inline-source too.
@@ -2450,7 +3764,10 @@
 	Don't install helper_scripts.
 	(uninstall-hook): Don't uninstall helper_scripts.
 
+2012-10-12  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: rewritten over funclib.sh instead of general.m4sh.
+
 	* Makefile.am (libtoolize_m4sh): Remove.
 	(EXTRA_DIST): Delete libtoolize_m4sh.
 	(libtoolize_in): Remove rule.
@@ -2462,7 +3779,10 @@
 	* tests/libtoolize.at, tests/old-ltdl-iface.at (experr): adjust
 	to match funclib.sh error output.
 
+2012-10-12  Gary V. Vaughan  <gary@gnu.org>
+
 	options-parser: correctly quote shell meta-characters in arguments.
+
 	When any argument contains a shell meta-character, it needs to be
 	quoted when passed around.  We already pass parameter lists as
 	space delimited strings of arguments, and pass the string through
@@ -2479,7 +3799,10 @@
 	parameter reassignment `set' call separately from evaluating the
 	dynamically named hook results variable.
 
+2012-10-12  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: factor common shell code into build-aux/funclib.sh.
+
 	Moving potentially reusable code into a common file that can
 	be sourced by clients, and adjusting for impedance mismatch
 	or necessary renames during integration.
@@ -2522,7 +3845,10 @@
 	* Makefile.am (funclib_sh): New macro; path to funclib.sh.
 	(EXTRA_DIST): Add $(funclib_sh).
 
+2012-10-12  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: source extract-trace rather than fork and execute each call.
+
 	Rather than forking and executing a full $SHELL for each macro
 	extraction, source the script and its dependencies into our
 	execution space and use the provided func_extract_trace API.
@@ -2537,7 +3863,10 @@
 	(install-data-local): Inject pkgauxdir into installed libtoolize
 	during installation.
 
+2012-10-12  Gary V. Vaughan  <gary@gnu.org>
+
 	options-parser: employ fork minimisation.
+
 	* build-aux/options-parser (_G_HAVE_XSI_OPS): Environment
 	overrideable defaults for bash and zsh, which are known to
 	support XSI extensions.
@@ -2548,16 +3877,25 @@
 	(func_split_equals, func_split_short_opt): Similarly for XSI
 	probe to select fastest working implementation.
 
+2012-10-12  Gary V. Vaughan  <gary@gnu.org>
+
 	options-parser: keep non-option arguments separate!
+
 	* build-aux/options-parser (func_parse_options): When there is
 	more than one non-option argument, "$*" forces all of them into
 	a single string.  Use ${1+"$@"} to set arguments correctly.
 
+2012-10-12  Gary V. Vaughan  <gary@gnu.org>
+
 	options-parser: prefix usage message with "Usage: ".
+
 	* build-aux/options-parser (func_usage_message): Prefix usage
 	message with "Usage: ".
 
+2012-10-12  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: work when using fallback shallow gnulib clone.
+
 	Bootstrapping without --gnulib-srcdir creates a shallow gnulib
 	clone to run gnulib-tool out of, except that the parent package
 	is almost certainly using a revision of gnulib before just tha
@@ -2568,7 +3906,10 @@
 	Don't forget to run 'git submodule update' to select the correct
 	gnulib revision.
 
+2012-10-12  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: require GNU make to bootstrap.
+
 	Make is not installed by default in some environments, such as
 	cygwin... which is slow enough already without having to wait
 	for gnulib-tool, bootstrap and half of configure to complete
@@ -2577,7 +3918,10 @@
 	requirements.  Now missing make is diagnosed in the earliest
 	part of bootstrap.
 
+2012-10-12  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: simplify "Local variables:" footer with time-stamp-pattern.
+
 	* bootstrap, build-aux/extract-trace, build-aux/options-parser
 	(Local variables): Use time-stamp-pattern to set number of
 	searched lines to 10, and to replace time-stamp-start,
@@ -2614,6 +3958,7 @@
 2012-10-06  Gary V. Vaughan  <gary@gnu.org>
 
 	tests: sanitise the libtool quote checking Autotests.
+
 	Carefully comment the maze of quoting and escaping needed to
 	pass through M4, $SHELL, and grep before regexp matching.
 	* tests/libtool.at (quote shell meta-characters in filenames):
@@ -2626,7 +3971,10 @@
 	Escape double-quote literals portably.
 	Reported by Peter Rosin.
 
+2012-10-06  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: ensure mdemo.at doesn't rely on installed libltdl.
+
 	* tests/mdemo.at (configuer.ac): Build an included convenience
 	libltdl.
 	(Makefile.am): Add subdir-objects.
@@ -2637,7 +3985,10 @@
 	in preference to any installed libltdl.
 	Reported by Peter Rosin.
 
+2012-10-06  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: allow for unstable fortran output ordering.
+
 	Due to differences in line-endings between C stdout and Fortran
 	stdout, as well as unpredictable output ordering between
 	platforms and runtimes, weaken success criteria to not require
@@ -2653,7 +4004,10 @@
 	* tests/testsuite.at (LT_AT_HOST_DATA) [MinGW]: Keep leading
 	and trailing spaces and tabs when converting line endings.
 
+2012-10-05  Peter Rosin  <peda@lysator.liu.se>
+
 	tests: fix line ending problems on MinGW
+
 	* tests/cdemo.at: Use LT_AT_HOST_DATA for expected output from
 	compiled programs.
 	* tests/demo.at: Likewise.
@@ -2666,6 +4020,7 @@
 2012-10-05  Gary V. Vaughan  <gary@gnu.org>
 
 	tests: remove last vestiges of the legacy test harness.
+
 	All legacy tests have been fully migrated to Autotest, so
 	no need to cling to the legacy scaffolding any more.
 	* tests/defs.m4sh: Delete file.
@@ -2674,38 +4029,56 @@
 	* Makefile.am (defs_m4sh, defs_in, defs, TESTS): Remove.
 	Adjust all dependencies.
 
+2012-10-05  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: migrate legacy tagtrace.test to Autotest.
+
 	* tests/tagtrace.test: Delete file.
 	* tests/libtool.at (test LT_SUPPORTED_TAG interface): Add
 	Autotest equivalent.
 	* Makefile.am (TESTS): Remove tests/tagtrace.test.
 
+2012-10-05  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: migrate legacy objectlist.test to Autotest.
+
 	* tests/objectlist.test: Delete file.
 	* tests/libtool.at (check objectlist file operation): Add
 	Autotest equivalent.
 	* Makefile.am (TESTS): Remove tests/objectlist.test.
 
+2012-10-05  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: migrate legacy link.test and link-2.test to Autotest.
+
 	* tests/link.test, tests/link-2.test: Delete files.
 	* tests/libtool.at (Check link operation): Add Autotest
 	equivalent.
 	* Makefile.am (TESTS): Remove tests/link.test and
 	tests/link-2.test.
 
+2012-10-05  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: migrate legacy nomode.test to Autotest.
+
 	* tests/nomode.test: Delete file.
 	* test/libtool.at (Check help output, No mode diagnostic): Add
 	equivalent tests in Autotest.
 	* Makefile.am (TESTS): Remove tests/nomode.test.
 
+2012-10-05  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: migrate legacy suffix.test to Autotest.
+
 	* tests/suffix.test: Delete file.
 	* tests/libtool.at (Transform source suffices): Add Autotest
 	equivalent.
 	* Makefile.am (TESTS): Remove tests/suffix.test.
 
+2012-10-05  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: migrate legacy quote.test to Autotest.
+
 	* tests/quote.test: Moved from here...
 	* tests/libtool.at: ...to here, and updated to Autotest.
 	* Makefile.am (TESTS): Remove tests/quote.test.
@@ -2714,25 +4087,35 @@
 2012-10-04  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: add missing 2012 copyright to newly pushed old files.
+
 	* tests/cdemo.at, tests/demo.at, tests/depdemo.at,
 	tests/f77demo.at, tests/fcdemo.at, tests/mdemo.at,
 	tests/tagdemo.at (Copyright): Update with missing 2012.
 
+2012-10-04  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: remove test/demo directories from exemption regexps.
+
 	* cfg.mk (exclude_file_name_regex--sc_bindtextdomain)
 	(exclude_file_name_regexp--sc_program_name): Remove. The excluded
 	directories no longer exist.
 	(exclude_file_name_regexp--sc_prohibit_strcmp): Remove subexpression
 	for matching removed demo directories.
 
+2012-10-04  Gary V. Vaughan  <gary@gnu.org>
+
 	configure: remove unused conditionals and support for order only rules.
+
 	Clean up some more unused cruft.
 	* configure.ac (HAVE_CXX, HAVE_F77, HAVE_FC, HAVE_GCJ, HAVE_RC):
 	Remove.  These were only used by the recently removed legacy
 	tests.
 	[order-only prerequisites]: Ditto.
 
+2012-10-04  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: remove support for `-r' and `reconf_dirs'.
+
 	With all those extra demo directories out of the way, we can
 	revert to a more canonical bootstrap process, and jettison the
 	cruft that was only there to work around the pain of
@@ -2746,7 +4129,10 @@
 	(libtool_options_prep, libtool_parse_options)
 	(libtool_validate_options): Remove.
 
+2012-10-04  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: let pic_flag and with-pic Autotests work on non-VPATH builds.
+
 	* tests/pic_flag.at: Use _LT_DEMO_SETUP to generate a demo style
 	project, rather than relying on $abs_top_srcdir/configure.
 	* tests/with-pic.at: Likewise.
@@ -2754,7 +4140,10 @@
 	tests/with-pic.at so that they run immediately following
 	tests/demo.at.
 
+2012-10-04  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: migrate legacy tests/fcdemo tests to Autotest.
+
 	Along with the demise of the last demo directory, so all the
 	cruft for re-autotooling and distributing the additional
 	directories is no longer necessary.
@@ -2776,7 +4165,10 @@
 	(COMMON_TESTS): Rename from this...
 	(TESTS): ...to this.
 
+2012-10-04  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: migrate legacy tests/f77demo tests to Autotest.
+
 	* tests/f77demo.at: New autotest groups, based on...
 	* tests/f77demo-conf.test, tests/f77demo-exec.test,
 	tests/f77demo-make.test, tests/f77demo-shared-exec.test,
@@ -2790,7 +4182,10 @@
 	tests/f77demo/fprogram.f: Remove.
 	* configure.ac (CONF_SUBDIRS): Remove tests/f77demo.
 
+2012-10-04  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: migrate legacy tests/mdemo2 tests to Autotest.
+
 	This test was just a small non-ltdl aware library to load a
 	library from the legacy mdemo test, which in turn used ltdl to
 	call functions from modules. No need to create a whole other
@@ -2805,7 +4200,10 @@
 	* configure.ac (CONF_SUBDIRS): Remove tests/mdemo2.
 	* Makefile.am: Adjust.
 
+2012-10-04  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: migrate legacy tests/mdemo tests to Autotest.
+
 	* tests/mdemo.at: New autotest groups, based on...
 	* tests/mdemo-conf.test, tests/mdemo-dryrun.test,
 	tests/mdemo-exec.test, tests/mdemo-inst.test,
@@ -2823,7 +4221,10 @@
 	* configure.ac (CONF_SUBDIRS): Remove tests/mdemo.
 	* Makefile.am: Adjust.
 
+2012-10-04  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: migrate legacy tests/pdemo tests to Autotest.
+
 	This test was a thinly veiled copy of the basic legacy
 	demo-conf.test series, with the addition of long file names that
 	are not unique in the first 17 characters of their name, mashed
@@ -2848,7 +4249,10 @@
 	* configure.ac (CONF_SUBDIRS): Remove tests/pdemo.
 	* Makefile.am: Adjust.
 
+2012-10-04  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: migrate legacy tests/tagdemo tests to Autotest.
+
 	* tests/tagdemo.at: New autotest groups, based on...
 	tests/tagdemo-conf.test, tests/tagdemo-exec.test,
 	tests/tagdemo-make.test, tests/tagdemo-shared-exec.test,
@@ -2866,7 +4270,10 @@
 	* configure.ac (CONF_SUBDIRS): Remove tests/tagdemo.
 	* Makefile.am: Adjust.
 
+2012-10-04  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: migrate legacy tests/depdemo tests to Autotest.
+
 	* tests/depdemo.at: New autotest groups, based on...
 	* tests/depdemo-conf.test, tests/depdemo-exec.test,
 	tests/depdemo-inst.test, tests/depdemo-make.test,
@@ -2892,7 +4299,10 @@
 	* configure.ac (CONF_SUBDIRS): Remove tests/depdemo.
 	* Makefile.am: Adjust.
 
+2012-10-04  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: migrate legacy tests/demo tests to Autotest.
+
 	* tests/demo.at: New autotest groups, based on...
 	* tests/demo-conf.test, tests/demo-deplibs.test,
 	tests/demo-exec.test, tests/demo-hardcode.test,
@@ -2917,7 +4327,10 @@
 	* configure.ac (CONF_SUBDIRS): Remove tests/demo.
 	* Makefile.am: Adjust.
 
+2012-10-04  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: migrate legacy tests/cdemo tests to Autotest.
+
 	* tests/cdemo.at: New Autotest groups, based on...
 	* tests/cdemo-conf.test, tests/cdemo-exec.test,
 	tests/cdemo-make.test, tests/cdemo-shared-exec.test,
@@ -2932,7 +4345,10 @@
 	* configure.ac (CONF_SUBDIRS): Remove tests/cdemo.
 	* Makefile.am: Adjust.
 
+2012-10-04  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: distribute a single ChangeLog file.
+
 	* ChangeLog.1996, ChangeLog.1997, ChangeLog.1998, ChangeLog.1999,
 	ChangeLog.2000, ChangeLog.2001, ChangeLog.2002, ChangeLog.2003,
 	ChangeLog.2004, ChangeLog.2005, ChangeLog.2006, ChangeLog.2007,
@@ -2944,7 +4360,10 @@
 	($(changelog)): Update to concatenate non-distributed
 	ChangeLog.old file to distributed ChangeLog after git log entries.
 
+2012-10-04  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and implement sc_prohibit_space_semicolon.
+
 	No need for a spurious space before a command ending semi-colon.
 	* cfg.mk (sc_prohibit_space_semicolon): New test to catch
 	accidental reintroduction of spurious spaces removed by this
@@ -2973,95 +4392,150 @@
 2012-10-02  Gary V. Vaughan  <gary@gnu.org>
 
 	tests: simplify some shell code.
+
 	* tests/fail.at: Simplify.
 	* tests/static.at: Likewise.
 
+2012-10-02  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: unroll complex nested compound statements
+
 	* build-aux/ltmain.m4sh: Use an if statement instead of ugified
 	compound statements.
 
+2012-10-02  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: unroll nested if into a single case statement.
+
 	* build-aux/ltmain.m4sh (func_mode_link): Unroll a hard to
 	understad nested if statement into a more readable single case
 	statement.
 
+2012-10-02  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: simplify $skipped_export blocks
+
 	* build-aux/ltmain.m4sh (func_mode_link): Save an if statement
 	with '$skipped_export && { block; }' instead of 'if $skipped_export;
 	then block; fi'.
 
+2012-10-02  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: simplify an if statement
+
 	* build-aux/ltmain.m4sh (func_mode_link): Reverse the branch
 	order for an if statement for readability.
 	* m4/libtool.m4: Likewise.
 
+2012-10-02  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: save an if statement, with a compound statement.
+
 	* build-aux/ltmain.m4sh (func_mode_link): Simplify.
 
+2012-10-02  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: simplify multiple string tests
+
 	* build-aux/ltmain.m4sh (func_mode_link): Save test invocations
 	by using 'test x,y = "$a,$b"' instead of 'test x = "$a" && test y
 	= "$b"'.
 	* m4/libtool.m4: Likewise.
 
+2012-10-02  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: fold if into a compound OR statement when more readable
+
 	* build-aux/ltmain.m4sh (func_mode_link): For readability, use
 	'test string = "$var" || { stuff; }' in preference to
 	'if test string != "$var"; then stuff; fi'.
 
+2012-10-02  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: use false or : for $rmforce, and simplify
+
 	* build-aux/ltmain.m4sh (func_mode_uninstall): Save a string
 	comparison by setting $rmforce to false or : and using it
 	directly as the first argument to if.
 
+2012-10-02  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: use false or : for $wrappers_required, and simplify
+
 	* build-aux/ltmain.m4sh (func_mode_link): Save a string
 	comparison by setting $wrappers_required to false or : and using
 	it directly with a ored block rather than an if statement.
 
+2012-10-02  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: use false or : for $linkalldeplibs, and simplify
+
 	* build-aux/ltmain.m4sh (func_mode_link): Save a string
 	comparison by setting $linkalldeplibs to false or : and using it
 	directly as the first argument to if.
 
+2012-10-02  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: use false or : for $valid_a_lib, and simplify
+
 	* build-aux/ltmain.m4sh (func_mode_link): Save a string
 	comparison by setting $valid_a_lib to false or : and using it
 	directly as the first argument to if.
 
+2012-10-02  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: use false or : for $found, and simplify
+
 	* build-aux/ltmain.m4sh (func_mode_link): Save a string
 	comparison by setting $found to false or : and using it directly
 	as the first argument to if.
 
+2012-10-02  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: use false or : for $alldeplibs, and simplify
+
 	* build-aux/ltmain.m4sh (func_mode_link): Save a string
 	comparison by setting $alldeplibs to false or : and using it
 	directly as the first argument to if.
 
+2012-10-02  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: use false or : for $preload, and simplify
+
 	* build-aux/ltmain.m4sh (func_mode_link): Save a string
 	comparison by setting $preload to false or : and using it directly
 	instead of if statements.
 
+2012-10-02  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: use false or : for $my_pic_p, and simplify
+
 	* build-aux/ltmain.m4sh (func_generate_dlsyms): Save a string
 	comparison by setting $my_pic_p to false or : and using it directly
 	instead of calling if.
 	Adjust all callers.
 
+2012-10-02  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: use false or : for $finalize, and simplify
+
 	* build-aux/ltmain.m4sh (func_mode_install): Save a string
 	comparison by setting $finalize to false or : and using it
 	directly as the first argument to if.
 
+2012-10-02  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: use false or : for $isdir, and simplify
+
 	* build-aux/ltmain.m4sh (func_mode_install): Save a string
 	comparison by setting $isdir to false or : and using it directly
 	as the first argument to if.
 
+2012-10-02  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: [REDO] fix violations and implement
 	 sc_prohibit_test_const_follows_var.
+
 	To safely use a non-literal fist argument to 'test', you must
 	always prepend a literal non-'-' character, but often the second
 	operand is a constant that doesn't begin with a '-' already, so
@@ -3085,6 +4559,7 @@
 2012-09-19  Peter Rosin  <peda@lysator.liu.se>
 
 	tests: skip with-pic test when no "real" pic flag is used.
+
 	* tests/with-pic.at: Windows uses "-DDLL_EXPORT -DPIC" as the pic
 	"flag", but never applies it to static libraries. Cater for this
 	and skip if no "real" pic flag is in use.
@@ -3093,20 +4568,32 @@
 
 	syntax-check: fix texinfo formatting flagged by
 	 prohibit_undesirable_word_seq.
+
 	* doc/libtool.text: Fix several misuses of @xref and @pxref so that
 	the prohibit_undesirable_word_seq syntax check passes again.
 
+2012-09-16  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: remove useless_braces_in_variable_derefs.
+
 	* build-aux/general.m4sh: Remove spurious braces around
 	${ZSH_VERSION} dereference.
 	* build-aux/ltmain.m4sh (func_mode_link): Likewise for ${wl}.
 
+2012-09-16  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: skip prohibit_strncpy.
+
 	* cfg.mk (local-checks-to-skip): sc_prohibit_strncpy.
 
+2012-09-16  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: skip prohibit_always_true_header_tests rule.
+
 	* cfg.mk (local-checks-to-skip): Add
 	sc_prohibit_always_true_header_tests.
+
+2012-09-16  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: Revert "bootstrap: delete unneeded README-release patch"
 	This reverts commit 11cd425e7d47111956381dba28f8c1b34e14653f.
@@ -3114,44 +4601,70 @@
 	good to keep them to hand with the release notes.
 	And the additional distchecks are important prior to a release.
 
+2012-09-16  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: remove unused cvsu script.
+
 	* build-aux/cvsu: Remove. This script is not useful now that
 	Libtool's repository is hosted in git.
 	* Makefile.am (build_scripts): Remove cvsu reference.
 
+2012-09-16  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: run update-copyright for missing 2011 and 2012 years.
+
 	See maintain.texi (Copyright Notices) for rules for maintaining
 	the years in copyright notices.
 	* All Files (Copyright): Updated with missing 2011 and 2012.
 
+2012-09-16  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: use gnulib update-copyright script.
+
 	See maintain.texi (Copyright Notices) for rules for maintaining
 	the years in copyright notices.
 	* bootstrap.conf (gnulib_modules): Add update-copyright.
 	* cfg.mk (update-copyright-env): Set environment variables for
 	update-copyright script.
 
+2012-09-16  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: update bootstrap script to latest upstream.
+
 	* bootstrap, build-aux/options-parser: apply upstream fixes and
 	enhancements.
 
+2012-09-16  Gary V. Vaughan  <gary@gnu.org>
+
 	git: don't complain about new parallel tests driver and file droppings.
+
 	* build-aux/.gitignore: Ignore parallel `test-driver' script.
 	* tests/.gitignore: Ignore `test-driver' .trs file droppings.
 
+2012-09-16  Gary V. Vaughan  <gary@gnu.org>
+
 	gnulib: update local gnulib patches.
+
 	* gl/build-aux/announce-gen.diff: Remove hunks adopted upstream.
 	* gl/build-aux/do-release-commit-and-tag.diff: Refresh this patch
 	to match current gnulib.
 
+2012-09-16  Gary V. Vaughan  <gary@gnu.org>
+
 	gnulib: update gnulib submodule.
 
+2012-09-16  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: ensure there is a ChangeLog before running automake.
+
 	Automake refuses to run in GNU-mode unless there is a ChangeLog file
 	in the top-level directory.
 	* bootstrap.conf (libtool_force_changelog): Create a dummy ChangeLog.
 
+2012-09-16  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: improve verbose mode output.
+
 	* libtoolize (func_require_seen_ltdl)
 	(func_require_seen_libtool): Output success message in verbose
 	mode.
@@ -3159,22 +4672,26 @@
 2012-08-22  Peter O'Gorman  <peter@pogma.com>
 
 	libtool: Add the 'n' to then.
+
 	* m4/libtool.m4: fix typo.
 	Reported by Brad Smith.
 
 2012-08-22  Andreas Schwab  <schwab@linux-m68k.org>
 
 	libtool: Pass through -g* so that debugging information is not dropped
+
 	* ltmain.m4sh (func_mode_link): Pass through -g*.
 
 2012-08-22  David Edelsohn  <dje.gcc@gmail.com>
 
 	libtool: AIX PIC shared library support
+
 	* m4/libtool.m4 (_LT_COMPILER_PIC): Add -fPIC to GCC and GXX for AIX.
 
 2012-08-22  Brad Smith  <brad@comstyle.com>
 
 	libtool: Update/simplify OpenBSD support
+
 	* m4/libtool.m4: Forget about 11 year old releases.
 
 2012-08-19  Peter Rosin  <peda@lysator.liu.se>
@@ -3188,53 +4705,63 @@
 2012-04-19  Mike Frysinger  <vapier@gentoo.org>
 
 	libtool: Handle getconf returning "undefined".
+
 	* m4/libtool.m4: Check for "undefined" from `getconf`.
 
 2012-03-17  Peter Rosin  <peda@lysator.liu.se>
 
 	bootstrap: delete unneeded README-release patch
+
 	* gl/top/README-release.diff: Delete.
 
 2012-03-16  Peter O'Gorman  <peter@pogma.com>
 
 	libtool: Fix typo that caused sys_lib_search_path_spec to be wrong.
+
 	* m4/libtool.m4: s/lt_fooi/lt_foo/.
 	Reported by Paul Seidler.
 
 2012-02-21  Samuel Thibault  <samuel.thibault@gnu.org>
 
 	libtool: Improve GNU/Hurd support.
+
 	* m4/libtool.m4: Add gnu* match where it was missing.
 
 2012-02-19  Titus von Boxberg  <titus@v9g.de>
 
 	libtool: Accept clang's -stdlib linker flag.
+
 	build-aux/ltmain.m4sh: Don't drop the -stdlib= flag.
 
 2012-02-19  Juergen Reuter  <reuter@t00pcx17094.desy.de>
 
 	libtool: Enable nagfor fortran compiler support
+
 	* build-aux/ltmain.m4sh: nagfor compatible version string.
 	* m4/libtool.m4: nagfor support.
 
 2012-02-19  Juergen Reuter  <reuter@theoc01.desy.de>
 
 	libtool: Fixing -shared error message for nagfor compiler.
+
 	* m4/libtool.m4: Fix -shared.
 
 2012-02-19  Pavel (Pasha) Shamis  <shamisp@ornl.gov>
 
 	ltdl: Improve debug error reporting in ltdl.
+
 	* libltdl/ltdl.c: Print the error message if loading fails.
 
 2012-02-19  Peter O'Gorman  <peter@pogma.com>
 
 	maint: Deleted unneeded gitlog-to-changelog patch
+
 	* gl/build-aux/gitlog-to-changelog.diff: Delete.
 
 2012-02-02  Roumen Petrov  <bugtrack@roumenpetrov.info>  (tiny change)
 
 	fixup: restore EXPORTS test
+
 	Commit v2.4.2-120-g962aa91
 	syntax-check: fix violations and implement sc_prohibit_test_const_follows_var
 	inadvertedly reversed the meaning of the comparison.
@@ -3246,15 +4773,20 @@
 2012-01-30  Peter Rosin  <peda@lysator.liu.se>
 
 	cwrapper: avoid surplus strlen calculations.
+
 	* build-aux/ltmain.m4sh (func_emit_cwrapperexe_src:lt_update_exe_path):
 	Avoid surplus strlen calculations.
 
 2011-12-24  Gary V. Vaughan  <gary@gnu.org>
 
 	bootstrap: fix Autoconf version typo.
+
 	* build-aux/options-parser: s/2\.62/2.68/
 
+2011-12-24  Gary V. Vaughan  <gary@gnu.org>
+
 	gnulib: update gnulib submodule.
+
 	Among others, this fixes the reference to a local commit.
 	* gnulib: Updated to todays master HEAD revision.
 	* gl/top/README-release.diff: Update to account for changes to
@@ -3263,6 +4795,7 @@
 2011-12-18  Gary V. Vaughan  <gary@gnu.org>
 
 	libtool: make fork minimisation compatible with dash and zsh.
+
 	* build-aub/general.m4sh (lt_HAVE_PLUSEQ_OP): Instead of using
 	$((..)) arithmetic, which causes an error on dash, use a case
 	based bash version check.
@@ -3271,7 +4804,10 @@
 	detected.
 	Reported by Stefano Lattarini.
 
+2011-12-18  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: adopt autoconf echo normalization code.
+
 	Dash shipped with Ubutu-11.10 as /bin/sh, among others, still
 	has a crippled echo builtin that mis-handles backslashes.
 	* build-aux/options-parser (bs_echo): Adopt the autoconf echo
@@ -3286,7 +4822,10 @@
 	contain backslashes or be overly long.
 	Reported by Reuben Thomas.
 
+2011-12-18  Gary V. Vaughan  <gary@gnu.org>
+
 	libtool: minimise forks per invocation under bash.
+
 	* build-aux/general.m4sh (lt_HAVE_PLUSEQ_OP, lt_HAVE_ARITH_OP)
 	(lt_HAVE_XSI_OPS): Set these without forking a test script when
 	running under bash, to avoid a few unnecessary forks.
@@ -3294,11 +4833,13 @@
 2011-12-13  H.J. Lu  <hongjiu.lu@intel.com>
 
 	libtool: Support x32.
+
 	* m4/libtool.m4 (_LT_ENABLE_LOCK): Support x32.
 
 2011-12-08  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: disable prohibit_always-defined_macros syntax check.
+
 	Aside from Apple grep silently failing to run this test and
 	report violations, libtool still uses non-gnulib versions of
 	dirent.h and argz.h which use the same macros, but are not
@@ -3308,11 +4849,17 @@
 	(local-checks-to-skip): ...to here.
 	Reported by Peter O'Gorman.
 
+2011-12-08  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: s/snippit/snippet/.
+
 	* tests/demo/foo.h, tests/pdemo/foo.h: Spell `snippet' correctly.
 	Reported by Stefano Lattarini.
 
+2011-12-08  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: make sure file restore traps are called correctly on AIX.
+
 	* tests/demo-noinst-link.test (func_save_files): set the restore
 	trap outside a function, otherwise AIX 5.3 /bin/sh will run the
 	trap at the end of the function, instead of when the script
@@ -3321,18 +4868,27 @@
 	* tests/depdemo-relink.test (func_save_files): Ditto.
 	Reported by Stefano Lattarini.
 
+2011-12-08  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: eliminate some more spurious leading Xs.
+
 	* m4/libtool.m4: Reverse argument order to eliminate spurious
 	leading X's.
 
+2011-12-08  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: put back missing spaces before parens.
+
 	* bootstrap (func_require_buildreq_autobuild)
 	(func_require_buildreq_automake): Vi's delete word command is
 	too greedy and also eats trailing whitespace before following
 	non-word-chars. Put back the spaces it ate so that
 	syntax-checks pass once again.
 
+2011-12-08  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: refactor copying filter creation.
+
 	Prevent the various require_filter functions from becoming too
 	long by factoring common code into new functions.
 	* libtoolize (func_make_relative_dir_filter)
@@ -3344,7 +4900,10 @@
 	(require_ltdl_relative_aux_dir): Remove.
 	(require_ltdl_relative_macro_dir): Ditto.
 
+2011-12-08  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: pick XSI funcs at runtime, not configure time.
+
 	Determine, on a function by function basis, what XSI features
 	are available in the shell that is actually running the script,
 	rather than the one that was picked at configure time by the
@@ -3366,7 +4925,10 @@
 	func_dirname_and_basename.
 	* NEWS: Updated.
 
+2011-12-08  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: share useful functions from general.m4sh.
+
 	* build-aux/ltmain.m4sh (func_append, func_append_quoted)
 	(func_arith, func_len): Removed from here...
 	* build-aux/general.m4sh (func_append, func_append_quoted)
@@ -3377,11 +4939,17 @@
 	Fallback functions are now in any m4sh generated file
 	automatically.
 
+2011-12-08  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: reorder function definitions to keep func_filter_* together.
+
 	* libtoolize: Restore asciibetical order, so that all the
 	filter function definitions are together.
 
+2011-12-08  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: use _filter as a prefix for better ordering.
+
 	* libtoolize.m4sh (require_Makefile_am_filter)
 	(require_ltdl_mk_filter, require_aclocal_m4_filter)
 	(require_configure_ac_filter): Rename these functions from this...
@@ -3393,21 +4961,33 @@
 	(filter_Makefile_am, filter_ltdl_mk, filter_aclocal_m4)
 	(filter_configure_ac): ...to this, respectively.
 
+2011-12-08  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: rename ltdl.mk filter function.
+
 	* libtoolize.m4sh (require_Makefile_inc_filter): Rename from
 	this...
 	(require_ltdl_mk_filter): ...to this. Adjust all callers.
 
+2011-12-08  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: escape quotes properly in generated functions.
+
 	* bootstrap: Although not a real bug, for consistency, be sure
 	to correctly escape single quotes inside a single quoted
 	function generator.
 
+2011-12-08  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: reorder function definitions to keep func_buildreq_* together.
+
 	* bootstrap: Restore asciibetical order, so that all the
 	buildreq function definitions are together.
 
+2011-12-08  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: use _buildreq as a prefix for better ordering.
+
 	* bootstrap (require_autobuild_buildreq)
 	(require_autoconf_buildreq, require_automake_buildreq)
 	(require_autopoint_buildreq, require_libtoolize_buildreq)
@@ -3417,13 +4997,19 @@
 	(require_buildreq_libtoolize, require_buildreq_patch): ...to
 	these, respectively.  Adjust all callers.
 
+2011-12-08  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: ensure consistent function header comments.
+
 	* bootstrap (require_bootstrap_uptodate)
 	(require_buildtools_uptodate): Use `require_...' in header
 	comment for these functions to be consistent with the rest,
 	rather than `func_require_...'.
 
+2011-12-08  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: make sure patch is available to bootstrap if necessary.
+
 	Make sure we're not lacking any functionality provided by the
 	incumbent gnulib bootstrap script, and where it's easy to do so
 	(like it is here), provide better functionality!
@@ -3441,10 +5027,14 @@
 2011-11-26  Gary V. Vaughan  <gary@gnu.org>
 
 	m4: fix logic error leading to -fno-rtti being added wrongly.
+
 	* m4/libtool.m4 (_LT_COMPILER_OPTION): Negate comparison so that
 	compiler flags are added correctly.
 
+2011-11-26  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: Fix generated ChangeLog typos.
+
 	* build-aux/git-log-fix: Spell Stefano Lattarini's name
 	correctly.
 	Don't use my home email address for GNU commits.
@@ -3452,6 +5042,7 @@
 2011-11-25  Gary V. Vaughan  <gary@gnu.org>
 
 	syntax-check: fix violations and implement sc_useless_braces_in_variable_derefs.
+
 	Until now, libtool sources have used braced variable names
 	seemingly at random! Almost always the braces are just noise, so
 	remove all the unnecessary ones.
@@ -3467,7 +5058,10 @@
 	tests/objectlist.test, tests/quote.test, tests/static.at: Remove
 	spurious braces.
 
+2011-11-25  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and implement sc_prohibit_sed_s_comma.
+
 	I like to name temporary directories that I will remove shortly
 	with two leading commas so that they sort lexicographically at
 	the top of `ls' output.  Now, `./configure
@@ -3492,7 +5086,10 @@
 	expression.
 	* NEWS: Updated.
 
+2011-11-25  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and implement sc_prohibit_bare_basename.
+
 	* cfg.mk (sc_prohibit_bare_basename, sc_prohibit_basename_with_sed):
 	Make sure not to go back to using occasional `|$basename' or
 	`|$dirname' syntax.
@@ -3501,7 +5098,10 @@
 	* tests/fcdemo-shared.test, tests/fcdemo-static.test,
 	* tests/libtoolize.at: Fix violations.
 
+2011-11-25  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: migrate tests/sh.test checks to syntax-checks.
+
 	Some modernization of the legacy testsuite.
 	* tests/sh.test: Remove.
 	* Makefile.am (COMMON_TESTS): Adjust.
@@ -3528,7 +5128,10 @@
 	tests/subproject.at, tests/sysroot.at, tests/tagtrace.test,
 	tests/testsuite.at: Fix violations of the new syntax checks.
 
+2011-11-25  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and implement sc_useless_quotes_in_assignment.
+
 	Contrary to popular belief, Bourne shell does not resplit RHS of
 	assignments after expansion, so if there are no unquoted shell
 	metacharacters or whitespace, the quotes are useless.
@@ -3548,7 +5151,10 @@
 	tests/no-executables.at, tests/quote.test, tests/suffix.test:
 	Remove spurious quotes.
 
+2011-11-25  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and implement sc_useless_quotes_in_case.
+
 	Contrary to popular belief, Bourne shell does not resplit case
 	expressions after expansion, so if there are no unquoted shell
 	metacharacters or whitespace, the quotes are useless.
@@ -3559,12 +5165,18 @@
 	tests/demo-nopic.test, tests/link-2.test, tests/quote.test,
 	tests/sysroot.at: Remove spurious quotes.
 
+2011-11-25  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: quote $file correctly in bootstrap.
+
 	* bootstrap (func_insert_sorted_if_absent): Don't forget the
 	double quotes, since we can't control the content of $file.
 	Reported by Stefano Lattarini.
 
+2011-11-25  Gary V. Vaughan  <gary@gnu.org>
+
 	build: fix a quoting bug when regenerating with bootstrap_edit.
+
 	* Makefile.am (m4/ltversion.m4, build-aux/ltmain.sh): The
 	bootstrap_edit make macro already contains double quotes, so
 	when echoing it, don't surround it with more double quotes since
@@ -3573,30 +5185,43 @@
 2011-11-17  Gary V. Vaughan  <gary@gnu.org>
 
 	dist: hook syntax-check into `make distcheck'.
+
 	To make sure we don't accidentally release anything with
 	failing syntax-checks, have `make distcheck' run the
 	syntax-checks automatically.
 	* Makefile.am (distcheck-hook): New rule depending on
 	syntax-check.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: enable sc_prohibit_always_true_header_tests.
+
 	* cfg.mk (local-checks-to-fix): Remove
 	sc_prohibit_always_true_header_tests from list of disabled
 	checks, because it no longer flags any violations.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: enable sc_program_name.
+
 	* cfg.mk (local-checks-to-skip): Remove sc_program_name
 	list of disabled checks.
 	(exclude_file_name_regexp--sc_program_name): Don't check demo
 	programs for use of set_program_name.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: enable sc_bindtextdomain.
+
 	* cfg.mk (local-checks-to-skip): Remove sc_bindtextdomain
 	list of disabled checks.
 	(exclude_file_name_regexp--sc_bindtextdomain): Don't check demo
 	programs for use of bindtextdomain.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and implement sc_trailing_blank-non-rfc3676.
+
 	* cfg.mk (local-checks-to-fix): Move sc_trailing_blank from
 	here...
 	(local-checks-to-skip): ...to here, because otherwise it flags
@@ -3619,7 +5244,10 @@
 	tests/static.at, tests/template.at, tests/testsuite.at: Remove
 	trailing blanks.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and re-enable sc_useless_cpp_parens.
+
 	* cfg.mk (local-checks-to-fix): Remove sc_useless_cpp_parens
 	from list of disabled checks.
 	* doc/libtool.texi, libltdl/argz.c, libltdl/argz_.h,
@@ -3636,7 +5264,10 @@
 	tests/pdemo/foo.h, tests/stresstest.at: Remove useless parens in cpp
 	`#if defined(foo)' statements.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and re-enable sc_space_tab.
+
 	* cfg.mk (local-checks-to-fix): Remove sc_space_tab from list of
 	disabled checks.
 	(exclude_file_name_regexp--sc_space_tab): Don't flag space-tab
@@ -3650,20 +5281,29 @@
 	tests/stresstest.at, tests/template.at: Fix space-tab sequences by
 	reversing them in regexps, and deleting leading spaces in indentation.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and re-enable sc_prohibit_undesirable_word_seq.
+
 	* cfg.mk (local-checks-to-fix): Remove
 	sc_prohibit_undesirable_word_seq from list of disabled checks.
 	* doc/libtool.texi, build-aux/ltmain.m4sh,
 	libltdl/m4/libtool.m4, libtoolize.m4sh: Replace all uses of "can
 	not" with "cannot".
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and re-enable sc_probibit_test_minus_ao.
+
 	* cfg.mk (local-checks-to-fix): Remove
 	sc_probhibit_test_minus_ao from list of disabled checks.
 	(exclude_file_name_regexp--sc_prohibit_tests_minus_ao): The
 	matches from this syntax-check in libtool.m4 are all bogus.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and re-enable sc_prohibit_strcmp.
+
 	* cfg.mk (local-checks-to-fix): Remove sc_prohibit_strcmp
 	from list of disabled checks.
 	(exclude_file_name_regexp--sc_prohibit_strcmp): Ignore
@@ -3676,24 +5316,36 @@
 	* build-aux/ltmain.m4sh (func_emit_cwrapperexe_src): Add and use
 	STREQ definition.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and re-enable sc_prohibit_stddef_without_use.
+
 	* cfg.mk (local-checks-to-fix): Remove
 	sc_prohibit_stddef_without_use from list of disabled checks.
 	* libltdl/argz.c, libltdl/lt__dirent.c, libltdl/slist.c: Remove
 	spurious stddef.h #include lines.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and re-enable sc_prohibit_magic_number_exit.
+
 	* cfg.mk (local-checks-to-fix): Remove sc_prohibit_magic_number_exit
 	from list of disabled checks.
 	* ltmain.c: Removed unused file.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and re-enable sc_prohibit_have_config_h.
+
 	* cfg.mk (local-checks-to-fix): Remove sc_prohibit_have_config_h
 	from list of disabled checks.
 	* tests/f77demo/foo.h, tests/fcdemo/foo.h: Remove spurious
 	HAVE_CONFIG_H guards for #include <config.h>.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and re-enable sc_prohibit_empty_lines_at_EOF.
+
 	* cfg.mk (local-checks-to-fix): Remove
 	sc_prohibit_empty_lines_at_EOF from list of disabled checks.
 	* THANKS, libltdl/argz.c, libltdl/config/getopt.m4sh,
@@ -3703,7 +5355,10 @@
 	tests/mdemo/README, tests/mdemo2/README, tests/pdemo-inst.test:
 	Remove spurious empty lines from the end of these files.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and re-enable sc_prohibit_doubled_word.
+
 	* cfg.mk (local-checks-to-fix): Remove sc_prohibit_doubled_word
 	from list of disabled checks.
 	* build-aux/general.m4sh (func_quote_for_eval): Remove one of a
@@ -3711,12 +5366,18 @@
 	* tests/lt_dladvise.at (hint_global): Remove one of a pair of
 	consecutive "to"s split across lines in a comment.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and re-enable sc_prohibit_cvs_keyword.
+
 	* cfg.mk (local-checks-to-fix): Remove sc_prohibit_cvs_keyword
 	from list of disabled checks.
 	* tests/tagdemo/README: Remove spurious CVS keyword.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and re-enable sc_makefile_at_at_check.
+
 	At some point we were supporting some undetermined `broken
 	make', as evidenced by having carried the following code since
 	2003:
@@ -3737,20 +5398,29 @@
 	* Makefile.am, tests/mdemo/Makefile.am: Convert all @FOO@ to
 	$(FOO).
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and re-enable sc_makefile_TAB_only_indentation.
+
 	* cfg.mk (local-checks-to-fix): Remove
 	sc_makefile_TAB_only_indentation from list of disabled checks.
 	* Makefile.am (libltdl/Makefile.am): Replace leading spaces with
 	TABs.
 	* libltdl/Makefile.am (libltdl_libltdl_la_SOURCES): Ditto.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and re-enable sc_m4_quote_check.
+
 	* cfg.mk (local-checks-to-fix): Remove sc_m4_quote_check from
 	list of disabled checks.
 	* libltdl/m4/libtool.m4 (_LT_CHECK_OBJDIR): Quote LT_OBJDIR
 	correctly.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and re-enable sc_file_system.
+
 	* cfg.mk (local-checks-to-fix): Remove sc_file_system from list
 	of disabled checks.
 	(VC_LIST_ALWAYS_EXCLUDE_REGEX): Match mail directory correctly
@@ -3760,25 +5430,37 @@
 	* libltdl/ltdl.c (try_dlopen): Ditto.
 	* tests/dlloader-api.at: Ditto.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and re-enable sc_error_message_uppercase.
+
 	* cfg.mk (local-checks-to-fix): Remove
 	sc_error_message_uppercase from list of disabled checks.
 	(exclude_file_name_regexp--sc_error_message_uppercase): Don't
 	match cvsu, which is not our file to edit.
 	* doc/libtool.texi: Use lowercase error message in example.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: rationale for disabling sc_cast_of_x_alloc_return_value.
+
 	* cfg.mk: Note that we support C++ compilation of libltdl, which
 	in turn requires that *alloc return values be cast correctly.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and re-enable sc_cast_of_argument_to_free.
+
 	* cfg.mk (local-checks-to-fix): Remove
 	sc_cast_of_argument_to_free from list of disabled checks.
 	* build-aux/ltmain.m4sh, libltdl/libltdl/lt__alloc.h,
 	libltdl/lt__dirent.c: Casting argument to free is never
 	necessary.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: fix violations and re-enable sc_avoid_if_before_free.
+
 	* cfg.mk (local-checks-to-fix): Remove sc_avoid_if_before_free
 	from list of disabled checks.
 	According to gnulib/doc/free.texi: "On old platforms such as
@@ -3788,12 +5470,18 @@
 	* libltdl/libltdl/lt__alloc.h (FREE, MEMREASSIGN): Don't protect
 	against freeing NULL bug on SunOS4.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	syntax-check: skip sc_unmarked_diagnostics.
+
 	* cfg.mk (local-checks-to-fix): Move sc_unmarked_diagnostics
 	from here...
 	(local-checks-to-skip): ...to here.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: rename `libltdl/config' directory to standard `build-aux'.
+
 	In addition to moving the autoconf auxiliary script directory
 	into the place expected by GNU developers ($top_srcdir/build-aux)
 	we also simplify libtoolize somewhat by having libltdl use
@@ -3841,7 +5529,10 @@
 	checks and rewrite configure.ac during installation if necessary.
 	* NEWS: Updated.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: aux scripts go in ltdl dir when parent has no configure.
+
 	When using libtoolize to install subproject libltdl into a
 	parent project that does not use autotools, set the default
 	directory for auxiliary scripts inside libltdl rather than
@@ -3852,18 +5543,27 @@
 	directory where libltdl/configure will be able to find
 	`install-sh' and others.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: simplify runtime by substituting pkgauxdir.
+
 	* Makefile.am (configure_edit): Substitute pkgauxdir.
 	* libtoolize.m4sh (func_install_pkgaux_subproject)
 	(func_install_pkgaux_parent, extract_trace): Use it.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: generate require_ltdl_relative_aux_dir definition.
+
 	* libtoolize.m4sh (require_ltdl_relative_macro_dir): Change to
 	be generated function...
 	(require_ltdl_relative_aux_dir): ...so that we can easily
 	generate this very similar function from the same code.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: rename `libltdl/m4' directory to standard `m4'.
+
 	In addition to moving the autoconf macro directory into the
 	place expected by GNU developers ($top_srcdir/m4), we also
 	simplify libtoolize somewhat by having libltdl use whatever
@@ -3922,7 +5622,10 @@
 	of macro_dir.
 	* NEWS: Updated.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: rename `Makefile.inc' to standard `ltdl.mk'.
+
 	* libltdl/Makefile.inc: Moved from here...
 	* libltdl/ltdl.mk: ...to here.
 	* Makefile.am, bootstrap.conf, tests/libtoolize.at,
@@ -3936,17 +5639,26 @@
 	correctly when `Makefile.inc' convention is still in use.
 	* NEWS: Updated.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: refactor ACLOCAL_AMFLAGS extraction.
+
 	Another simple refactor to simplify following changesets.
 	* libtoolize.m4sh (require_Makefile_am, require_aclocal_amflags)
 	(require_am_macro_dir): Generate these functions at runtime.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: rename require_makefile_am to require_Makefile_am.
+
 	A simple refactoring to keep the next change self-contained.
 	* libtoolize.m4sh (require_makefile_am): Renamed from this...
 	(require_Makefile_am): ...to this.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: simplify copying of files that are edited during install.
+
 	* libltdl/Makefile.inc (EXTRA_DIST): Don't list autotools files
 	that Automake automatically adds to a (subproject)
 	distribution...
@@ -3963,7 +5675,10 @@
 	(func_install_pkgltdl_files): Much simplified by $require_<foo>
 	the relevant filter scripts and passing them to func_copy.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: simplify file-copying and -linking call-graph.
+
 	* libtoolize.m4sh (TAR): Remove.
 	(func_copy_some_files, func_copy_cb): Remove.
 	(func_copy): Refactor from all of the above, and simplify. No
@@ -3983,7 +5698,10 @@
 	* tests/libtoolize.at: Make sure we match corrected "copying
 	`configure.ac'" output.
 
+2011-11-17  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: generate full and correct ChangeLog.
+
 	* gnulib: Updated to pick up gitlog-to-changelog multi-author
 	support.
 	* gl/build-aux/gitlog-to-changelog.diff: Use gnulib-rejected
@@ -3998,6 +5716,7 @@
 2011-11-16  Gary V. Vaughan  <gary@gnu.org>
 
 	options-parser: provide a saner pluggable API.
+
 	It's much too easy to forget that the functions you hook into
 	the option parser need to return unconsumed options in the
 	variable `func_run_hooks_result'; better to follow the
@@ -4012,13 +5731,19 @@
 	* bootstrap.conf (libtool_options_prep, libtool_parse_options)
 	(libtool_validate_options): Ditto.
 
+2011-11-16  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: display accurate usage message.
+
 	After splitting bootstrap up, we also lost bootstrap's usage
 	message, and were incorrectly displaying a partial extract-trace
 	message.
 	* bootstrap (usage): Set appropriately.
 
+2011-11-16  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: accept --gnulib-srcdir=/path/to/gnulib again.
+
 	During the split of bootstrap into options-parser and
 	extract-trace, the generic long-option splitting code got lost.
 	* libltdl/config/options-parser (func_parse_options): Add the
@@ -4029,19 +5754,26 @@
 2011-11-15  Gary V. Vaughan  <gary@gnu.org>
 
 	gnulib: update gnulib submodule.
+
 	Among others, this fixes a bug in _build-aux expansion so that
 	`make syntax-check' works again.
 	* gnulib: Updated to today's master HEAD revision.
 	* gl/top/maint.mk.diff: Remove. This patch has been applied
 	upstream already.
 
+2011-11-15  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: remove NL2SP and initialisation.
+
 	There's only a single use of NL2SP, and that is redundant.
 	* libtoolize.m4sh (func_serial_update): Factor away use of
 	NL2SP.
 	(NL2SP, SP2NL): Remove initialisation.
 
+2011-11-15  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: remove consumed options from the list to be processed.
+
 	Fix a bug where processed bootstrap options were not removed
 	from the queue, and eventually flagged as unknown in the
 	pluggable option parser driver.
@@ -4054,6 +5786,7 @@
 2011-11-14  Gary V. Vaughan  <gary@gnu.org>
 
 	libtoolize: refactor $opt_quiet, func_echo and func_echo_once.
+
 	Instead of long sequences checking for setting of $opt_quiet,
 	followed by one or more func_echo variations, add and use a new
 	function func_whisper - the complement of func_verbose.
@@ -4066,18 +5799,27 @@
 	(func_whisper_error_header): Ditto, but calling func_error.
 	(func_echo_once): Remove.
 
+2011-11-14  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: update a bit-rotted comment.
+
 	* libtoolize (func_copy_cb): Since this comment was written, the
 	function has been changed to timestamp files as it copies.
 	Update the comment to reflect that.
 
+2011-11-14  Gary V. Vaughan  <gary@gnu.org>
+
 	general.m4sh: relative path to the same directory is `.'.
+
 	* general.m4sh (func_relative_path): We sometimes want to use
 	the result of this function directly, rather than purely as a
 	prefix, so we need to return `.' when both directories end up at
 	the same location.
 
+2011-11-14  Gary V. Vaughan  <gary@gnu.org>
+
 	ltmain.sh: append relative path trailing slashes explicitly.
+
 	In addition to being more idiomatic, and hence minimising
 	suprises, seeing the slash written explicity when appending to
 	the result of a relative path calculation is a lot more
@@ -4090,6 +5832,7 @@
 2011-11-09  Gary V. Vaughan  <gary@gnu.org>
 
 	build: use pkgauxdir for local install and uninstall rules.
+
 	* Makefile.am (pkgauxdir): Set it correctly.
 	(uninstall-hook): Use it for pkgaux_scripts and
 	pkgaux_data_files.
@@ -4100,21 +5843,31 @@
 2011-11-08  Gary V. Vaughan  <gary@gnu.org>
 
 	install: correct a typo in pkgaux_files location.
+
 	* Makefile.am (install-data-local): Install pkgaux_files
 	directly from $(aux_dir) [./libltdl/config at the moment].
 
+2011-11-08  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: order pkgltdl_files to avoid reconfiguration.
+
 	* Makefile.am (pkgltdl_files): aclocal.m4 depends on
 	configure.ac, and will cause spurious reconfiguration of freshly
 	`libtoolize --ltdl' tree if we don't ensure configure.ac is the
 	older of these two files.
 	* tests/libtoolize.at: Adjust expout order to match.
 
+2011-11-08  Gary V. Vaughan  <gary@gnu.org>
+
 	build: remove an over-exuberant $(srcdir) prefix.
+
 	* Makefile.am (git_version_gen): No need for an extra $(srcdir)
 	in the path when we always use after `cd $(srcdir).
 
+2011-11-08  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: massage installed auxiliary script list at make time.
+
 	* Makefile.am (configure_edit): Rename pkgconfig_files
 	substitution to pkgaux_files, and add pkgaux_install_files and
 	pkgaux_parent_files substitutions for atlocal.
@@ -4137,7 +5890,10 @@
 	(pkgaux_files): List of all auxiliary scripts substituted from
 	Makefile.
 
+2011-11-08  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: massage installed libltdl file list at make time.
+
 	* libtoolize.m4sh (pkgltdldir, pkgdatadir): Put installable
 	libltdl files in pkgdatadir. When testing, and _lt_pkgdatadir
 	is set, adjust to look in libltdl subdirectory.
@@ -4155,7 +5911,10 @@
 	* tests/libtoolize.at: Reorder expected output to match actual
 	libtoolize output.
 
+2011-11-08  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: massage installed macro list at make time.
+
 	* libtoolize.m4sh (func_massage_aclocal_DATA): Removed function
 	and only caller, because...
 	(pkgmacro_files): ...we substitute the pre-massaged files
@@ -4166,7 +5925,10 @@
 	(configure_edit): Substitute pkgmacro_files instead of
 	aclocalfiles.
 
+2011-11-08  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: use only space delimited file lists.
+
 	We don't install any files with whitespace in their file name,
 	so using colon delimited lists to make that possible was a
 	premature optimisation and an unneeded complication.
@@ -4177,14 +5939,20 @@
 	(func_massage_pkgltdl_files, func_massage_pkgconfig_files):
 	Append to file lists with space delimiter.
 
+2011-11-08  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: remove sed based configure scanning.
+
 	* libtoolize (func_scan_files): Removed function and callers.
 	(require_seen_ltdl, require_seen_libtool): Factor out remaining
 	functionality of former sed based scanning.
 	(func_check_macros): Adjust.
 	* NEWS: Updated.
 
+2011-11-08  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: refactor ltdl_mode discovery.
+
 	* libtoolize.m4sh (require_ac_ltdl_mode)
 	(require_ac_ltdl_options, require_ltdl_mode): New functions
 	factored out of func_scan_files for scanning and setting
@@ -4193,7 +5961,10 @@
 	(func_install_pkgmacro_files, func_install_pkgltdl_files)
 	(func_install_pkgconfig_files, func_check_macros): Adjust.
 
+2011-11-08  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: refactor ltdl_dir discovery.
+
 	* libtoolize.m4sh (require_ac_ltdl_dir, require_ltdl_dir):
 	New functions factored out of func_scan_files for scanning and
 	setting ac_ltdl_dir and ltdl_dir resp.
@@ -4202,7 +5973,10 @@
 	(func_install_pkgltdl_files, func_install_pkgconfig_subproject)
 	(func_check_macros): Adjust.
 
+2011-11-08  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: refactor aux_dir discovery.
+
 	* libtoolize.m4sh (require_ac_aux_dir, require_aux_dir): New
 	functions factored out of func_scan_files for scanning and
 	setting aux_dir and friends.
@@ -4211,21 +5985,30 @@
 	(func_install_pkgconfig_subproject, func_install_pkgconfig_parent)
 	(func_install_pkgmacro_files, func_check_macros): Adjust.
 
+2011-11-08  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: install autoconf macros only if there is a $configure_ac.
+
 	* libtoolize.m4sh (func_install_pkgmacro_files): If there is no
 	$configure_ac in the parent project directory, and libtoolize is
 	in subproject mode, then the parent project has no use for
 	autoconf macros, so don't install them.
 	* NEWS: Updated.
 
+2011-11-08  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: display aux files output header for non-autoconf parents.
+
 	* libtoolize.m4sh (func_install_pkgconfig_subproject): When the
 	parent project does not use Autoconf, be sure to display an
 	output header before copying auxiliary files despite not being
 	able to scan for AC_CONFIG_AUX_DIR arguments.
 	* NEWS: Updated.
 
+2011-11-08  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: refactor macro_dir discovery around extract-trace script.
+
 	* libtoolize.m4sh (func_extract_trace): Function to call
 	$aux_dir/extract-trace.  The name and footprint are the same as
 	the core function in the extract-trace script file so that we
@@ -4245,7 +6028,10 @@
 	GNU M4 dependency.
 	* NEWS: Updated.
 
+2011-11-08  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: refactor configure_ac discovery.
+
 	Make a start on decomposing some of the giant functions at the
 	heart of libtoolize into the much more flexible and manageable
 	(albeit somewhat more verbose) model of self-organising
@@ -4261,7 +6047,10 @@
 	(func_install_pkgconfig_files, func_check_macros): Ditto.
 	(seen_autoconf): Removed.
 
+2011-11-08  Gary V. Vaughan  <gary@gnu.org>
+
 	bootstrap: split into reusable parts.
+
 	* bootstrap: Bourne shell has no scoping, so be extremely
 	careful with namespaces, functions in `^func_' and `^require_';
 	private variables in `^_G_', and public variables all well
@@ -4279,7 +6068,10 @@
 	(install-data-local): And install them where libtoolize can find
 	them.
 
+2011-11-08  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: prefix absolute directory variables with 'abs_'.
+
 	Avoid any possible confusion about the contests of thes
 	variables compared to $aux_dir, $macro_dir and $src_dir in
 	configure.ac, Makefile.am, libtoolize.m4sh and others.
@@ -4315,12 +6107,18 @@
 	tests/tagdemo-static-make.test, tests/tagdemo-undef-exec.test,
 	tests/tagdemo-undef-make.test, tests/tagtrace.test: Adjust.
 
+2011-11-08  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: calculate required mkinstalldirs calls during `make install'.
+
 	* Makefile.am (install-data-local): Make sure all destination
 	directories are in place before copying files there, without
 	hardcoding them.
 
+2011-11-08  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: substitute static directory names.
+
 	By substituting just the directory name as passed to the macro,
 	aux_dir can be used with or without $srcdir prefix, which is
 	more flexible, and always means the same thing in each file,
@@ -4334,36 +6132,48 @@
 2011-11-07  Peter Rosin  <peda@lysator.liu.se>
 
 	libtoolize: fix spelling nit.
+
 	* libtoolize (M4SH_GETOPTS): Fix spelling nit.
 
 2011-11-07  Gary V. Vaughan  <gary@gnu.org>
 
 	tests: fix parsing of configure output by pic_flag.at.
+
 	Close http://debbugs.gnu.org/9962.
 	* tests/pic_flag.at (LT_AT_CONFIGURE): Make sure to configure
 	with --disable-silent-rules so that the full output parsed by
 	the rest of the test is available.
 	Reported by Roumen Petrov.
 
+2011-11-07  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: rename `--subproject' option, and make it work.
+
 	* libtoolize (M4SH_GETOPTS): Remove `--standalone', which never
 	worked, and add `--subproject' which sets ltdl_mode correctly.
 
 2011-11-05  Gary V. Vaughan  <gary@gnu.org>
 
 	libtoolize: fix a scoping bug in func_aclocal_update_check.
+
 	libtoolize.m4sh (func_aclocal_update_check): This body of this
 	function used a global variable set by the outer loop of the
 	caller. Fix to Use the function argument correctly.
 
+2011-11-05  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: rename the debug shell command variable to `debug_cmd'.
+
 	Not only does it make more sense, it also matches bootstrap and
 	others.
 	* libtoolize.m4sh, libltdl/config/ltmain.m4sh,
 	libltdl/config/getopt.m4sh, tests/defs.m4sh (opt_debug): Rename
 	to debug_cmd.
 
+2011-11-05  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: dynamically strip unused scripts from libltdl Makefile.
+
 	* configure.ac (pkgaux_scripts): Centrally maintain the complete
 	list of aux scripts required to build libltdl, and which need to
 	be installed by libtoolize --ltdl, and consequently need to be
@@ -4375,13 +6185,19 @@
 	substitution.
 	(install-data-local): Adjust.
 
+2011-11-05  Gary V. Vaughan  <gary@gnu.org>
+
 	build: substitute paths into defs.m4sh instead of recalculating.
+
 	* Makefile.am (configure_edit): Add substitutions for aux_dir,
 	macro_dir and srcdir.
 	* tests/defs.m4sh: Don't recalculate srcdir.
 	(aux_dir, macro_dir, srcdir): Convert to absolute paths.
 
+2011-11-05  Gary V. Vaughan  <gary@gnu.org>
+
 	build: support AM_SILENT_RULES
+
 	* configure.ac: Add AM_SILENT_RULES.
 	* libltdl/configure.ac: Ditto, but only if defined.
 	* Makefile.am (.version, ChangeLog, README, doc/notes.txt)
@@ -4394,12 +6210,16 @@
 2011-10-31  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: add autobuild prerequisite only if autobuild.m4 is absent.
+
 	* bootstrap (func_require_autobuild_buildreq): Skip if autobuild.m4
 	is already present.
 	* bootstrap.conf (require_autobuild_bulidreq): No need to set this
 	specially any more.
 
+2011-10-31  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: ensure bootstrap runs from dist tarball.
+
 	* bootstrap (func_gnulib_tool_copy_file): When gnulib-tool is
 	not available, check that there is a copy of the file from a
 	previous run available before bailing out with a diagnostic.
@@ -4423,12 +6243,18 @@
 	trying to delete gnulib-tool droppings, in case gnulib-tool is
 	not available on this run.
 
+2011-10-31  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: add a keyword `expensive' to very long running tests.
+
 	* tests/cmdline_wrap.at, tests/stresstest.at (AT_KEYWORDS): Add
 	`expensive'.
 	* NEWS: Updated.
 
+2011-10-31  Gary V. Vaughan  <gary@gnu.org>
+
 	libtoolize: fix some long-standing sed substitution bugs
+
 	* libtoolize.m4sh (func_fixup_Makefile): `\\\\\$' in a " quoted
 	script that is evaluated twice before execution becomes a `\$',
 	which sed interprets as a literal $.  The script will then delete
@@ -4444,6 +6270,7 @@
 2011-10-27  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: use gnulib's gitlog-to-changelog instead of a ChangeLog file.
+
 	* ChangeLog: Removed.
 	* HACKING (Editing 'ChangeLog'): Removed. Renumbered other sections to
 	compensate.
@@ -4452,7 +6279,10 @@
 	(dist-hook): ...from the output of `git log' before rolling a
 	distribution tarball.
 
+2011-10-27  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: use gnulib's git-version-gen instead of mkstamp.
+
 	* libltdl/config/mkstamp: File removed.
 	* bootstrap.conf (gnulib_modules): Add git-version-gen.
 	* configure.ac (AC_INIT, package_revision): Use git-version-gen to
@@ -4481,7 +6311,10 @@
 	working directory).
 	(EXTRA_DIST): Add .serial file.
 
+2011-10-27  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: use gnulib's maint.mk and support scripts release procedure.
+
 	* Makefile.maint: Removed.
 	* configure.ac (LASTRELEASE, lt_major, lt_minor, lt_micro, lt_alpha):
 	All removed. Makefile.maint was the only client.
@@ -4498,6 +6331,7 @@
 2011-10-24  Gary V. Vaughan  <gary@gnu.org>
 
 	tests: ensure VPATH autom4te search path can find autotests.
+
 	* Makefile.am (tests/testsuite): Passing only $(srcdir) include path
 	to autom4te is unable to find tests/package.m4, and passing only
 	$(srcdir)/tests breaks VPATH build searches for TESTSUITE_AT files,
@@ -4508,6 +6342,7 @@
 2011-10-24  Karl Berry  <karl@gnu.org>
 
 	doc: modernize libtool.texi.
+
 	* libtool.texi (@copying): Use this instead of @ifnottex; format for
 	Texinfo; eliminate obsolete paragraph about TeX; use @insertcopying
 	instead of duplicating text.
@@ -4519,36 +6354,50 @@
 2011-10-24  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: don't make autobuild a hard bootstrap requirement.
+
 	* bootstrap.conf (require_autobuild_buildreq): Reset this to ':' so
 	that bootstrap doesn't auto-add autobuild to $buildreq.
 
 2011-10-23  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: use gnulib's maintainer-makefile module.
+
 	* bootstrap.conf (gnulib_modules): Add maintainer-makefile.
 	(gnulib_tool_options): Add --avoid=dummy now that we have a real
 	module to import.
 	* cfg.mk: New file. Customize maint.mk for Libtool.
 	* Makefile.am (EXTRA_DIST): Add GNUmakefile, cfg.mk and maint.mk.
 
+2011-10-23  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: use gnulib's canonical fdl.texi.
+
 	* doc/fdl.texi: Removed.
 	* bootstrap.conf (gnulib_non_module_files): Add fdl.texi.
 
+2011-10-23  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: use gnulib's canonical COPYING files.
+
 	* COPYING, libltdl/COPYING.LIB: Removed.
 	* bootstrap.conf (gnulib_non_module_files): Add COPYING.
 	(libtool_add_libltdl_copying): New func_gnulib_tool hook
 	function to copy the canonical LGPL2 COPYING file from gnulib at
 	bootstrap.
 
+2011-10-23  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: use gnulib's (pending saner) bootstrap script.
+
 	* bootstrap: Replaced with gnulib script.
 	* bootstrap.conf: New file with Libtool specific bootstrap
 	configuration.
 	* Makefile.am (EXTRA_DIST): Add bootstrap.conf.
 
+2011-10-23  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: add gnulib submodule.
+
 	* configure.ac (GL_INIT, GL_EARLY): Initialise gnulib, and expand
 	its configure time checks.
 	* .gitmodules (gnulib): New file with configuration for our
@@ -4557,6 +6406,7 @@
 2011-10-22  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: tidy, sort and consolidate .gitignore files.
+
 	The `gnulib-tool' and gnulib `bootstrap' scripts  maintain
 	`.gitignore' files in asciibetical order, so reorder them now
 	to avoid spurious patches later.
@@ -4568,18 +6418,28 @@
 2011-10-22  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: don't run help2man on programs not-yet-built.
+
 	* Makefile.am (doc/libtool.1, doc/libtoolize.1): Added a
 	comment about why the dependencies here have to be a mite
 	bizarre.
 
+2011-10-22  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: remove unused `aux_dir' variable from `getopt-m4sh.test'.
+
 	* tests/getopt-m4sh.at (aux_dir): Remove unused variable.
 
+2011-10-22  Gary V. Vaughan  <gary@gnu.org>
+
 	tests: DRYing out `tests/sh.test'.
+
 	* Makefile.am (libtool_m4): Canonical location of libtool.m4 file.
 	(lt_aclocal_m4_deps): Use it.
 
+2011-10-22  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: pass directory declarations in configure.ac into Makefile.
+
 	* configure.ac (AC_CONFIG_AUX_DIR, LT_CONFIG_LTDL_DIR)
 	(AC_CONFIG_MACRO_DIR): Append code to these functions to
 	capture and propagate their directory arguments to Makefile.
@@ -4590,13 +6450,19 @@
 	and `macro_dir' at the top of the quick'n'dirty bootstrap
 	Makefile.
 
+2011-10-22  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: factor out ltmain.sh variable deletion.
+
 	* Makefile.am (ltmain_sh_edit): Expand upon bootstrap edit by
 	adding the extra line to delete boilerplate variable settings
 	from libltdl/config/general.m4sh that don't apply here.
 	(libltdl/config/ltmain.sh): Use it.
 
+2011-10-22  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: DRYing out `Makefile.am' file paths.
+
 	* Makefile.am (aux_dir, macro_dir): Include `$(srcdir)' in
 	declaration. Adjust all references.
 	(doc_dir, ltdl_dir, m4sh_dir, tests_dir): New single location
@@ -4606,25 +6472,37 @@
 	(defs): This one is for a file in the build-tree, so no
 	leading `$(srcdir)'.
 
+2011-10-22  Gary V. Vaughan  <gary@gnu.org>
+
 	CLEANUP: fix error from pushing too far up the branch.
+
 	* Makefile.am (install-data-local): Undo character transposition
 	from too early push of untested v2.4-17-gaf74d58.
 	* ChangeLog (2010-09-16): Remove spurious entry.
 
+2011-10-22  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: use macro_dir consistently in all files.
+
 	* Makefile.am: Replace all uses of m4dir with macrodir to
 	match AC_CONFIG_MACRO_DIR.
 	* libltdl/config/libtoolize.m4sh: Replace all uses of macrodir
 	with macro_dir.
 	* tests/defs.m4sh, tests/sh.test: Likewise.
 
+2011-10-22  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: use aux_dir consistently in all files.
+
 	* Makefile.am, Makefile.maint: Replace all uses of auxdir
 	with aux_dir to match AC_CONFIG_AUX_DIR.
 	* libltdl/config/libtoolize.m4sh: Likewise.
 	* tests/defs.m4sh, tests/getopt-m4sh.at: Likewise.
 
+2011-10-22  Gary V. Vaughan  <gary@gnu.org>
+
 	Makefile: try to be robust against shell meta-chars in filenames.
+
 	* Makefile.am: In each rule body, unless a make variable needs
 	to be seen as multiple words by the shell (for word-splitting
 	loops, or because it contains several commands), quote it. Use
@@ -4634,10 +6512,14 @@
 2011-10-20  Gary V. Vaughan  <gary@gnu.org>
 
 	maint: let make employ user's `SED' setting.
+
 	* Makefile.am: Replace hard-coded `sed' with `$(SED)' through-
 	out.
 
+2011-10-20  Gary V. Vaughan  <gary@gnu.org>
+
 	maint: simplify and improve safety of bootstrap process.
+
 	* Makefile.am (bootstrap_files): List files that need to be
 	generated at bootstrap time before `./configure && make' can
 	work.  It turns out that this is considerably fewer files than we
@@ -4654,17 +6536,26 @@
 	right after running `bootstrap'.  So rely on the presence of
 	`libltdl/config/libtoolize.m4sh', which is always there.
 
+2011-10-20  Gary V. Vaughan  <gary@gnu.org>
+
 	build: eliminate superfluous temporary files from `Makefile.am'.
+
 	* Makefile.am (CLEANFILES): Remove temporary file entries.
 	(libtoolize.in, libltdl/config/ltmain.sh, libltdl/m4/ltversion.m4)
 	(tests/defs, tests/testsuite): Factor away temporary files.
 
+2011-10-20  Gary V. Vaughan  <gary@gnu.org>
+
 	build: eliminate `ltmain.in' and `libtoolize.in' intermediate files.
+
 	* Makefile.am (libltdl/config/ltmain.sh, libtoolize.in): Pipe
 	the output of `$(LT_M4SH)' directly into `$(bootstrap_edit)' to
 	avoid use of superfluous intermediate file.
 
+2011-10-20  Gary V. Vaughan  <gary@gnu.org>
+
 	build: don't hardcode repeated long paths in Makefile rules.
+
 	According to the DRY principle, scattering several copies of
 	something across a file or project leads to pain.  Let's not
 	do that!
@@ -4677,13 +6568,19 @@
 	(tests/defs.in): Use the new variables to reduce noise and
 	repetition.
 
+2011-10-20  Gary V. Vaughan  <gary@gnu.org>
+
 	build: make better use of automatic variables in `Makefile.am'.
+
 	* Makefile.am (libtoolize, libtoolize.in, libltdl/Makefile.am)
 	(libltdl/config/mkstamp, libltdl/config/ltmain.m4sh)
 	(libltdl/m4/ltversion.m4, tests/testsuite, tests/defs.in):
 	Make better use of automatic variables.
 
+2011-10-20  Gary V. Vaughan  <gary@gnu.org>
+
 	build: name temporary files in `Makefile.am' consistently.
+
 	Sadly, we still have to jump through hoops for MICROS~1's very
 	old, very broken 8.3 naming convention, so we have to be careful
 	to be unique in the first 8 letters, and not to use two periods
@@ -4699,19 +6596,28 @@
 	(CLEANFILES): Append temporary files as we create rules that
 	use them.
 
+2011-10-20  Gary V. Vaughan  <gary@gnu.org>
+
 	build: factor Makefile.am `m4sh' invocations to LT_M4SH.
+
 	* Makefile.am (LT_M4SH): Now that all directories are listed as
 	fully qualified paths, the search path argument to M4SH is always
 	the same, so factor it out into a variable.  Adjust all callers.
 
+2011-10-20  Gary V. Vaughan  <gary@gnu.org>
+
 	build: avoid unnecessary directory changes in Makefile rules.
+
 	* Makefile.am (doc/notes.txt, libltdl/m4/ltversion.m4,
 	(libltdl/config/ltmain.m4sh, libtoolize.in, libltdl/Makefile.am)
 	(libltdl/config/mkstamp, tests/testsuite, tests/defs.in): Avoid
 	unnecessary `cd' commands by using fully qualified paths to files
 	outside of current directory.
 
+2011-10-20  Gary V. Vaughan  <gary@gnu.org>
+
 	build: compare `revision' rather than `correctver' in Makefile.am.
+
 	* Makefile.am (rebuild): Set the shell variable `revision' rather
 	than `correctver' for clarity of purpose.
 	(bootstrap_edit, libltdl/config/ltmain.sh): Adjust.
@@ -4720,7 +6626,10 @@
 	from this file, and compare it directly with `revision'.
 	(libtool): Likewise for `package_revision'.
 
+2011-10-20  Gary V. Vaughan  <gary@gnu.org>
+
 	build: avoid spurious bootstrap_edit call.
+
 	* Makefile.am (tests/package.m4): @FOO@ substitutions have already
 	been made by the time Makefile.am has been transformed into Makefile,
 	so don't try to rerun the substitutions manually with
@@ -4729,11 +6638,15 @@
 2011-10-18  Gary V. Vaughan  <gary@gnu.org>
 
 	Post-release administrivia.
+
 	* configure.ac, libltdl/configure.ac (AC_INIT): Bump version
 	numbers.
 	* NEWS: Add header line for next release.
 
+2011-10-18  Gary V. Vaughan  <gary@gnu.org>
+
 	Release 2.4.2.
+
 	* configure.ac, libltdl/configure.ac (AC_INIT): Bump version
 	numbers.
 	* NEWS: Update version number.
@@ -4755,11 +6668,13 @@
 2011-10-04  Bart Van Assche  <bvanassche@acm.org>
 
 	Typo fix - change func_apped into func_append
+
 	* libltdl/config/ltmain.m4sh: Fix typo.
 
 2011-10-02  Xin LI  <d@delphij.net>
 
 	Avoid problems when FreeBSD goes to version 10.
+
 	* libltdl/m4/libtool.m4: Remove mentions of freebsd1. Use dots
 	for FreeBSD 2 and 3 detection to avoid future problems
 	* libltdl/m4/ltmain.m4sh: ditto.
@@ -4773,21 +6688,24 @@
 	* libltdl/README: ditto.
 	* libltdl/m4/libtool.m4: ditto.
 
-2011-09-02  Peter O'Gorman  <peter@pogma.com>
+2011-09-01  Peter O'Gorman  <peter@pogma.com>
 
 	Add flag to inhibit warnings.
+
 	* libltdl/config/ltmain.m4sh: Add --no-warn, --no-warning flags.
 	Reported by John David Anglin.
 
 2011-04-10  Kurt Roeckx  <kurt@roeckx.be>
 
 	tagdemo: do not rely on picking up symbols from indirect deps.
+
 	* tests/tagdemo/Makefile.am: Link to all libraries that the
 	demo application uses.
 
 2011-04-10  Svante Signell  <srs@kth.se>  (tiny change)
 
 	Set shlibpath_overrides_runpath for the Hurd.
+
 	* libltdl/m4/libtool.m4 (_LT_SYS_DYNAMIC_LINKER) [gnu]
 	<shlibpath_overrides_runpath>: Set to no.
 	* THANKS: Update.
@@ -4810,6 +6728,7 @@
 2011-03-14  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
 
 	libtoolize: detect -I<dir> (without space) in ACLOCAL_AMFLAGS.
+
 	* libtoolize.m4sh (func_scan_files): Also accept -I<dir>
 	(without intervening space) in ACLOCAL_AMFLAGS.
 	* THANKS: Update.
@@ -4818,6 +6737,7 @@
 2011-03-05  Peter O'Gorman  <peter@pogma.com>
 
 	On Mac OS X try .dylib as well as .so with lt_dlopenext
+
 	* libltdl/m4/ltdl.m4: Define extra extension if module extension
 	differs from shared lib extension.
 	* libltdl/ltdl.c: Use it.
@@ -4828,12 +6748,14 @@
 2011-02-14  Peter O'Gorman  <peter@pogma.com>
 
 	Install ltmain.sh without execute bit set.
+
 	* Makefile.am: change install rule for ltmain.sh
 	Reported by Křištof Želechovski.
 
 2011-02-07  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
 
 	docs: fix copyright years in PDF version of the manual.
+
 	* doc/libtool.texi: Fix copyright years.
 
 2011-02-01  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
@@ -4843,6 +6765,7 @@
 2011-02-01  Rainer Orth  <ro@CeBiTec.Uni-Bielefeld.DE>
 
 	Fix LD setting for 64-bit Solaris 2/x86.
+
 	* libltdl/m4/libtool.m4 (_LT_ENABLE_LOCK) [*-*-solaris*):
 	Determine GNU ld options for 64-bit Solaris 2/x86.  Detect gld
 	2.21 _sol2 emulations.
@@ -4850,6 +6773,7 @@
 2011-01-27  Peter O'Gorman  <peter@pogma.com>
 
 	Don't loop through wrapper script arguments unnecessarily.
+
 	* libltdl/m4/ltmain.m4sh: Check that argv contains " --lt-"
 	before looping to remove wrapper script targetted arguments.
 	Performance regression reported by Dan McGee.
@@ -4857,6 +6781,7 @@
 2011-01-20  Gerald Pfeifer  <gerald@pfeifer.com>  (tiny change)
 
 	Remove support for FreeBSD 1.x.
+
 	* libltdl/m4/libtool.m4 (_LT_LINKER_SHLIBS)
 	(_LT_SYS_DYNAMIC_LINKER): Remove handling of freebsd1* which
 	soon would incorrectly match FreeBSD 10.0.
@@ -4865,6 +6790,7 @@
 2011-01-19  Peter O'Gorman  <peter@pogma.com>
 
 	Don't let verbose linker messages influence test results.
+
 	* libltdl/m4/libtool.m4 (_LT_REQUIRED_DARWIN_CHECKS): Ignore
 	stderr during tests for -flag unless it contains "flag".
 	* tests/darwin.at: Add test.
@@ -4873,12 +6799,14 @@
 2011-01-09  John David Anglin  <dave.anglin@nrc-cnrc.gc.ca>  (tiny change)
 
 	Fix relink mode to use absolute path if hardcode_minus_L.
+
 	* libltdl/config/ltmain.m4sh (func_mode_link): Use absolute path
 	when hardcoding with -L.
 
 2011-01-09  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
 
 	Fix $wl setting for Solaris Studio 12.2 f90 on GNU/Linux.
+
 	* libltdl/m4/libtool.m4 (_LT_COMPILER_PIC) [linux]
 	<lt_prog_compiler_wl>: Set to '-Qoption ld ' if we
 	detect Sun Fortran version 8.4 or newer.
@@ -4887,6 +6815,7 @@
 2011-01-07  Peter Rosin  <peda@lysator.liu.se>
 
 	Convert file name to toolchain format when blessing archives.
+
 	* libltdl/config/ltmain.m4sh (func_mode_install): When executing
 	old_postinstall_cmds and old_archive_cmds, convert $oldlib to a
 	format appropriate for the tool and provide that in $tool_oldlib.
@@ -4899,6 +6828,7 @@
 2011-01-02  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
 
 	Bump copyright years.
+
 	* ChangeLog.2010: New, rotated from ...
 	* ChangeLog: ... here.
 	* Makefile.am (EXTRA_DIST): Add ChangeLog.2010.

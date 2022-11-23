@@ -4,11 +4,9 @@ Last-Updated: 2020-01-22
 Forwarded: no
 Bug-Origin: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=253904
 
-Index: libtool-2.4.6/doc/libtool.texi
-===================================================================
---- libtool-2.4.6.orig/doc/libtool.texi
-+++ libtool-2.4.6/doc/libtool.texi
-@@ -3956,10 +3956,10 @@ portability you should try to ensure tha
+--- a/doc/libtool.texi
++++ b/doc/libtool.texi
+@@ -3991,10 +3991,10 @@
  @option{-module} flag.}.
  
  Unresolved symbols in the module are resolved using its dependency
