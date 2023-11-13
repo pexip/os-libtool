@@ -1,8 +1,6 @@
-Index: b/tests/link-order2.at
-===================================================================
 --- a/tests/link-order2.at
 +++ b/tests/link-order2.at
-@@ -47,6 +47,8 @@
+@@ -48,6 +48,8 @@
  AT_KEYWORDS([libtool])
  AT_KEYWORDS([interactive])dnl running 'wrong' may cause a popup window.
  

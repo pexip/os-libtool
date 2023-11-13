@@ -1,10 +1,8 @@
 ## Add support for netbsdelf*-gnu
 
-Index: b/m4/libtool.m4
-===================================================================
 --- a/m4/libtool.m4
 +++ b/m4/libtool.m4
-@@ -2887,6 +2887,18 @@
+@@ -2907,6 +2907,18 @@
    dynamic_linker='GNU/Linux ld.so'
    ;;
  
@@ -23,7 +21,7 @@ Index: b/m4/libtool.m4
  netbsd*)
    version_type=sunos
    need_lib_prefix=no
-@@ -3546,7 +3558,7 @@
+@@ -3566,7 +3578,7 @@
    lt_cv_deplibs_check_method=pass_all
    ;;
  
@@ -32,7 +30,7 @@ Index: b/m4/libtool.m4
    if echo __ELF__ | $CC -E - | $GREP __ELF__ > /dev/null; then
      lt_cv_deplibs_check_method='match_pattern /lib[[^/]]+(\.so\.[[0-9]]+\.[[0-9]]+|_pic\.a)$'
    else
-@@ -4424,7 +4436,7 @@
+@@ -4444,7 +4456,7 @@
  	    ;;
  	esac
  	;;
@@ -41,7 +39,7 @@ Index: b/m4/libtool.m4
  	;;
        *qnx* | *nto*)
          # QNX uses GNU C++, but need to define -shared option too, otherwise
-@@ -5258,7 +5270,7 @@
+@@ -5279,7 +5291,7 @@
        fi
        ;;
  
@@ -50,7 +48,7 @@ Index: b/m4/libtool.m4
        if echo __ELF__ | $CC -E - | $GREP __ELF__ >/dev/null; then
  	_LT_TAGVAR(archive_cmds, $1)='$LD -Bshareable $libobjs $deplibs $linker_flags -o $lib'
  	wlarc=
-@@ -5801,7 +5813,7 @@
+@@ -5822,7 +5834,7 @@
        esac
        ;;
  
@@ -59,11 +57,9 @@ Index: b/m4/libtool.m4
        if echo __ELF__ | $CC -E - | $GREP __ELF__ >/dev/null; then
  	_LT_TAGVAR(archive_cmds, $1)='$LD -Bshareable -o $lib $libobjs $deplibs $linker_flags'  # a.out
        else
-Index: b/m4/ltdl.m4
-===================================================================
 --- a/m4/ltdl.m4
 +++ b/m4/ltdl.m4
-@@ -496,7 +496,7 @@
+@@ -497,7 +497,7 @@
      # at 6.2 and later dlopen does load deplibs.
      lt_cv_sys_dlopen_deplibs=yes
      ;;

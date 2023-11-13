@@ -14,7 +14,7 @@ Section: devel
 Priority: optional
 Maintainer: Pexip AS <packaging@pexip.com>
 XSBC-Pexip-Original-Maintainer: Alastair McKinstry <mckinstry@debian.org>
-Standards-Version: 4.5.1
+Standards-Version: 4.6.1
 Rules-Requires-Root: no
 Homepage: https://www.gnu.org/software/libtool/
 Vcs-Browser: https://salsa.debian.org:/mckinstry/libtool.git
@@ -24,13 +24,11 @@ XS-Pexip-Upstream: http://deb.debian.org/debian/ bookworm
 Package: libtool
 Architecture: all
 Multi-Arch: foreign
-Section: devel
 Depends: gcc | c-compiler, cpp, libc6-dev | libc-dev,
   file,
   autotools-dev,
   ${misc:Depends}
-Suggests: libtool-doc, autoconf (>> 2.50), automaken, gfortran | fortran95-compiler, gcj-jdk
-Conflicts: autoconf (<= 2.12), automake (<= 1.3), libtool1.4
+Suggests: libtool-doc, autoconf, automaken, gfortran | fortran95-compiler, gcj-jdk
 Recommends: libltdl-dev
 Description: Generic library support script
  This is GNU libtool, a generic library support script.  Libtool hides
@@ -44,7 +42,6 @@ Description: Generic library support script
 
 Package: libtool-bin
 Architecture: any
-Section: devel
 Depends: libtool (>= ${source:Version}), ${misc:Depends}
 Replaces: libtool (<< 2.4.2-1.8~)
 Description: Generic library support script (libtool binary)
@@ -65,9 +62,7 @@ Multi-Arch: foreign
 Section: doc
 Depends: ${misc:Depends}
 Breaks: libtool (<< 2.4.6-13)
-Replaces: libtool (<< 2.4.6-13)
-Conflicts: libtool1.4-doc
-Description: Generic library support script
+Description: Generic library support script (documentation)
  This package contains the GNU libtool documentation.
  .
  GNU libtool is generic library support script.  Libtool hides
@@ -81,7 +76,6 @@ Package: libltdl7
 Architecture: any
 Multi-Arch: same
 Section: libs
-Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: System independent dlopen wrapper for GNU libtool
  This package contains the run-time libltdl library.
@@ -103,12 +97,10 @@ Architecture: any
 Multi-Arch: same
 Section: libdevel
 Suggests: libtool-doc
-Recommends: libtool
-Conflicts: libtool (<< 1.5.20), libtool1.4, libltdl3-dev, libltdl7-dev
-Replaces: libtool (<< 1.5.20), libltdl3-dev, libltdl7-dev
 Provides: libltdl3-dev, libltdl7-dev
+Recommends: libtool
 Depends: libltdl7 (= ${binary:Version}), ${misc:Depends}, ${automake}
-Description: System independent dlopen wrapper for GNU libtool
+Description: System independent dlopen wrapper for GNU libtool (headers)
  This package contains the header files and static libraries for the
  libltdl package.
  .

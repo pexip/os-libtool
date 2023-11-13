@@ -1,8 +1,6 @@
-Index: b/Makefile.am
-===================================================================
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -417,9 +417,9 @@
+@@ -422,9 +422,9 @@
  # manual pages if the sources for the build-tree files we want to
  # run have changed.
  $(libtool_1): $(ltmain_sh)

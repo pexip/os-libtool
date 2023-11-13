@@ -1,8 +1,6 @@
-Index: b/build-aux/ltmain.in
-===================================================================
 --- a/build-aux/ltmain.in
 +++ b/build-aux/ltmain.in
-@@ -8826,6 +8826,9 @@
+@@ -6964,6 +6964,9 @@
  	    revision=$number_minor
  	    lt_irix_increment=no
  	    ;;

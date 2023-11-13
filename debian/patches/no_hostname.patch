@@ -1,8 +1,6 @@
-Index: libtool-2.4.6/m4/libtool.m4
-===================================================================
---- libtool-2.4.6.orig/m4/libtool.m4
-+++ libtool-2.4.6/m4/libtool.m4
-@@ -728,7 +728,6 @@ _LT_CONFIG_SAVE_COMMANDS([
+--- a/m4/libtool.m4
++++ b/m4/libtool.m4
+@@ -730,7 +730,6 @@
      cat <<_LT_EOF >> "$cfgfile"
  #! $SHELL
  # Generated automatically by $as_me ($PACKAGE) $VERSION
