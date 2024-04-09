@@ -1,0 +1,126 @@
+Author:  Ernesto Alfonso <erjoalgo@gmail.com>
+Description: Incorrect check for += operator causes func_append to fail
+Bug-Origin: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1039612
+Forwarded: no
+Last-Updated: 2023-07-15
+
+--- a/bootstrap
++++ b/bootstrap
+@@ -227,7 +227,7 @@
+ 
+ # Source required external libraries:
+ # Set a version string for this script.
+-scriptversion=2019-02-19.15; # UTC
++scriptversion=2023-07-15.07; # UTC
+ 
+ # General shell script boiler plate, and helper functions.
+ # Written by Gary V. Vaughan, 2004
+@@ -735,27 +735,15 @@
+ # ---------------------
+ # Append VALUE onto the existing contents of VAR.
+ 
+-  # We should try to minimise forks, especially on Windows where they are
+-  # unreasonably slow, so skip the feature probes when bash or zsh are
+-  # being used:
+-  if test set = "${BASH_VERSION+set}${ZSH_VERSION+set}"; then
+-    : ${_G_HAVE_ARITH_OP="yes"}
+-    : ${_G_HAVE_XSI_OPS="yes"}
+-    # The += operator was introduced in bash 3.1
+-    case $BASH_VERSION in
+-      [12].* | 3.0 | 3.0*) ;;
+-      *)
+-        : ${_G_HAVE_PLUSEQ_OP="yes"}
+-        ;;
+-    esac
+-  fi
+-
+-  # _G_HAVE_PLUSEQ_OP
+-  # Can be empty, in which case the shell is probed, "yes" if += is
+-  # useable or anything else if it does not work.
+-  test -z "$_G_HAVE_PLUSEQ_OP" \
+-    && (eval 'x=a; x+=" b"; test "a b" = "$x"') 2>/dev/null \
+-    && _G_HAVE_PLUSEQ_OP=yes
++ # _G_HAVE_PLUSEQ_OP
++ # Can be empty, in which case the shell is probed, "yes" if += is
++ # useable or anything else if it does not work.
++ if test -z "$_G_HAVE_PLUSEQ_OP" &&  \
++     __PLUSEQ_TEST="a" &&  \
++     __PLUSEQ_TEST+=" b" 2>/dev/null &&  \
++     test "a b" = "$__PLUSEQ_TEST"; then
++   _G_HAVE_PLUSEQ_OP=yes
++ fi
+ 
+ if test yes = "$_G_HAVE_PLUSEQ_OP"
+ then
+--- a/build-aux/funclib.sh
++++ b/build-aux/funclib.sh
+@@ -507,27 +507,15 @@
+ # ---------------------
+ # Append VALUE onto the existing contents of VAR.
+ 
+-  # We should try to minimise forks, especially on Windows where they are
+-  # unreasonably slow, so skip the feature probes when bash or zsh are
+-  # being used:
+-  if test set = "${BASH_VERSION+set}${ZSH_VERSION+set}"; then
+-    : ${_G_HAVE_ARITH_OP="yes"}
+-    : ${_G_HAVE_XSI_OPS="yes"}
+-    # The += operator was introduced in bash 3.1
+-    case $BASH_VERSION in
+-      [12].* | 3.0 | 3.0*) ;;
+-      *)
+-        : ${_G_HAVE_PLUSEQ_OP="yes"}
+-        ;;
+-    esac
+-  fi
+-
+   # _G_HAVE_PLUSEQ_OP
+   # Can be empty, in which case the shell is probed, "yes" if += is
+   # useable or anything else if it does not work.
+-  test -z "$_G_HAVE_PLUSEQ_OP" \
+-    && (eval 'x=a; x+=" b"; test "a b" = "$x"') 2>/dev/null \
+-    && _G_HAVE_PLUSEQ_OP=yes
++  if test -z "$_G_HAVE_PLUSEQ_OP" &&  \
++      __PLUSEQ_TEST="a" &&  \
++      __PLUSEQ_TEST+=" b" 2>/dev/null &&  \
++      test "a b" = "$__PLUSEQ_TEST"; then
++    _G_HAVE_PLUSEQ_OP=yes
++  fi
+ 
+ if test yes = "$_G_HAVE_PLUSEQ_OP"
+ then
+--- a/build-aux/ltmain.sh
++++ b/build-aux/ltmain.sh
+@@ -572,27 +572,15 @@
+ # ---------------------
+ # Append VALUE onto the existing contents of VAR.
+ 
+-  # We should try to minimise forks, especially on Windows where they are
+-  # unreasonably slow, so skip the feature probes when bash or zsh are
+-  # being used:
+-  if test set = "${BASH_VERSION+set}${ZSH_VERSION+set}"; then
+-    : ${_G_HAVE_ARITH_OP="yes"}
+-    : ${_G_HAVE_XSI_OPS="yes"}
+-    # The += operator was introduced in bash 3.1
+-    case $BASH_VERSION in
+-      [12].* | 3.0 | 3.0*) ;;
+-      *)
+-        : ${_G_HAVE_PLUSEQ_OP="yes"}
+-        ;;
+-    esac
+-  fi
+-
+   # _G_HAVE_PLUSEQ_OP
+   # Can be empty, in which case the shell is probed, "yes" if += is
+   # useable or anything else if it does not work.
+-  test -z "$_G_HAVE_PLUSEQ_OP" \
+-    && (eval 'x=a; x+=" b"; test "a b" = "$x"') 2>/dev/null \
+-    && _G_HAVE_PLUSEQ_OP=yes
++  if test -z "$_G_HAVE_PLUSEQ_OP" &&  \
++      __PLUSEQ_TEST="a" &&  \
++      __PLUSEQ_TEST+=" b" 2>/dev/null &&  \
++      test "a b" = "$__PLUSEQ_TEST"; then
++    _G_HAVE_PLUSEQ_OP=yes
++  fi
+ 
+ if test yes = "$_G_HAVE_PLUSEQ_OP"
+ then
