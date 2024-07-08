@@ -20,3 +20,4 @@ libtool-eval-nm.patch
 0075-remove-dates-from-docs.patch
 0080-struct-names.patch
 0085-tcc-path.patch
+0090-shell-op.patch

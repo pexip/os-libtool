@@ -14,7 +14,7 @@ Section: devel
 Priority: optional
 Maintainer: Pexip AS <packaging@pexip.com>
 XSBC-Pexip-Original-Maintainer: Alastair McKinstry <mckinstry@debian.org>
-Standards-Version: 4.6.1
+Standards-Version: 4.6.2
 Rules-Requires-Root: no
 Homepage: https://www.gnu.org/software/libtool/
 Vcs-Browser: https://salsa.debian.org:/mckinstry/libtool.git
@@ -98,6 +98,8 @@ Multi-Arch: same
 Section: libdevel
 Suggests: libtool-doc
 Provides: libltdl3-dev, libltdl7-dev
+Conflicts: libltdl3-dev
+Replaces: libbtldl3-dev
 Recommends: libtool
 Depends: libltdl7 (= ${binary:Version}), ${misc:Depends}, ${automake}
 Description: System independent dlopen wrapper for GNU libtool (headers)
