@@ -1,3 +1,68 @@
+libtool (2.5.4-4) unstable; urgency=medium
+
+  [ Jordi Mallach ]
+  * Update VERSION and SERIAL in debian/rules. Closes: #1099559
+
+  [ Alastair McKinstry ]
+  * Standards-Version: 4.7.2
+
+ -- Jordi Mallach <jordi@debian.org>  Wed, 05 Mar 2025 00:03:06 +0100
+
+libtool (2.5.4-3) unstable; urgency=medium
+
+  * Drop B-D on libltdl-dev. Closes: #1094361
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Fri, 31 Jan 2025 12:12:49 +0000
+
+libtool (2.5.4-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix aclocal version matching to cope with minor-less versions. (Closes:
+    #1094400)
+
+ -- Helmut Grohne <helmut@subdivi.de>  Wed, 29 Jan 2025 14:07:27 +0100
+
+libtool (2.5.4-2) unstable; urgency=medium
+
+  * Upload to unstable
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Mon, 06 Jan 2025 09:41:19 +0000
+
+libtool (2.5.4-1) experimental; urgency=medium
+
+  * New upstream release. Closes: #1077058
+  * Drop merged/obsolete patches:
+    - 0050-documentation.patch
+    - 0055-pass-flags-unchanged.patch
+    - 0080-struct-names.patch
+    - 0085-tcc-path.patch
+    - grep-spaces.patch
+    - libtool-eval-nm.patch
+    - man-add-whatis-info.diff
+    - no_hostname.patch
+    - version_string.patch
+  * Fix broken vcs url
+  * Standards-Version now 4.7.0
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Sun, 01 Dec 2024 18:13:26 +0000
+
+libtool (2.4.7-7) unstable; urgency=medium
+
+  * Remove obsole Breaks: for oldstable , Provides: libltdl7-dev
+  * Replace Breaks: libltdl3-dev with Conflicts: libltdl3-dev.
+    Thanks  Andreas Beckmann. Closes: #1041229
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Mon, 17 Jul 2023 16:03:58 +0100
+
+libtool (2.4.7-6) unstable; urgency=medium
+
+  * Incorrect check for += operator causes func_append to fail
+    Patch from Ernesto Alfonso. Closes: #1039612
+  * Standards-Version: 4.6.2
+  * Add Breaks/Replaces on libtldl3-dev. Closes: #1039583
+
+ -- Alastair McKinstry <mckinstry@debian.org>  Sat, 15 Jul 2023 09:09:39 +0100
+
 libtool (2.4.7-5) unstable; urgency=medium
 
   * Standards-Version: 4.6.1

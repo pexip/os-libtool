@@ -3,8 +3,10 @@ From: Vagrant Cascadian <vagrant@reproducible-builds.org>
 Date: Mon, 10 Feb 2020 03:09:45 +0000
 Subject: Patch to remove dates from .info and .html documentation
 
---- a/doc/libtool.texi
-+++ b/doc/libtool.texi
+Index: libtool-2.5.4/doc/libtool.texi
+===================================================================
+--- libtool-2.5.4.orig/doc/libtool.texi
++++ libtool-2.5.4/doc/libtool.texi
 @@ -18,7 +18,7 @@
  @set objdir .libs
  
@@ -12,9 +14,9 @@ Subject: Patch to remove dates from .info and .html documentation
 -This manual is for GNU Libtool (version @value{VERSION}, @value{UPDATED}).
 +This manual is for GNU Libtool (version @value{VERSION}).
  
- Copyright @copyright{} 1996-2019, 2021-2022 Free Software Foundation,
+ Copyright @copyright{} 1996--2019, 2021--2024 Free Software Foundation,
  Inc.
-@@ -44,7 +44,7 @@
+@@ -44,7 +44,7 @@ the section entitled ``GNU Free Document
  
  @titlepage
  @title GNU Libtool

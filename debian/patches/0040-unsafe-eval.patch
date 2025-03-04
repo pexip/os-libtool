@@ -5,9 +5,11 @@ Bug-Origin: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=866631
 Last-Updated: 2020-01-22
 Forwarded: no
 
---- a/build-aux/funclib.sh
-+++ b/build-aux/funclib.sh
-@@ -365,7 +365,7 @@
+Index: libtool-2.5.4/build-aux/funclib.sh
+===================================================================
+--- libtool-2.5.4.orig/build-aux/funclib.sh
++++ libtool-2.5.4/build-aux/funclib.sh
+@@ -365,7 +365,7 @@ EXIT_SKIP=77	  # $? = 77 is used to indi
  # putting '$debug_cmd' at the start of all your functions, you can get
  # bash to show function call trace with:
  #
@@ -16,9 +18,11 @@ Forwarded: no
  debug_cmd=${debug_cmd-":"}
  exit_cmd=:
  
---- a/build-aux/ltmain.sh
-+++ b/build-aux/ltmain.sh
-@@ -430,7 +430,7 @@
+Index: libtool-2.5.4/build-aux/ltmain.sh
+===================================================================
+--- libtool-2.5.4.orig/build-aux/ltmain.sh
++++ libtool-2.5.4/build-aux/ltmain.sh
+@@ -430,7 +430,7 @@ EXIT_SKIP=77	  # $? = 77 is used to indi
  # putting '$debug_cmd' at the start of all your functions, you can get
  # bash to show function call trace with:
  #

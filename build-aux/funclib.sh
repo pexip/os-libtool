@@ -7,11 +7,11 @@ scriptversion=2019-02-19.15; # UTC
 # This is free software.  There is NO warranty; not even for
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-# Copyright (C) 2004-2019, 2021 Bootstrap Authors
+# Copyright (C) 2004-2019, 2021, 2023-2024 Bootstrap Authors
 #
 # This file is dual licensed under the terms of the MIT license
-# <https://opensource.org/license/MIT>, and GPL version 2 or later
-# <http://www.gnu.org/licenses/gpl-2.0.html>.  You must apply one of
+# <https://opensource.org/licenses/MIT>, and GPL version 2 or later
+# <https://www.gnu.org/licenses/gpl-2.0.html>.  You must apply one of
 # these licenses when using or redistributing this software or any of
 # the files within it.  See the URLs above, or the file `LICENSE`
 # included in the Bootstrap distribution for the full license texts.
@@ -78,7 +78,7 @@ nl='
 '
 IFS="$sp	$nl"
 
-# There are apparently some retarded systems that use ';' as a PATH separator!
+# There are apparently some systems that use ';' as a PATH separator!
 if test "${PATH_SEPARATOR+set}" != set; then
   PATH_SEPARATOR=:
   (PATH='/bin;/bin'; FPATH=$PATH; sh -c :) >/dev/null 2>&1 && {
@@ -524,7 +524,7 @@ func_require_term_colors ()
 
   # _G_HAVE_PLUSEQ_OP
   # Can be empty, in which case the shell is probed, "yes" if += is
-  # useable or anything else if it does not work.
+  # usable or anything else if it does not work.
   test -z "$_G_HAVE_PLUSEQ_OP" \
     && (eval 'x=a; x+=" b"; test "a b" = "$x"') 2>/dev/null \
     && _G_HAVE_PLUSEQ_OP=yes
@@ -674,7 +674,7 @@ eval 'func_dirname ()
 #             to NONDIR_REPLACEMENT.
 #             value returned in "$func_dirname_result"
 #   basename: Compute filename of FILE.
-#             value retuned in "$func_basename_result"
+#             value returned in "$func_basename_result"
 # For efficiency, we do not delegate to the functions above but instead
 # duplicate the functionality here.
 eval 'func_dirname_and_basename ()
@@ -832,7 +832,7 @@ func_mkdir_p ()
       # While some portion of DIR does not yet exist...
       while test ! -d "$_G_directory_path"; do
         # ...make a list in topmost first order.  Use a colon delimited
-	# list incase some portion of path contains whitespace.
+	# list in case some portion of path contains whitespace.
         _G_dir_list=$_G_directory_path:$_G_dir_list
 
         # If the last portion added has no slash in it, the list is done
