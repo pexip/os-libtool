@@ -32,9 +32,11 @@ return $EXIT_SUCCESS only if we changed something.
  gl/build-aux/options-parser | 171 +++++++++++++++++++++++++++++++-------------
  3 files changed, 271 insertions(+), 106 deletions(-)
 
---- a/bootstrap
-+++ b/bootstrap
-@@ -1819,6 +1819,8 @@
+Index: libtool-2.5.4/bootstrap
+===================================================================
+--- libtool-2.5.4.orig/bootstrap
++++ libtool-2.5.4/bootstrap
+@@ -1819,6 +1819,8 @@ func_add_hook ()
  {
      $debug_cmd
  
@@ -43,9 +45,11 @@ return $EXIT_SUCCESS only if we changed something.
      case " $hookable_fns " in
        *" $1 "*) ;;
        *) func_fatal_error "'$1' does not accept hook functions." ;;
---- a/build-aux/ltmain.in
-+++ b/build-aux/ltmain.in
-@@ -360,6 +360,8 @@
+Index: libtool-2.5.4/build-aux/ltmain.in
+===================================================================
+--- libtool-2.5.4.orig/build-aux/ltmain.in
++++ libtool-2.5.4/build-aux/ltmain.in
+@@ -378,6 +378,8 @@ libtool_options_prep ()
  
      _G_rc_lt_options_prep=:
  
@@ -54,9 +58,11 @@ return $EXIT_SUCCESS only if we changed something.
      # Shorthand for --mode=foo, only valid as the first argument
      case $1 in
      clean|clea|cle|cl)
---- a/build-aux/options-parser
-+++ b/build-aux/options-parser
-@@ -176,6 +176,8 @@
+Index: libtool-2.5.4/build-aux/options-parser
+===================================================================
+--- libtool-2.5.4.orig/build-aux/options-parser
++++ libtool-2.5.4/build-aux/options-parser
+@@ -176,6 +176,8 @@ func_run_hooks ()
  {
      $debug_cmd
  

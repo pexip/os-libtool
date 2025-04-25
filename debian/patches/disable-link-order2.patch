@@ -1,6 +1,8 @@
---- a/tests/link-order2.at
-+++ b/tests/link-order2.at
-@@ -48,6 +48,8 @@
+Index: libtool-2.5.4/tests/link-order2.at
+===================================================================
+--- libtool-2.5.4.orig/tests/link-order2.at
++++ libtool-2.5.4/tests/link-order2.at
+@@ -45,6 +45,8 @@ AT_SETUP([Link order of deplibs])
  AT_KEYWORDS([libtool])
  AT_KEYWORDS([interactive])dnl running 'wrong' may cause a popup window.
  

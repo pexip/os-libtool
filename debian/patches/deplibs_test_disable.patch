@@ -5,9 +5,11 @@
 ## - The test program is linked against the shared lib and using
 ##   symbols from the static lib.
 
---- a/tests/demo.at
-+++ b/tests/demo.at
-@@ -437,6 +437,8 @@
+Index: libtool-2.5.4/tests/demo.at
+===================================================================
+--- libtool-2.5.4.orig/tests/demo.at
++++ libtool-2.5.4/tests/demo.at
+@@ -434,6 +434,8 @@ AT_CLEANUP
  
  AT_SETUP([deplibs_check_method])
  

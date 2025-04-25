@@ -1,3 +1,1930 @@
+2024-11-20  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	version 2.5.4
+
+	* NEWS: Record release date.
+
+2024-11-20  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	bootstrap: Reflect changes from submodule update
+
+	NEWS: Update for previous commit
+
+2024-11-20  mintsuki  <mintsuki@protonmail.com>
+
+	libtool: Replace support for ironclad* with *-mlibc
+
+	The main Ironclad kernel-based distribution (Gloire) uses the mlibc
+	C library for its userland, and that is what commit
+	bd15931e57f5171732a1a911cbbad9b5e03d0308 was intended to support.
+	There is no reason this support should be Ironclad-specific, as there
+	are many other OSes that use mlibc, most prominently "Managarm",
+	which is already supported by gnu-config.
+
+2024-11-20  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libltdl: Bump version for minor bugfix during cleaning
+
+	bootstrap: Update submodule to recent commit
+
+	gnulib: Update submodule to recent commit
+
+	NEWS: Update for recent commits
+
+2024-11-20  Khalid Masum  <khalid.masum.92@gmail.com>
+
+	libtool: add support for wasm32-emscripten
+
+	This patch adds support for emscripten compiler for shared compilation.
+
+	* build-aux/ltmain.in: clone link-mode handling for emscripten from
+	unixware7.
+	* m4/libtool.m4: translate emscripten specific flags for shared module
+	building.
+
+2024-11-20  Tim Schumacher  <timschumi@gmx.de>
+
+	libtool: Add support for SerenityOS
+
+	This hobbyist OS has already been added to `config.sub` (and
+	`config.guess` respectively) some time ago, but was still lacking
+	upstream support for building libraries using libtool.
+
+	Since it is a relatively up-to-date system with ports of modern
+	software, "adding support" mostly just means adding empty cases to avoid
+	falling though to the most basic behavior (that guarantees compatibility
+	at the expense of disabling everything that might be critical).
+
+	* m4/libtool.m4: Add support for SerenityOS.
+
+2024-11-20  streaksu  <streaksu@protonmail.com>
+
+	libtool: add support for Ironclad
+
+2024-11-20  Adrien Destugues  <pulkomandy@pulkomandy.tk>
+
+	Do not explicitly link dependencies on Haiku.
+
+	This is not needed, the runtime_loader can figure them out.
+
+2024-11-20  Jerome Duval  <jerome.duval@gmail.com>
+
+	Adjust haiku configuration
+
+2024-11-20  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	ltmain.in: Fix handling xlc(1)-specific options
+
+	Patch supplied on Savannah by user, whr:
+	  https://savannah.gnu.org/patch/index.php?10126
+
+2024-11-20  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool.at: Fix failures for 'test silencing warnings'
+
+	Replace 'g++' with variable '$CXX' and add version number for flag
+	'-version-info'.
+
+2024-11-20  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool.texi: Remove section 'References'
+
+	The section 'References' only contained old broken links.
+
+	* doc/libtool.texi: Remove broken links from documentation.
+
+2024-11-20  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Fix --no-warnings flag
+
+	Passing --no-warnings to libtool would not suppress warning messages.
+
+	* build-aux/ltmain.in: Add 'opt_warning' check before printing out
+	  warning messages.
+	* tests/libtool.at: Add simple test for '--no-warnings'.
+	* NEWS: Update.
+
+2024-11-20  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	ltmain.in: Fix infinite loop for error messages
+
+	If an invalid argument is passed to options '--mode' or '--reorder-cache'
+	after a valid command, error messages will print infinitely:
+
+	  $ libtool --help --mode=MODE
+	  libtool:   error: invalid argument 'MODE' for --mode
+	  libtool:   error: invalid argument 'MODE' for --mode
+	  libtool:   error: invalid argument 'MODE' for --mode
+	  ...
+
+	* build-aux/ltmain.in: Remove 'break' in case statement to fix infinite
+	  loop, and add shift for option '--reorder-cache' to allow more options
+	  to be processed.
+
+2024-11-20  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	ltmain.in: Upgrade warnings to errors
+
+2024-11-20  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	ltmain.in: Update libtool usage for missing options
+
+	Some options were not listed in the usage output of libtool: --finish,
+	--no-quiet, and --no-silent.
+
+2024-11-20  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool.m4: Fix '-Fe' usage with linking in MSVC
+
+	A space after '-Fe' treats a file name as an input file instead of
+	as the intended output file.
+
+	* m4/libtool.m4: Remove space after '-Fe'.
+	* NO-THANKS: Add Kirill Makurin for bug report 74175.
+	* NEWS: Update.
+
+2024-11-20  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Add option to reorder the shared library cache
+
+	Add option to reorder the shared library cache in OpenBSD so that user
+	preferred directories for shared libraries can be used when linking
+	before directories previously listed in the shared library cache.
+
+	This allows for users in OpenBSD to easily switch between versions of
+	libraries with the same name during testing.
+
+	* NEWS: Update for new (OpenBSD) option.
+	* build-aux/ltmain.in: Add option --reorder-cache=DIRS.
+	* doc/libtool.texi: Update documentation for new option.
+	* test/bug_71489.at: Alter test for OpenBSD to utilize new option.
+
+2024-11-20  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Fix local testing of shared libraries on OpenBSD
+
+	On OpenBSD 7.5, the shared library cache is updated with finish_cmds,
+	which causes the test for 'Use local version' to fail. Simply, installed
+	versions of shared libraries take precedence over those locally built.
+
+	To ensure local versions of shared libraries can be tested properly and
+	more easily, additional options have been added to libtool to skip
+	executing finish_cmds, like 'ldconfig -m $libdir' in OpenBSD.
+
+	* build-aux/ltmain.in: Add libtool option, '--no-finish.
+	* doc/libtool.texi: Document new option in libtool.
+	* NEWS: Update.
+
+2024-11-20  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool.m4: Update hardcode_shlibpath_var for OpenBSD
+
+	When generating an executable in OpenBSD, the executable fails to
+	generate when shlibpath_var, LD_LIBRARY_PATH, is used solely to
+	locate dependent libraries.
+
+	For hardcoding library paths in OpenBSD, see documentation for
+	hardcode_direct and hardcode_libdir_flag_spec.
+
+	* m4/libtool.m4: Update hardcode_shlibpath_var from 'no' to 'unsupported'
+	  by removing 'with_gnu_ld=no' for OpenBSD.
+
+2024-11-20  Martin Storsjö  <martin@martin.st>
+
+	libtool: Prefer response files over linker scripts for mingw tools
+
+	The GCC/binutils tools support response files just fine, while
+	lld (impersonating GNU ld) only supports response files, not
+	linker scripts. Using a linker script as input just to pass a
+	list of files is overkill for cases when a response file is enough.
+
+	* build-aux/ltmain.in: Move creation of ld script.
+	* m4/libtool.m4: Add new variable tag for file_list_spec.
+	* NEWS: Update.
+
+2024-11-20  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Avoid test failure in OpenBSD
+
+	The following errors can be seen for the 'execute mode' test in OpenBSD:
+	  build/libtool: test: <: missing second argument
+	  build/libtool: test: >: missing second argument
+
+	The cwrapper in OpenBSD cannot parse these symbols as arguments in
+	execute mode if there are no other characters with them.
+
+	* tests/execute-mode.at: Escape '<' and '>' in OpenBSD.
+
+2024-11-20  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Use wrapper function for AUTORECONF
+
+	Update tests to skip if required autotools are not installed for
+	executing AUTORECONF and to have stdout saved for checks.
+
+	* tests/bug_42313.at: Use LT_AT_AUTORECONF instead of AT_CHECK.
+	* tests/testsuite.at: Save stdout for LT_AT_AUTORECONF.
+
+2024-11-20  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Test trailing slash in destination
+
+	This test is added to ensure path comparisons pass when
+	installing to a destination, specifically when there is a
+	trailing slash in the destination.
+
+	* tests/destdir.at: Add test for trailing slash in destination.
+
+2024-11-20  Richard Purdie  <richard.purdie@linuxfoundation.org>
+
+	ltmain.in: Handle trailing slashes on install commands
+
+	A command like:
+
+	libtool --mode=install /usr/bin/install -c gck-roots-store-standalone.la
+	'/image/usr/lib/gnome-keyring/standalone/'
+
+	where the path ends with a trailing slash currently fails. This occurs in
+	software like gnome-keyring or pulseaudio and is because the comparision
+	code doesn't see the paths as equal. Strip both paths to ensure this works
+	reliably.
+
+	* build-aux/ltmain.in: Strip trailing slashes on install commands.
+	* NEWS: Update.
+
+2024-10-22  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	gnulib: Update submodule to recent commit
+
+	Update NEWS for recent commits
+
+2024-10-22  Alastair McKinstry  <mckinstry@debian.org>
+
+	libtool.m4: Support for more flang compilers
+
+	ltmain.in: Add error message for unknown version type
+
+2024-10-22  Alastair McKinstry  <mckinstry@debian.org>
+
+	libtool: Change how version is derived
+
+	Avoid duplication of '(GNU @PACKAGE@) @VERSION@' in multiple
+	places by using '$scriptversion'.
+
+	* libtoolize.in, build-aux/ltmain.in: Change version from
+	  '(GNU @PACKAGE@) @VERSION@' to '$scriptversion'.
+
+2024-10-22  Alastair McKinstry  <mckinstry@debian.org>
+
+	libtool: Add support for netbsdelf
+
+	* m4/libtool.m4: Add support for netbsdelf*-gnu.
+	* m4/ltdl.m4: Append netbsdelf*-gnu to netbsd* occurrences in case
+	  statements.
+
+2024-10-22  Alastair McKinstry  <mckinstry@debian.org>
+
+	Makefile.am: Generate description for 'whatis' command
+
+	Add '-n' to 'help2man' for documentation and manpage.
+
+2024-10-22  Alastair McKinstry  <mckinstry@debian.org>
+
+	libtool.m4: Add spaces before -L in grep searches
+
+	Current searching for "-L" in link paths is over-greedy and
+	incorrectly handles paths with -L in them.
+
+	https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=896861
+
+2024-10-22  Vincent Lefevre  <vincent@vinc17.net>
+
+	libtool.m4: Avoid a broken AC_TRY_EVAL macro
+
+	As said in the Autoconf source, the AC_TRY_EVAL macro is dangerous and
+	undocumented, and should not be used.
+	In particular, the one related to nm yields binary data in the config.log
+	file with dash, where "echo \\1" (echo with the argument \1) produces the
+	control character ^A instead of the usual \1 with most shells (POSIX says
+	that the result is implementation-defined). See:
+	  https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=910076
+	This patch attempts to replace this AC_TRY_EVAL occurrence by code with
+	similar behavior, but using $ECHO instead of echo in order to avoid the
+	backslash issue.
+
+	https://debbugs.gnu.org/cgi/bugreport.cgi?bug=21309
+
+2024-10-22  Vincent Lefevre  <vincent@vinc17.net>
+
+	libtool.m4: Add run path when linking with tcc
+
+	https://debbugs.gnu.org/cgi/bugreport.cgi?bug=20622
+	https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=814091
+
+2024-10-22  Jonathan Nieder  <jrnieder@gmail.com>
+
+	libtool.texi: Wrong names for structure members
+
+	https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=304400
+
+2024-10-22  Jonathan Nieder  <jrnieder@gmail.com>
+
+	libtool.texi: Documentation inconsitent with libltdl3
+
+	https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=253904
+
+2024-10-22  Bruno Haible  <bruno@clisp.org>
+
+	libtool.m4: Avoid word splitting on untrusted inputs
+
+	If $multilib is set to more than one word, the following error can be
+	seen during configuration:
+
+		test: too many arguments
+
+	* m4/libtool.m4: Wrap variable in quotes.
+
+2024-10-22  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool.m4: Increment serial and typo/spacing fix
+
+2024-10-22  Markus Mützel  <markus.muetzel@gmx.de>
+
+	libtool: Handle unset $multilib for Windows targets.
+
+	If `multilib` is unset (which it apparently is by default), the output
+	from running a `configure` script contains lines like the following:
+	```
+	checking dynamic linker characteristics... ../configure: line 26791: test: yes: unary operator expected
+	Win32 ld.exe
+	```
+
+	The additional output is not a fatal error. But it could be irritating.
+
+	Avoid the unexpected output from `test` by making sure `=` is used as a
+	binary operator.
+
+	* m4/libtool.m4: Prepend "x" on both sides of a comparison with `test`
+	and the operator `=`.
+	* NEWS: Update for bug fix.
+
+	See also: https://github.com/msys2/MINGW-packages/pull/21905
+
+2024-10-22  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	Update documentation and version output
+
+	* libtoolize.in: Overwrite function in bootstrap for printing version
+	  information for libtoolize.
+	* build-aux/ltmain.in: Overwrite function in bootstrap for printing
+	  version information for libtool.
+	* doc/libtool.texi: Fix typo and correct references for tests/demo
+	  subdirectory to the tests/demo.at Autotest file.
+	* gl/top/README-release.diff: Add documentation for maintainers so
+	  the CVS repository is properly updated following a stable release.
+
+2024-10-22  Sergey Poznyakoff  <gray@gnu.org>
+
+	Don't omit directories from the constructed rpath.
+
+	This fixes bug introduced by 0e1b333324.
+
+	* build-aux/ltmain.in: Don't omit paths that are not under $progdir
+	from the compiled_rpath.  Append them to the end of it.
+	* NEWS: Update for bug fix.
+
+2024-10-22  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	Fix errors in distclean and maintainer-clean
+
+	The variable, LT_ARGZ_H, can be empty, which causes distclean and
+	maintainer-clean to error as a directory is attempted to be removed
+	instead of a file.
+
+	When running maintainer-clean for gnulib-tests, the .version file is
+	missing, which is needed by config.status, so the command will error.
+
+	* configure.ac: Update CONFIG_STATUS_DEPENDENCIES to use dotversion so
+	  that the .version file can be generated if needed.
+	* libltdl/ltdl.mk: Add conditional with LTARGZH_EXISTS to append path for
+	  LT_ARGZ_H file to BUILT_SOURCES.
+	* m4/ltdl.m4: Add AM_CONDITIONAL for LTARGZH_EXISTS that is set to
+	  true if LT_ARGZ_H is non-empty.
+	* NO-THANKS: Add 'Michael Pratt' for bug#73672 contribution.
+	* NEWS: List additional bug fix.
+
+2024-10-22  Joshua Root  <jmr@macports.org>
+
+	libtool.m4: Update '-single_module' detection
+
+	'-single_module' detection is broken with Xcode 15, where a message to
+	stderr indicates the flag is deprecated, not unsupported.
+
+	* m4/libtool.m4: Check macOS versions to see if '-single_module' flag is
+	  unnecessary.
+
+2024-09-25  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	maint: post-release administrivia
+
+	* NEWS: Add header line for next release.
+	* .prev-version: Record previous version.
+	* cfg.mk (old_NEWS_hash): Auto-update.
+
+2024-09-25  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	version 2.5.3
+
+	* NEWS: Record release date.
+
+2024-09-25  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	Update tests without aclocal to expect failure
+
+	Five tests use aclocal, but do not have a check for whether aclocal is
+	available to use. This causes reported tests failures in Linux From
+	Scratch and Darwin builds.
+
+	* tests/standalone.at: Add AT_XFAIL_IF check for aclocal for all tests.
+	* tests/subproject.at: Add AT_XFAIL_IF check for aclocal for last test.
+
+2024-09-18  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	Update NEWS for recent changes
+
+2024-09-18  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Update documentation
+
+	* Makefile.am: Fix typo.
+	* doc/libtool.texi: Add missing test case descriptions and specify
+	  option and command where missing in test case descriptions.
+
+2024-09-18  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	Add 'aarch64' support to the file magic test
+
+	The file magic test fails to determine the file type of libraries when
+	cross-compiling with an aarch64 compiler without additional strings to
+	search for in an objdump.
+
+	* build-aux/ltmain.in: Append 'pe-aarch64' to file_magic in the
+	lt_cv_deplibs_check_method.
+	* m4/libtool.m4: Append 'pe-aarch64' to file format check.
+
+2024-09-13  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	Update NEWS for recent changes
+
+	gnulib: Update submodule to recent commit
+
+2024-09-13  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	Fix copyrights for recent test files
+
+	* tests/bug_62343.at: Remove years where test file did not exist.
+	* tests/bug_71489.at: Add missing copyright header.
+
+2024-09-13  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtoolize: Fix conflicting warnings about AC_PROG_RANLIB
+
+	The macro _LT_CMD_OLD_ARCHIVE inlines the definition of AC_PROG_RANLIB,
+	which seems to be outdated functionality. Running autoscan in a
+	directory with ltmain.sh produces conflicting warnings with libtoolize
+	about AC_PROG_RANLIB. Autoconf warns that AC_PROG_RANLIB is missing,
+	but libtoolize warns that it is obsolete. The outdated warning should
+	no longer appear after replacing AC_CHECK_TOOL(RANLIB, ranlib, :) with
+	AC_REQUIRE([AC_PROG_RANLIB]).
+
+	* m4/libtool.m4: Use AC_REQUIRE([AC_PROG_RANLIB]).
+	* Makefile.am: Added in tests/bug_42313.at.
+	* tests/bug_42313.at: Contains test cases for bug 42313.
+
+2024-09-13  Bruno Haible  <bruno@clisp.org>
+
+	Rename option --with-aix-soname to --enable-aix-soname.
+
+	Reported at <https://savannah.gnu.org/support/index.php?110674>.
+
+	* doc/libtool.texi (LT_INIT): Talk about --enable-aix-soname instead of --with-aix-soname.
+	* m4/ltoptions.m4 (_LT_WITH_AIX_SONAME): Use AC_ARG_ENABLE instead of
+	AC_ARG_WITH. In the default case, use _AC_ENABLE_IF, in order to still
+	recognize the old option --with-aix-soname.
+	* m4/libtool.m4 (_LT_SYS_DYNAMIC_LINKER): Update comment.
+	* configure.ac: Update comment.
+	* NEWS: Mention the change.
+
+2024-09-13  Bruno Haible  <bruno@clisp.org>
+
+	Rename option --with-pic to --enable-pic.
+
+	Reported at <https://savannah.gnu.org/support/index.php?110674>.
+
+	* doc/libtool.texi (LT_INIT): Talk about --enable-pic instead of
+	--with-pic, and about --disable-pic instead of --without-pic.
+	(Test descriptions): Likewise.
+	* m4/ltoptions.m4 (_LT_WITH_PIC): Use AC_ARG_ENABLE instead of
+	AC_ARG_WITH. In the default case, use _AC_ENABLE_IF, in order to still
+	recognize the old options --with-pic and --without-pic.
+	* tests/demo.at: Add a test for --enable-pic, keeping the test for
+	--with-pic. Test '--disable-pic' instead of '--with-pic=no'.
+	* tests/with-pic.at: Test --enable-pic instead of --with-pic.
+	* NEWS: Mention the change.
+
+2024-09-13  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: FSF office address replaced by URL
+
+	* AUTHORS, HACKING, Makefile.am, bootstrap.conf, build-aux/edit-readme-alpha,
+	build-aux/no-bogus-m4-defines, cfg.mk, configure.ac, libltdl/configure.ac,
+	libltdl/libltdl/lt__alloc.h, libltdl/libltdl/lt__argz_.h,
+	libltdl/libltdl/lt__dirent.h, libltdl/libltdl/lt__glibc.h,
+	libltdl/libltdl/lt__private.h, libltdl/libltdl/lt__strl.h,
+	libltdl/libltdl/lt_dlloader.h, libltdl/libltdl/lt_error.h,
+	libltdl/libltdl/lt_system.h, libltdl/libltdl/slist.h,
+	libltdl/loaders/dld_link.c, libltdl/loaders/dlopen.c,
+	libltdl/loaders/dyld.c, libltdl/loaders/load_add_on.c,
+	libltdl/loaders/loadlibrary.c, libltdl/loaders/preopen.c,
+	libltdl/loaders/shl_load.c, libltdl/lt__alloc.c, libltdl/lt__argz.c,
+	libltdl/lt__dirent.c, libltdl/lt__strl.c, libltdl/lt_dlloader.c,
+	libltdl/lt_error.c, libltdl/ltdl.c, libltdl/ltdl.h, libltdl/ltdl.mk,
+	libltdl/slist.c, tests/am-subdir.at, tests/archive-in-archive.at,
+	tests/bindir.at, tests/bug_62343.at, tests/cdemo.at, tests/cmdline_wrap.at,
+	tests/configure-funcs.at, tests/configure-iface.at, tests/convenience.at,
+	tests/ctor.at, tests/cwrapper.at, tests/darwin.at, tests/demo.at,
+	tests/depdemo.at, tests/deplib-in-subdir.at, tests/deplibs-ident.at,
+	tests/deplibs-mingw.at, tests/destdir.at, tests/dlloader-api.at,
+	tests/dumpbin-symbols.at, tests/duplicate_conv.at, tests/duplicate_deps.at,
+	tests/duplicate_members.at, tests/early-libtool.at, tests/exceptions.at,
+	tests/execute-mode.at, tests/exeext.at, tests/export-def.at,
+	tests/export.at, tests/f77demo.at, tests/fail.at, tests/fcdemo.at,
+	tests/flags.at, tests/help.at, tests/indirect_deps.at, tests/infer-tag.at,
+	tests/inherited_flags.at, tests/install.at, tests/lalib-syntax.at,
+	tests/libtool.at, tests/libtoolize.at, tests/link-order.at,
+	tests/link-order2.at, tests/loadlibrary.at, tests/localization.at,
+	tests/lt_dladvise.at, tests/lt_dlexit.at, tests/lt_dlopen.at,
+	tests/lt_dlopen_a.at, tests/lt_dlopenext.at, tests/ltdl-api.at,
+	tests/ltdl-libdir.at, tests/mdemo.at, tests/need_lib_prefix.at,
+	tests/no-executables.at, tests/nocase.at, tests/nonrecursive.at,
+	tests/old-m4-iface.at, tests/pic_flag.at, tests/recursive.at,
+	tests/resident.at, tests/runpath-in-lalib.at, tests/search-path.at,
+	tests/shlibpath.at, tests/slist.at, tests/standalone.at, tests/static.at,
+	tests/stresstest.at, tests/subproject.at, tests/sysroot.at, tests/tagdemo.at,
+	tests/template.at, tests/testsuite.at, tests/versioning.at,
+	tests/with-pic.at: Replace FSF address in each file's license block with
+	a URL that points to licenses online hosted by GNU.
+
+2024-09-13  Bruno Haible  <bruno@clisp.org>
+
+	Document situations where -export-symbols does not work.
+
+	* doc/libtool.texi (Link mode): Document that -export-symbols does not work on
+	static libraries. Document the most important platforms where it does not work
+	on shared libraries.
+
+2024-08-29  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	maint: post-release administrivia
+
+	* NEWS: Add header line for next release.
+	* .prev-version: Record previous version.
+	* cfg.mk (old_NEWS_hash): Auto-update.
+
+2024-08-29  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	version 2.5.2
+
+	* NEWS: Record release date.
+
+2024-08-27  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	Update NEWS for recent changes
+
+2024-08-27  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	README-release: Update compiler environment variable
+
+	When compiling C++ code, CXX should be used to set the compiler
+	to g++ instead of CC, which is for setting a C compiler.
+
+2024-08-27  Tobias Stoeckmann  <tobias@stoeckmann.org>
+
+	libtool: Fix typos
+
+	Typos found with codespell.
+
+	* doc/libtool.texi: Change 'incompatabile' to 'incompatible'.
+	* doc/notes.texi: Change 'neccesary' to 'necessary'.
+
+2024-08-27  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Fix test 170 in Cygwin/Mingw32
+
+	Test 170 in bug_62343.at is failing to link object files with a library
+	file. This is fixed by choosing the correct architecture version of a
+	compiler by using the 'CXX' macro.
+
+	tests/bug_62343.at: Replace 'g++' with 'CXX' macro
+
+2024-08-27  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	ltmain: Use shared objects built in source tree
+
+	It has been discovered that under certain conditions libtool creates
+	wrappers that prefer installed versions of the shared objects over
+	those built in the source tree. As a result, any tests run in the
+	source tree produce unreliable results.
+
+	* build-aux/ltmain.in: Alter to use shared objects in source tree
+	  instead of installed.
+	* Makefile.am: Added in tests/bug_71489.at.
+	* tests/bug_71489.at: Contains test case for bug 71489.
+
+2024-08-27  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	Update NEWS for 32-bit mode on FreeBSD/powerpc64 support
+
+2024-08-27  Bruno Haible  <bruno@clisp.org>
+
+	Fix libtool wrapper programs in 32-bit mode on FreeBSD/powerpc64.
+
+	* m4/libtool.m4 (_LT_SYS_DYNAMIC_LINKER): On FreeBSD/powerpc64, in 32-bit mode,
+	set shlibpath_var to LD_32_LIBRARY_PATH instead of LD_LIBRARY_PATH.
+
+2024-07-25  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	maint: post-release administrivia
+
+	* NEWS: Add header line for next release.
+	* .prev-version: Record previous version.
+	* cfg.mk (old_NEWS_hash): Auto-update.
+
+2024-07-25  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	version 2.5.1
+
+	* NEWS: Record release date.
+
+2024-07-24  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	bootstrap: Update submodule to recent commit
+
+	gnulib: Update submodule to recent commit
+
+2024-07-24  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	m4: Increment serial for recent changes
+
+	* m4/libtool.m4: Incremented serial to 62.
+	* m4/ltdl.m4: Incremented serial to 23.
+
+2024-07-19  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	NEWS: Update for recent changes
+
+2024-07-19  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	m4: Support additional flang-based compilers
+
+	* m4/libtool.m4: Alter regex to support 'flang-new' and 'ftn'.
+	* NO-THANKS: Add thanks for Anton Shterenlikht.
+
+2024-07-19  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	ltmain: Error message improvement
+
+	* build-aux/ltmain.in: Append argument to error message to make it
+	  easier to understand, and edit message of each instance where
+	  run-paths are not absolute to better reflect the issue occurring
+	  to the user.
+
+2024-07-19  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	m4: Disable chained fixups for macOS
+
+	Append '-no_fixup_chains' flag to disable chained fixups since it
+	is not compatible with '-undefined dynamic_lookup'.
+
+	* m4/libtool.m4: AC_VAR_APPEND will handle appending the option to
+	  the variable, which allows the '+=' extension to be used by shells
+	  that provide this capability for more efficient scaling. Also, bump
+	  minimum required version of autoconf from 2.62 to 2.64.
+	* tests/no-executables.at: Set cache variable for link test.
+	* NO-THANKS: Add thanks for Carlo Cabrera and Dave Allured.
+
+2024-07-19  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Alter test to expect pass
+
+	* tests/duplicate_deps.at: Remove expected failure for testing
+	  with preserve-dup-deps flag, since it has been fixed.
+
+2024-07-19  Julien ÉLIE  <julien@trigofacile.com>
+
+	ltmain.in: Fix --preserve-dup-deps stripping duplicates
+
+	Building INN with libtool otherwise failed with unresolved circular
+	dependencies, even with the use of --preserve-dup-deps.
+
+2024-07-19  trcrsired  <uwgghhbcad@gmail.com>
+
+	libtool: Correct DLL Installation Path for mingw
+
+	When building native GCC for the x86_64-w64-mingw32 host, the
+	compiler copies its library DLLs to the `bin` directory. However,
+	in the case of a multilib configuration, both 32-bit and 64-bit
+	libraries end up in the same `bin` directory, leading to conflicts
+	where 64-bit DLLs are overridden by their 32-bit counterparts.
+
+	This patch addresses the issue by adjusting the installation path
+	for the libraries. Specifically, it installs the libraries to
+	separate directories: `lib` for 64-bit and `lib32` for 32-bit. This
+	behavior aligns with how libraries are installed when creating an
+	x86_64-w64-mingw32 cross-compiler without copying them to the `bin`
+	directory if it is a multilib build.
+
+	* m4/libtool.m4: Install DLL to $(libdir), not $(libdir)/bin, if
+	  multilib build.
+
+2024-07-19  Peter Kokot  <peterkokot@gmail.com>
+
+	m4: Fix Wstrict-prototypes warnings
+
+	This changes the C function prototypes to use void where needed. When
+	building with CFLAGS=-Werror=strict-prototypes or similar, the libtool's
+	tests can cause false reports and errors in the log files:
+
+	    error: function declaration isn't a prototype
+
+	* m4/libtool.m4: Specify void for main function prototypes.
+	* m4/ltdl.m4: Specify void for main and fnord function prototypes.
+
+2024-06-18  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	NEWS: Add news entries for recent changes
+
+2024-06-18  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	ltmain: Fix testsuite errors for windows
+
+	Numerous test failures on windows/cygwin/mingw result with:
+		did not find the 'nothing' variable
+
+	A syntax fix resolves these test failures for 64-bit windows-
+	based systems.
+
+	* build-aux/ltmain.in: Alter syntax in sed command.
+
+2024-06-18  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Update pxref to remove texinfo warning
+
+	Building the documentation contains this warning:
+	  libtool.texi:1333: warning: @pxref node name should not contain `.'
+
+	Now, users will be linked to the top of the autoconf manual and need
+	to manually scroll to the section specified.
+
+	* doc/libtool.texi: Specify section header instead of duplicating
+	  autoconf manual name.
+
+2024-06-18  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Skip passing CXX flags test on NetBSD
+
+	When linking on NetBSD, the test fails to locate a shared version of
+	gcc, so a static version of the module is generated, which does not pass
+	the defined checks. A FIXME note has been added for future debugging.
+
+	* tests/flags.at: Skip passing CXX flags test on NetBSD.
+
+2024-06-18  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Add remaining test case descriptions
+
+	* doc/libtool.texi: Add missing test case descriptions.
+
+2024-06-18  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Add no-undefined flag based on host OS
+
+	Without the no-undefined flag, the test will fail on Mingw and
+	Cygwin, so the flag will be appended for windows compilation. With
+	the flag, the test will fail on NetBSD, so the flag is removed.
+
+	* tests/bug_62343.at: Add no-undefined flag for windows-based
+	  compilation and remove otherwise.
+
+2024-06-08  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Check if -no-canonical-prefixes supported
+
+	The compiler fails with the -no-canonical-prefixes flag in certain
+	environments. Check if the flag is supported in the current environment
+	and skip the test if it is not supported.
+
+	* tests/bug_62343.at: Skip test if -no-canonical-prefixes is unsupported
+	  in the current environment.
+
+2024-06-05  Richard Purdie  <richard.purdie@linuxfoundation.org>
+
+	m4/libtool.m4: Fixed AC_CHECK_PROG call
+
+	AC_CHECK_TOOL was changed to AC_CHECK_PROG however the arguments are
+	different and this result is a value of ":". Change this to match the
+	original intent.
+
+	The lack of FILECMD was causing failures for mips64 builds as -m elf was
+	being passed to LD which isn't supported on our targets.
+
+2024-06-04  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	testsuite.at: Replaced $as_echo with AS_ECHO
+
+	* testsuite.at: $as_echo was deprecated in Autoconf commit 2b59b6f8a.
+	  AS_ECHO uses printf which has been well supported for 15 to 20
+	  years. Use of $as_echo was resulting in a warning message in the
+	  testsuite logs, and replacing the deprecated macro removes the
+	  warning messages.
+
+2024-06-03  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	Fixed failing test when program-prefix is used
+
+	* tests/libtoolize.at: When -program-prefix is used, stdout for the
+	  program changes from the expected output. As a result, the test
+	  fails. Replaced the transformed name to account for program-prefix.
+
+2024-06-03  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	cfg.mk: Update old_NEWS_hash
+
+	Fixed spacing of latest alpha release 2.5.0.
+
+2024-05-31  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	ltmain.in: Additional sysroot to prepend to libdir
+
+	Addition to commit 3221f9f0fb98d5740ab5d0e8db6a731302520644.
+
+2024-05-31  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	NEWS: Add news entries for recent changes
+
+2024-05-31  Vincent Lefevre  <vincent@vinc17.net>
+
+	libtool: pass more flags to the linker
+
+	Resolves bug 17750.
+
+	* build-aux/ltmain.in (func_mode_link): In the flags to be passed
+	through unchanged, also pass -static-* and -fcilkplus.
+
+2024-05-30  Khem Raj  <raj.khem@gmail.com>
+
+	ltmain.in: Add missing sysroot to library path
+
+	When using a sysroot we should append it to libdir, which is helpful in
+	cross builds as the system is staged in the sysroot. For normal builds,
+	i.e. when lt_sysroot is not set, it will still behave the same and add
+	-L/usr/lib to the relink command.
+
+	* build-aux/ltmain.in: Prepend sysroot to libdir.
+
+2024-05-27  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	tests: Skip Fortran/C demo tests
+
+	Using clang with fsanitize results in an incompatible ASan runtime.
+	It results in the warning message "linked against incompatible ASan
+	runtimes". This only occurs with the mixed Fortran/C demo.
+
+	* tests/f77demo.at: Skip tests for clang compiling with fsanitize.
+	* tests/fcdemo.at: Skip tests for clang compiling with fsanitize.
+
+2024-05-20  Bruno Haible  <bruno@clisp.org>
+
+	Document how to debug failing or skipped tests.
+
+	* HACKING (Test Suite): Explain how to debug a range of tests.
+
+2024-05-20  Bruno Haible  <bruno@clisp.org>
+
+	Support C++17 compilers in the C++ tests.
+
+	* tests/exceptions.at: For C++11 and newer, use the keyword 'noexcept'
+	instead of the keyword 'throw'.
+
+2024-05-18  Bruno Haible  <bruno@clisp.org>
+
+	libtoolize: Don't use uninitialized variable.
+
+	* libtoolize.in (func_serial_update): Initialize my_src_serial and
+	my_dest_serial before use.
+	* tests/libtoolize.at: Update expected test result.
+
+2024-05-17  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	README.md: Update for additional git branch
+
+	A supplementary branch for development and testing has been added. Some
+	CI checks for different architectures will be done via Github:
+	 -  https://github.com/gnu-libtool/ci-check
+
+	This will be used to help expedite testing and ensure the source code is
+	ready to be released.
+
+2024-05-13  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	maint: post-release administrivia
+
+	* NEWS: Add header line for next release.
+	* .prev-version: Record previous version.
+	* cfg.mk (old_NEWS_hash): Auto-update.
+
+2024-05-13  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	version 2.5.0
+
+	* NEWS: Record release date.
+
+2024-05-13  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	NEWS: Update news for upcoming alpha release
+
+2024-05-11  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	AUTHORS: Update current maintainership of libtool
+
+	NO-THANKS: Added helpful contributers
+
+2024-05-11  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	resident: Fixed syntax error with g++ compilation
+
+	A function used in a test was not returning a value, while an int was
+	expected so the test would fail to compile.
+
+	tests/resident.at: Return the result of atexit().
+
+2024-05-11  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	bug_62343: Skip test if not building libtool libs
+
+	When the configure option "--disable-shared" is used, this test will be
+	skipped since no libtool libs are built.
+
+	tests/bug_62343.at: Check if build_libtool_libs is set to no.
+
+2024-05-11  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Minor syntax and typo fixes
+
+	doc/notes.texi: Duplicate "to" removed.
+	build-aux/ltmain.in: Useless parentheses in cpp directive removed.
+
+2024-05-11  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool.m4: Incremented serial
+
+	* m4/libtool.m4: Incremented serial for previous changes.
+
+2024-04-20  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	ltmain.in: Use func_warning for all warnings
+
+	Several warning messages have been updated to use func_warning rather
+	than echo. This will allow them to be disabled properly.
+
+	* build-aux/ltmain.in: Replace echo command with func_warning function.
+
+2024-04-20  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Document warning output options
+
+	By default, CATEGORY is set to "all" for all of the warning messages to
+	be output to standard error. CATEGORY can be set to "none" to disable
+	warnings.
+
+	* doc/libtool.texi: Document "W" or "--warnings=CATEGORY" option.
+
+2024-04-18  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Pass the "-no-canonical-prefixes" linker flag
+
+	When using the -no-canonical-prefixes flag in libtool, the flag is
+	removed from the linking command, causing linking to fail. This adds
+	the flag to the list of linker flags to be passed through to the
+	linker.
+
+	* build-aux/ltmain.in: Pass -no-canonical-prefixes to the linker.
+	* Makefile.am: Added in tests/bug_62343.at.
+	* tests/bug_62343.at: Contains test case for bug 62343.
+
+2024-04-08  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Remove test_compile
+
+	This is cleanup for libtool. The option test_compile is not used in
+	libtool, and the documentation states that it would probably be dropped
+	in the future.
+
+	* build-aux/ltmain.in: Remove case statement for test_compile.
+	* doc/libtool.texi: Remove test_compile from documentation.
+	* m4/libtool.m4: Remove test_compile definition from macro file.
+
+2024-04-05  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: HACKING file list of files not to edit updated
+
+	The HACKING file lists some files not to edit that are part of gnulib.
+	The contents for this list has been expanded to include various files,
+	including some m4 files.
+
+	* HACKING: Added other symbolic links to list of files not to edit.
+
+2024-03-28  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Add more test case descriptions
+
+	The libtool documentation is still lacking several test case
+	descriptions for tests/*demo.at Autotest files.
+
+	* doc/libtool.texi: Add missing test case descriptions.
+
+2024-03-26  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Fix and remove TODO for improperly sized symbol in TOC
+
+	A comment in the libtool manual specifies a TODO for fixing the font
+	size of the ++ symbol in the TOC. This is fixed by wrapping the
+	symbol in a @code command, and this TODO can be removed.
+
+	* doc/libtool.texi: Wrap ++ in a @code command to fix font in TOC.
+
+2024-03-25  Sam James  <sam@gentoo.org>
+
+	Clang uses -fopenmp=* to allow choosing between libgomp and libomp.
+
+	* build-aux/ltmain.in: Pass through -fopenmp=*.
+
+2024-03-25  Stephen Webb  <swebb@blackberry.com>
+
+	ltmain.in: update QNX version_type handling
+
+	QNX handles ELF SONAME versioning just like most other targets.
+
+2024-03-20  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Fix documentation for demo compile mode commands
+
+	The demo compile mode commands in Chapter 3 fail to compile since
+	the source files include a header file that is not in the header search
+	list. The config.h file is in the local folder. Before this fix, the
+	compile mode commands would return errors like below:
+
+	main.c:1:10: fatal error: config.h: No such file or directory
+	    1 | #include <config.h>
+	      |          ^~~~~~~~~~
+	compilation terminated.
+
+	The '-I' option has been added to the gcc commands to specify that the
+	local folder should be searched for header files.
+
+	* doc/libtool.texi: Add option to demo compile mode commands
+
+2024-03-15  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Some outdated documentation warnings removed
+
+	Documentation for dlopen(3) states that it is thread safe, and it is
+	defined this way by POSIX.
+
+	* doc/libtool.texi: Remove old dlopen multi-threaded support warnings.
+
+2024-03-13  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	notes.texi: Specify -lasan with -fsanitize=address in g++
+
+	When using the flag -fsanitize=address with g++, the user should also
+	specify -lasan to ensure linking occurs correctly. libtool uses
+	-nostdlib, and gcc implicitly includes -lasan when -fsanitize=address
+	is used. However, g++ does not implicitly include -lasan. The
+	documentation has been updated to reflect this information rather than
+	adding the -lasan flag to libtool.
+
+	* doc/notes.texi: Document that the user should pass -lasan.
+
+2024-03-07  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Add test case descriptions
+
+	The libtool documentation is lacking several test case descriptions
+	for tests/*demo.at Autotest files.
+
+	* doc/libtool.texi: Add missing test case descriptions.
+
+2024-03-06  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: Documentation refers to demo directory that no longer exists
+
+	The libtool documentation included mention of an old test framework.
+	The documentation has been reworked to indicate the current test
+	framework used by libtool, where the tests/*demo directories have been
+	replaced with tests/*demo.at Autotest files.
+
+	* doc/libtool.texi: Clarifies where the example files originate.
+	* TODO: Remove TODO item related to tests/*demo directories.
+
+2024-03-01  Ozkan Sezer  <sezeroz@gmail.com>
+
+	ltmain.in: correct windows compiler preprocessor checks
+
+	Commit f54924fa5d8d5959038e58adab7c552c3ca495ae seems to have been
+	wrongly applied.
+
+2024-02-29  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	ltmain.in: Expand process.h inclusion on Windows
+
+	Multiple compilers on Windows besides the proprietary MSVC compiler
+	require process.h, and not unistd.h. The inclusion check is expanded
+	to include these alternative compilers which also require process.h.
+
+	* ltmain.in: Replace _MSV_VER with WIN32 and !__GNU_C check
+
+2024-02-17  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool.m4: Check for space after -l flag
+
+	The -R and -L flags are currently checked if they have a space behind
+	them. -l should be added to the list of cases checked.
+
+	* m4/libtool.m4: Check for a space after the -l flag.
+
+2024-02-01  Mike Frysinger  <vapier@gentoo.org>
+
+	m4: update serial numbers in modified files
+
+	These should have been included in the commits that updated these
+	files, but too late now to rewrite git history.
+
+	* m4/libtool.m4: Update serial number.
+	* m4/ltdl.m4, m4/ltoptions.m4: Likewise.
+
+2024-01-23  Tijl Coosemans  <tijl@coosemans.org>
+
+	tests: Also check amd64 where we test for x86_64
+
+	It is used on FreeBSD.
+
+	* tests/demo.at: Also test for amd64 where we test for x86_64.
+
+2024-01-22  Mike Frysinger  <vapier@gentoo.org>
+
+	libtoolize: always copy config-h.in like aclocal.m4
+
+	When running `libtoolize --ltdl`, a symlink to the source config-h.in
+	is used rather than a copy of the file.  This causes the build system
+	to look at its old timestamp relative to the other generated files
+	that are copied in, and then try to regenerate things, and update the
+	config-h.in timestamp by touching the symlink (which will dereference
+	things).  This breaks `make distcheck` because when a few tests run
+	that invoke `libtoolize --ltdl --install` w/out --copy, and then try
+	to build the project, automake's rules trigger autoheader regen, and
+	then update the timestamp, which updates the underlying file, and then
+	causes libtool's own files to get out of sync.  So the next time make
+	is run in the tree, it tries to regenerate the source files, and fails
+	as the source tree is read-only.
+
+	Change libtoolize to always copying the header over during install.
+	It's not clear to me whether this is 100% the right answer, but it
+	shouldn't make things worse beyond missing a case to use a symlink.
+	We probably can't avoid this as long as aclocal.m4 itself is copied
+	in instead of symlinked.  This changed between v2.4.2 and v2.4.3 in
+	commit 4e671d6ba69c889b1f9aee12de6c504d26dc6514 ("libtoolize:
+	simplify file-copying and -linking call-graph.").
+
+	Example failure log:
+
+	$ make distcheck
+	...
+	make[3]: Entering directory '.../libtool-2.4.7.62-3e11/_build/sub'
+	  GEN      ../../libltdl/Makefile.in
+	  GEN      ../../libltdl/configure
+	autom4te-2.72: error: cannot create autom4te.cache in .../libtool-2.4.7.62-3e11/libltdl: Permission denied
+	make[3]: *** [Makefile:2411: ../../libltdl/configure] Error 1
+	make[3]: *** Waiting for unfinished jobs....
+	autom4te-2.72: error: cannot create autom4te.cache in .../libtool-2.4.7.62-3e11/libltdl: Permission denied
+	automake-1.16: error: autoconf failed with exit status: 1
+	make[3]: *** [Makefile:2387: ../../libltdl/Makefile.in] Error 1
+
+	We can see this in old-m4-iface.at:AC_WITH_LTDL which doesn't use
+	--copy with libtoolize:
+
+	$ stat libltdl/config-h.in | grep Modify
+	Modify: 2024-01-18 01:18:52.998059970 -0500
+	$ make check-local TESTSUITEFLAGS=100
+	...
+	100: AC_WITH_LTDL                                    ok
+	...
+	$ stat libltdl/config-h.in | grep Modify
+	Modify: 2024-01-18 01:19:19.254727020 -0500
+
+	And in the test log we can see:
+
+	100. old-m4-iface.at:113: testing AC_WITH_LTDL ...
+	...
+	libtoolize: linking file 'libltdl/config-h.in'
+	...
+	./old-m4-iface.at:161: : ${CONFIG_SHELL=/bin/sh}; export CONFIG_SHELL;    $CONFIG_SHELL ./configure $configure_options           --prefix="$prefix" --exec-prefix="$prefix" --bindir="$prefix/bin" --libdir="$prefix/lib" --with-included-ltdl
+	...
+	./old-m4-iface.at:161: $as_unset LIBTOOL; $as_unset LIBTOOLIZE; $MAKE $target
+	stderr:
+	stdout:
+	cd libltdl && make
+	make[1]: Entering directory '/usr/local/src/gnu/libtool/tests/testsuite.dir/100/libltdl'
+	CDPATH="${ZSH_VERSION+.}:" && cd . && aclocal -I m4
+	 cd . && automake --foreign
+	CDPATH="${ZSH_VERSION+.}:" && cd . && autoconf
+	/bin/sh ./config.status --recheck
+	...
+	(CDPATH="${ZSH_VERSION+.}:" && cd . && autoheader)
+	rm -f stamp-h1
+	touch config-h.in
+	...
+
+	* libtoolize.in: Copy config-h.in.
+	* tests/libtoolize.at: Change "linking" to "copying".
+
+2024-01-21  Mike Frysinger  <vapier@gentoo.org>
+
+	Fix some style & minor grammar.
+
+	* doc/libtool.texi: Fix some style & minor grammar.
+
+2024-01-21  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	* doc/libtool.texi: Minor grammatical fixes.
+
+2024-01-18  Mike Frysinger  <vapier@gentoo.org>
+
+	bootstrap: don't reset config-h.in timestamp newer than configure
+
+	Various autotools rules will compare the timestamps of config-h.in
+	and configure, and if config-h.in is newer than configure, attempt
+	to regenerate it.  This breaks `make distcheck` which we need to
+	produce new releases.  So update config-h.in timestamp, but only
+	up to the configure file.
+
+	The breakage is caught because distcheck makes source dirs read-only
+	before running.
+
+	$ make distcheck
+	...
+	make[3]: Entering directory '.../libtool-2.4.7.62-7132f/_build/sub'
+	  GEN      ../../libltdl/configure
+	autom4te-2.72: error: cannot create autom4te.cache in .../libtool-2.4.7.62-7132f/libltdl: Permission denied
+	make[3]: *** [Makefile:2411: ../../libltdl/configure] Error 1
+
+	* bootstrap.conf (libtool_fudge_timestamps): Set config-h.in timestamp
+	to configure.
+
+2024-01-18  Mike Frysinger  <vapier@gentoo.org>
+
+	HACKING: add more test related tips
+
+	* HACKING: Document syntax-check & distcheck & parallel testing.
+
+2024-01-17  Richard Purdie  <richard.purdie@linuxfoundation.org>
+
+	ltmain.in: Parse additional clang options
+
+	clang uses -rtlib and -unwindlib to select proper compiler runtime in
+	some cases.  Therefore pass these options to linker when found in
+	ldflags.
+
+	* build-aux/ltmain.in: Handle clang linker options.
+
+2024-01-17  Richard Purdie  <richard.purdie@linuxfoundation.org>
+
+	libtool.m4: Cleanup sysroot trailing "/"
+
+	If $CC has --sysroot=/, it is a valid configuration however libtool will
+	then set lt_sysroot to "/".
+
+	This means references like $lt_sysroot$libdir become //usr/lib instead
+	of the more normally expected /usr/lib. This may or may not break something
+	but certainly is confusing to the user and gives confusing output. Making
+	"/" simply unset lt_sysroot is much cleaner.
+
+	Whilst here, trim any trailing '/' from sysroot paths to drop the duplication
+	and result in cleaner/consistent output.
+
+	* m4/libtool.m4: Cleanup sysroot trailing '/' handling.
+
+2024-01-17  Richard Purdie  <richard.purdie@linuxfoundation.org>
+
+	ltmain.in: Handle prefix-map compiler options correctly
+
+	If lto is enabled, we need the prefix-map variables to be passed to the
+	linker to correctly link the objects using correctly mapped paths.
+
+	Add these to the list of options libtool passes through.
+
+	* build-aux/ltmain.in: Handle prefix-map compiler options.
+
+2024-01-17  Tim Rice  <tim@multitalents.net>
+
+	ltmain: correct fallout from freebsd-elf changes
+
+	Here is a small patch to correct builds on svr5.
+	When the freebsd-elf target was changed, this got missed.
+
+	Symptoms were, building newer lib ended up with libfoo.nn a lower number
+	than the previous version.  And building libpng-1.6.29 produced:
+	libtool:   error: CURRENT '' must be a nonnegative integer
+	libtool:   error: '16:29:0' is not valid version information
+
+	* build-aux/ltmain.in (func_mode_link): Add sco.
+
+2024-01-17  Ozkan Sezer  <sezeroz@gmail.com>
+
+	libtool: add mingw to systems not requiring libm
+
+	mingw uses msvcrt as it's standard library and does not use libm.
+	So in LT_LIB_M it can be added to the list of systems which do not
+	require libm.
+
+	* libtool.m4: Add mingw to the list of systems not requiring libm
+
+2024-01-17  Paul Green  <Paul.Green@stratus.com>
+
+	libtool.m4: fix old_archive_from_new_cmds variable name typo
+
+	The "From" should be "from" in the variable name.
+
+	Fixes libtool bug https://bugs.gnu.org/38305
+
+	* m4/libtool.m4: Change F to f in old_archive_from_new_cmds.
+
+2024-01-17  Mike Frysinger  <vapier@gentoo.org>
+
+	libtool.m4: drop AC_PROG_SED fallback
+
+	We require autoconf 2.62 which includes this macro so we don't need
+	this fallback logic anymore.
+
+	* m4/libtool.m4 (AC_PROG_SED): Delete.
+
+2024-01-17  Albert Chu  <chu11@llnl.gov>
+
+	libtool.m4: fix "manifest" typos
+
+	* m4/libtool.m4: Rename lt_cv_path_mainfest_tool to lt_cv_path_manifest_tool.
+
+2024-01-17  Oliver Kiddle  <okiddle@yahoo.co.uk>
+
+	libtool: fix Solaris 11 builds
+
+	Trying to build clamav on Solaris 11.3 with the Oracle C compiler,
+	I got the following error:
+
+	libtool: error: not configured to extract global symbols from dlpreopened files
+
+	I would have expected a build to use dlopen rather than the preopen
+	fallback so looked for related configure tests that were perhaps
+	returning the wrong answer.
+
+	The global_symbol_pipe being empty seemed a likely culprit.
+	the last three lines of nm -p on the conftest.o in this test are:
+
+	0000000032 T main
+	0000000016 T nm_test_func
+	0000000001 C nm_test_var
+
+	On Solaris 10, I'd get a D instead of a C. Adding C to the list of
+	characters in the symcode variable and building again resulted in a
+	successful build. I've attached a patch to add this C.
+
+	Url: https://savannah.gnu.org/patch/?9086
+
+	* m4/libtool.m4 (symcode): Add C for solaris.
+
+2024-01-17  Mike Frysinger  <vapier@gentoo.org>
+
+	HACKING: minor formatting tweaks
+
+	* HACKING: Tweak style.
+
+2024-01-17  Brad Smith  <brad@comstyle.com>
+
+	libtool: remove OpenBSD specific performance hack for ranlib
+
+	The -t flag was used as a performance hack for ranlib. The flag was
+	supported by the GNU toolchain, but is a no-op with the LLVM toolchain.
+
+	* m4/libtool.m4: Remove use of -t flag with ranlib.
+
+2024-01-17  Richard Purdie  <richard.purdie@linuxfoundation.org>
+
+	libtool: Fix support for NIOS2 processor
+
+	When building for a nios2 system, the $host tuple starts with "nios2-"
+	which is caught by the some of the greedy checks for OS/2 in libtool.
+	In particular, the *os2* branches of switch statements that only want
+	to match the OS setting end up matching all nios2 targets, which
+	results in incorrect behavior.
+
+	Switch to use $host_os instead of $host and tweak the patterns to
+	match to avoid this problem for nios2.
+
+	* build-aux/ltmain.in: Switch some $host checks to $host_os.
+
+2024-01-17  Mike Frysinger  <vapier@gentoo.org>
+
+	bootstrap: sync to latest version
+
+	* gl-mod/bootstrap: Update.
+	* bootstrap: Likewise.
+
+2024-01-17  Mike Frysinger  <vapier@gentoo.org>
+
+	bootstrap: revert typo fixes
+
+	This is maintained elsewhere, so we don't want to fork it locally.
+
+	* bootstrap: Restore upstream typos.
+
+2024-01-16  Antonin Décimo  <antonin@tarides.com>  (tiny change)
+
+	Fix various typos
+
+	* NEWS: Fix various typos.
+	* NO-THANKS, README.md, TODO, bootstrap, bootstrap.conf,
+	build-aux/edit-readme-alpha, build-aux/git-log-fix, build-aux/ltmain.in,
+	doc/libtool.texi, libltdl/libltdl/lt_error.h, libltdl/lt__argz.c,
+	libltdl/ltdl.c, libtoolize.in, tests/depdemo.at, tests/link-order.at: Likewise.
+	* cfg.mk (old_NEWS_hash): Update.
+
+2024-01-16  Mike Frysinger  <vapier@gentoo.org>
+
+	cfg.mk: update old NEWS hash
+
+	The recent change to change http:// to https:// updated old NEWS
+	entries.  This isn't exactly against the spirit of the "don't
+	change old NEWS", so update the hash to match.
+
+	* cfg.mk (old_NEWS_hash): Update.
+
+2024-01-16  Antonin Décimo  <antonin@tarides.com>  (tiny change)
+
+	ChangeLog.old: Convert ISO-8859-1 to UTF-8
+
+	This file is mostly UTF-8 already, but some old entries were using
+	ISO-8859-1.  Change them to UTF-8 entirely.
+
+	* ChangeLog.old: Change ISO-8859-1 to UTF-8.
+
+2024-01-16  Mike Frysinger  <vapier@gentoo.org>
+
+	use https:// with more gnu.org sites
+
+	* NEWS: Change http:// to https:// for some URIs.
+	* bootstrap.conf, build-aux/ltmain.in, configure.ac, libtoolize.in: Likewise.
+
+2024-01-16  Raul E Rangel  <rrangel@chromium.org>
+
+	libtool: Use $LD when checking for --whole-archive
+
+	Using `$CC -print-prog-name=ld` will always use the `ld` linker. We
+	should instead be using the $LD variable so that we use the proper
+	linker.
+
+	There is already another part of the code that does this same check,
+	so I just copy/pasted the if line.
+
+	* m4/libtool.m4: Change `$CC -print-prog-name=ld` to $LD.
+
+	Url: https://savannah.gnu.org/support/?110978
+
+2024-01-16  Brad Smith  <brad@comstyle.com>
+
+	libtool: remove bitrig support.
+
+	Bitrig has been defunct for 7 years.
+
+	* build-aux/ltmain.in (func_mode_link): Remove bitrig support.
+	* m4/libtool.m4 (_LT_CMD_OLD_ARCHIVE, LT_CMD_MAX_LEN)
+	(_LT_SYS_DYNAMIC_LINKER, _LT_CHECK_MAGIC_METHOD)
+	(_LT_LINKER_SHLIBS, _LT_LANG_CXX_CONFIG): Ditto.
+	* m4/ltdl.m4 (LT_SYS_DLOPEN_DEPLIBS): Ditto.
+	* NEWS: Updated.
+
+2024-01-16  Olly Betts  <olly@survex.com>
+
+	libtool: use -Fe with MSVC to specify filename
+
+	This avoids a deprecation warning with current versions of MSVC, by
+	replacing the -o flag with -Fe. -Fe is documented as supported at
+	least as far back as Visual C 6.0 which was released in 1998.
+
+	* m4/libtool.m4: Use -Fe instead of -o to specify DLL output filename
+	for MSVC.
+
+2024-01-16  Xiang.Lin  <myd.xia@gmail.com>
+
+	libtool: fix empty "-L" in compiler_lib_search_path
+
+	If the compiler places a space between "-L" and the path, the path will
+	be skipped and only an empty "-L" will appear in the final
+	compiler_lib_search_path. This will cause the first library in postdeps
+	following compiler_lib_search_path to be accidentally skipped.
+
+	* libtool.m4: Fixed string comparison by adding missing 'x's.
+
+2024-01-15  Bruno Haible  <bruno@clisp.org>
+
+	Fix shared library support on Android.
+
+	This patch fixes two problems:
+	1) A libtool library created with the -release option and no -version-info
+	   option was, when built with --enable-shared, installed without the
+	   symlink libNAME.so -> libNAME-RELEASE.so. This led to subsequent failures
+	   during "make install" of shared libraries that depend on it.
+	2) Executables were created without a RUNPATH property. These executables
+	   then did not find their shared libraries when run.
+
+	* m4/libtool.m4: On Android, fix library_names_spec and
+	hardcode_libdir_flag_spec.
+
+2024-01-15  Mike Frysinger  <vapier@gentoo.org>
+
+	gnulib: update submodule to current versions
+
+	* gl/build-aux/do-release-commit-and-tag.diff: Rebase.
+	* gnulib: Update submodule.
+
+2024-01-15  Mike Frysinger  <vapier@gentoo.org>
+
+	maint: disable syntax checks on local gnulib patches
+
+	The syntax checks might trip over problems in the gnulib code itself
+	when scanning the local patches.  Since it's unlikely these checks
+	will find anything useful, just disable them for the gl/ patches.
+
+	* cfg.mk (VC_LIST_ALWAYS_EXCLUDE_REGEX): Ignore ^gl/.
+
+2024-01-15  Mike Frysinger  <vapier@gentoo.org>
+
+	maint: tweak update-release-year for syntax checks
+
+	`make syntax-check` complains about redundant variable braces.
+
+	* cfg.mk (update-release-year): Delete $${year} braces.
+
+2024-01-15  Mike Frysinger  <vapier@gentoo.org>
+
+	maint: disable GNU indent checks for now
+
+	GNU indent will reformat a bunch of files in a way that's broken or
+	incorrect, so disable the check until we can find a way to workaround
+	this.  Unfortunately, the indent check is enforced at `make distcheck`
+	time if GNU indent is installed, so it can't simply be ignored.
+
+	* cfg.mk (local-checks-to-skip): Add sc_indent.
+
+2024-01-15  Mike Frysinger  <vapier@gentoo.org>
+
+	libltdl: delete use of ^L
+
+	GNU indent does not process this well, and nothing else in the tree
+	uses this convention, so drop it.
+
+	(GNU indent is enforced by gnulib when running `make distcheck`.)
+
+	* libltdl/ltdl.c: Delete ^L.
+	* libltdl/ltdl.h: Likewise.
+
+2024-01-15  Mike Frysinger  <vapier@gentoo.org>
+
+	generalize genders
+
+	* HACKING: Change "his" to "their".
+	* tests/old-m4-iface.at: Change "she" to "they".
+
+2024-01-14  Sam James  <sam@gentoo.org>
+
+	.gitmodules: use HTTPS for cloning gnulib
+
+	* .gitmodules: Use https://.
+
+2024-01-14  Richard Purdie  <richard.purdie@linuxfoundation.org>
+
+	libtool.m4: For reproducibility stop encoding hostname in libtool script
+
+	For reproducibility, stop encoding the hostname into the libtool script,
+	this isn't really adding much to debugging and most distros are carrying
+	such a patch now as reproducibility is important.
+
+	* m4/libtool.m4: Delete call to hostname & uname.
+
+2024-01-14  Gilles Gouaillardet  <gilles@rist.or.jp>
+
+	libtool: Add support for flang (Fortran LLVM-based) compilers
+
+	This patch adds support for flang compilers.  Some specific flags
+	are needed so these compilers must be handled in a specific way.
+	By default, the compiler is called 'flang', but ARM releases their
+	own flang-based compiler called 'armflang'.
+
+	Because of the current lack of flang support in libtool, the
+	generated 'libtool' must be manually modified after 'configure' is
+	invoked.  Such a process is for example described on ARM web site
+	(it involves the Open MPI library).
+
+	Url: https://savannah.gnu.org/patch/?9442
+
+	* m4/libtool.m4: Handle *flang.
+
+2024-01-14  Sam James  <sam@gentoo.org>
+
+	ltmain.in: Pass through -fdiagnostics-color, -frecord-gcc-switches
+
+	* -fdiagnostics-color: who doesn't like color? No reason to strip it. This
+	  makes the link phase stick out like a sore thumb if there's warnings emitted.
+
+	* -frecord-gcc-switches: we use it in Gentoo to check if a package respects
+	  *FLAGS. Note that we do not need to include -grecord-gcc-switches explicitly
+	  here as -g* is already whitelisted.
+
+	* build-aux/ltmain.in: Handle -fdiagnostics-color* & -frecord-gcc-switches.
+
+2024-01-14  Mingli Yu  <mingli.yu@windriver.com>
+
+	build: make sure autoheader run before automake
+
+	When use automake to generate Makefile.in from Makefile.am, there
+	comes below race:
+	 | configure.ac:45: error: required file 'config-h.in' not found
+
+	It is because the file config-h.in in updating process by autoheader,
+	so make automake run after autoheader to avoid the above race.
+
+	* Makefile.am: Have $(lt_Makefile_in) depend on $(lt_config_h_in).
+
+2024-01-14  Mingli Yu  <mingli.yu@windriver.com>
+
+	build: make sure autoheader run before autoconf
+
+	autoheader will update ../libtool-2.4.6/libltdl/config-h.in which
+	autoconf needs, so there comes a race sometimes as below:
+	 | configure.ac:45: error: required file 'config-h.in' not found
+	 | touch '../libtool-2.4.6/libltdl/config-h.in'
+
+	So make sure autoheader run before autoconf to avoid this race.
+
+	* Makefile.am: Have $(lt_configure) depend on $(lt_config_h_in).
+
+2024-01-14  Jonathan Wakely  <jwakely@redhat.com>
+
+	docs: Use @file for .libs directory
+
+	* doc/libtool.texi: Use @file format for directory name.
+
+2024-01-14  Jonathan Wakely  <jwakely@redhat.com>
+
+	docs: Fix typo in 'Linking Libraries' section
+
+	* doc/libtool.texi: Fix typo.
+
+2024-01-14  Manoj Gupta  <manojgupta@google.com>
+
+	libtool: Support "-fno-sanitize*" options.
+
+	"-fno-sanitize*" options e.g. -fno-sanitize=alignment
+	or -fno-sanitize-recover=all are used to tune the behvior of
+	sanitizers in GCC/clang. Let libtool pass these options
+	to compiler similar to fsanitize=*.
+
+	* build-aux/ltmain.in: Handle -fno-sanitize*.
+
+2024-01-14  Mike Frysinger  <vapier@gentoo.org>
+
+	maint: extend release version hook to cover config.lt
+
+	* cfg.mk: Extend rule to cover config.lt.
+	* m4/libtool.m4: Update copyright year.
+
+2024-01-14  Jakub Wilk  <jwilk@jwilk.net>
+
+	libtool.m4: fix typos
+
+	* m4/libtool.m4: Fix various typos.
+
+2024-01-14  Vadim Zeitlin  <vz-libtool@zeitlins.org>
+
+	libtool: Include _CRTIMP in _putenv() declaration in EXE wrapper sources.
+
+	Re-declaring _putenv() without _CRTIMP in strict ANSI mode when using
+	MinGW resulted in a warning because of a conflict with the previous
+	declaration that did use _CRTIMP.
+
+	Simply add _CRTIMP to our declaration to avoid it.
+
+	* build-aux/ltmain.in (func_emit_cwrapperexe_src): Add _CRTIMP to
+	_putenv() declaration.
+
+2024-01-14  Samuel Thibault  <samuel.thibault@ens-lyon.org>
+
+	libtool: hurd-amd64 support
+
+	This adds support for passing -m elf32_x86_64 vs -m elf_x86_64 to the
+	linker on hurd-amd64.
+
+	Url: https://savannah.gnu.org/patch/?10398
+
+	* m4/libtool.m4: dd x86_64-gnu* case to pass -m elf32_x86_64 vs
+	-m elf_x86_64 to linker.
+
+2024-01-14  Bruno Haible  <bruno@clisp.org>
+
+	Recognize *-*-windows* config triplets
+
+	The gnuconfig project recognizes windows* as a host OS to denote native
+	Windows environments.  The commit message makes it sound like LLVM and
+	Crablang communities will use the 'windows' value, whereas GNU will
+	continue to use 'mingw'. But I think it's only a matter of time until
+	people start to pass the option --host=x86_64-pc-windows to configure
+	scripts. We should be prepared for that.
+
+	Url: https://savannah.gnu.org/patch/?10387
+
+	* build-aux/ltmain.in: Treat windows* as equivalent to mingw*.
+	* m4/libtool.m4: Likewise.
+	* m4/ltdl.m4: Likewise.
+	* m4/ltoptions.m4: Likewise.
+	* tests/bindir.at: Likewise.
+	* tests/deplibs-mingw.at: Likewise.
+	* tests/lt_dladvise.at: Likewise.
+	* tests/testsuite.at: Likewise.
+
+2024-01-14  Antonin Décimo  <antonin@tarides.com>  (tiny change)
+
+	docs: Update links to FlexDLL and edll
+
+	* doc/libtool.texi: Update website URIs.
+
+2024-01-14  Dmitry Antipov  <dmantipov@yandex.ru>
+
+	libtool: passthru '-shared-libsan' and '-static-libsan' flags
+
+	This is intented to link against shared and static sanitizer
+	runtimes with Clang.
+
+	* build-aux/ltmain.in: Pass '-shared-libsan' and '-static-libsan'
+	flags when linking.
+
+2024-01-14  Florian Weimer  <fweimer@redhat.com>
+
+	tests: Fix C99 compatibility issue in lt_dlopen_a.at
+
+	Include <string.h> for the strcmp function.  This improves C99
+	compiler compatibility because it avoids an implicit function
+	declaration.
+
+	* tests/lt_dlopen_a.at: Include string.h.
+
+2024-01-14  Paul Eggert  <eggert@cs.ucla.edu>
+
+	libtool: port better to POSIX grep
+
+	This fixes some other regular expressions that GNU grep 3.8 does not
+	warn about (I found them with an even-pickier 'grep').
+
+	I did not look systematically for all portability bugs of this form.
+
+	Url: https://savannah.gnu.org/patch/index.php?10282
+
+	* tests/cdemo.at (allow_undefined_flag):
+	Prefer } to \} in EREs, as \} is not portable.
+	* tests/libtool.at (quote shell meta-characters in filenames):
+	Prefer ] to \] in BREs, as \] is not portable.
+
+2024-01-14  Paul Eggert  <eggert@cs.ucla.edu>
+
+	libtool: port to GNU grep 3.8
+
+	GNU grep 3.8 warns about some regular expressions that POSIX says have
+	undefined effect, e.g., '\-'.  Unfortunately Libtool uses regular
+	expressions of this form.  Some unittests now fail, e.g. link-order.at:
+
+	--- /dev/null
+	+++ .../libtool/tests/testsuite.dir/at-groups/66/stderr
+	@@ -0,0 +1,4 @@
+	+/bin/grep: warning: stray \ before /
+	+/bin/grep: warning: stray \ before /
+	+/bin/grep: warning: stray \ before /
+	+/bin/grep: warning: stray \ before /
+
+	Url: https://savannah.gnu.org/patch/index.php?10282
+
+	* m4/libtool.m4 (_LT_LANG_CXX_CONFIG): Do not use \- in a BRE or ERE,
+	as this produces undefined results that GNU grep 3.8 warns about.
+	Use [-] instead.
+	* tests/link-order.at (Link order test): Similarly, do not use
+	\/ in an ERE; use / instead.
+
+2024-01-13  Ileana Dumitrescu  <ileanadumitrescu95@gmail.com>
+
+	libtool: removed stale intro in document
+
+	Fixes libtool bug https://bugs.gnu.org/64157
+
+	* libtool.texi: Removed old and stale introduction from documentation.
+
+2024-01-12  Mike Frysinger  <vapier@gentoo.org>
+
+	README: change http to https in all URIs
+
+	* README.md: Change http:// to https:// everywhere.
+
+2024-01-12  Mike Frysinger  <vapier@gentoo.org>
+
+	README: fix path to INSTALL in git
+
+	Fixes libtool bug https://bugs.gnu.org/42787.
+
+	The file lives in automake's git, not libtool.
+
+	* README.md: Change INSTALL URL to automake.git.
+
+2024-01-12  Mike Frysinger  <vapier@gentoo.org>
+
+	maint: fix git hooks logic error
+
+	`test set = set = set` is invalid, as is `test set = = set`.
+	Tweak the code to what was probably intended.
+
+	* build-aux/git-hooks/commit-msg: Fix $ECHO test call.
+
+2024-01-12  Mike Frysinger  <vapier@gentoo.org>
+
+	maint: add hook to automate release version updates
+
+	Fixes libtool bug https://bugs.gnu.org/67588.
+
+	Automate the process to avoid it falling stale again in the future,
+	and then refresh here to get in sync.
+
+	* cfg.mk: Add rule to update libtool.m4 release version.
+	* m4/libtool.m4: Update release year.
+
+2024-01-12  Uwe Kleine-König  <uwe@kleine-koenig.org>
+
+	libtool: Use AC_CHECK_PROG instead of AC_CHECK_TOOL to find "file"
+
+	This fixes a warning when cross-building:
+
+		checking for arm-v7a-linux-gnueabihf-file... no
+		checking for file... file
+		configure: WARNING: using cross tools not prefixed with host triplet
+
+	file isn't platform specific and not usually installed with a host
+	triplet. So use AC_CHECK_PROG which differs from AC_CHECK_TOOL by not
+	expecting such a host triplet prefix.
+
+	* m4/libtool.m4 (_LT_DECL_FILECMD): Change AC_CHECK_TOOL to AC_CHECK_PROG.
+
+2024-01-12  Mike Frysinger  <vapier@gentoo.org>
+
+	maint: update copyrights across project
+
+2022-12-16  Sam James  <sam@gentoo.org>  (tiny change)
+
+	libtool: passthru '-Werror' flags
+
+	* build-aux/ltmain.in: Pass '-Werror' flags to linker.
+
+2022-05-16  Alex Ameen  <alex.ameen.tx@gmail.com>
+
+	Revert "libtool: permit compiler libs in shlibs"
+
+	This reverts commit 1d2577357ee704da2d6d7c7da119ad82ba8ca172.
+
+2022-05-09  Alex Ameen  <alex.ameen.tx@gmail.com>
+
+	libtool: permit compiler libs in shlibs
+
+2022-03-17  Alex Ameen  <alex.ameen.tx@gmail.com>
+
+	maint: post-release administrivia
+
+	* NEWS: Add header line for next release.
+	* .prev-version: Record previous version.
+	* cfg.mk (old_NEWS_hash): Auto-update.
+
 2022-03-17  Alex Ameen  <alex.ameen.tx@gmail.com>
 
 	version 2.4.7
@@ -22389,7 +24316,7 @@
 
 	* libltdl/ltdl.c (foreach_dirinpath): Ensure that filename is '\0'
 	terminated by all code paths.
-	Reported by Lutz M�ller <lutz@users.sourceforge.net>
+	Reported by Lutz Müller <lutz@users.sourceforge.net>
 
 2002-06-20  Gary V. Vaughan  <gary@gnu.org>
 
@@ -25507,7 +27434,7 @@
 	  and file_magic_cmd
 
 	* README: use 'libtool --version' instead of 'ltconfig --version'
-	  (suggested by Francios Pinard <pinard@iro.umontreal.ca>
+	  (suggested by François Pinard <pinard@iro.umontreal.ca>
 
 2000-01-10  Gary V. Vaughan  <gary@gnu.org>
 
@@ -26280,7 +28207,7 @@
 
 	* ltconfig.in: Support new GNU ld --help output format.
 	* NEWS:  Likewise.
-	Reported by Ga�l Qu�ri <gael@baoule.dyndns.org> and
+	Reported by Gaël Quéri <gael@baoule.dyndns.org> and
 	H.J. Lu <hjl@varesearch.com>.
 
 1999-06-05  Mark Kettenis  <kettenis@gnu.org>
@@ -30353,7 +32280,7 @@ Thu May 28 18:59:08 1998  Ian Lance Taylor  <ian@cygnus.com>
 	ld's.  From Eiichi Takamori.
 
 	* ltmain.in (install): Don't print silly `library stripping'
-	warnings.  Reported by Fran�ois Pinard.
+	warnings.  Reported by François Pinard.
 
 1997-12-19  Gordon Matzigkeit  <gord@profitpress.com>
 
@@ -30488,7 +32415,7 @@ Thu May 28 18:59:08 1998  Ian Lance Taylor  <ian@cygnus.com>
 	because we need it for quoting substitutions.  For most of the
 	script, though, use the default echo, just like Autoconf does.
 	Without this patch, character \001 ends up in global_symbol_pipe.
-	Reported by Lars Hecking and J�rgen Fluk.
+	Reported by Lars Hecking and Jürgen Fluk.
 
 	* ltmain.in (echo): Set default to `echo=echo'.  Ooops.  That's
 	what you get for testing obscure code paths and forgetting to

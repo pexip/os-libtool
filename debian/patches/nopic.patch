@@ -1,11 +1,13 @@
---- a/tests/demo.at
-+++ b/tests/demo.at
-@@ -511,7 +511,7 @@
+Index: libtool-2.5.4/tests/demo.at
+===================================================================
+--- libtool-2.5.4.orig/tests/demo.at
++++ libtool-2.5.4/tests/demo.at
+@@ -518,7 +518,7 @@ AT_CLEANUP
  AT_SETUP([force non-PIC objects])
  
  AT_CHECK([case $host in
--hppa*|x86_64*|s390*)
-+hppa*|x86_64*|s390*|mips*|arm*|sparc64*)
+-hppa*|amd64*|x86_64*|s390*)
++hppa*|amd64*|x86_64*|s390*|mips*|arm*|sparc64*)
    # These hosts cannot use non-PIC shared libs
    exit 77 ;;
  *-solaris*|*-sunos*)
