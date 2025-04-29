@@ -1,3 +1,9 @@
+libtool (2.5.4-4+pexip25u1) pexip-trixie; urgency=medium
+
+  * Initial trixie build
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Tue, 29 Apr 2025 22:37:50 +0100
+
 libtool (2.5.4-4) unstable; urgency=medium
 
   [ Jordi Mallach ]
